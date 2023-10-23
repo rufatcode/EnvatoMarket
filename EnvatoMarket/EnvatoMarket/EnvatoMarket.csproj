@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Stripe.net" Version="43.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="DAL\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\AdminArea\" />
+    <None Remove="Areas\AdminArea\Controllers\" />
+    <None Remove="Areas\AdminArea\Views\" />
+    <None Remove="Areas\AdminArea\Views\Dashboard\" />
+    <None Remove="Areas\AdminArea\Views\Shared\" />
+    <None Remove="Controllers\" />
+    <None Remove="Models\" />
+    <None Remove="Views\" />
+    <None Remove="Views\Shared\" />
+    <None Remove="Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\AdminArea\" />
+    <Folder Include="Areas\AdminArea\Controllers\" />
+    <Folder Include="Areas\AdminArea\Views\" />
+    <Folder Include="Areas\AdminArea\Views\Dashboard\" />
+    <Folder Include="Areas\AdminArea\Views\Shared\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Home\" />
+  </ItemGroup>
+</Project>

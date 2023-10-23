@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
+  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/ServiceRegistration.cs">
+    <Files>
+      <File FileName="EnvatoMarket/appsettings.json" />
+      <File FileName="EnvatoMarket/ServiceRegistration.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EnvatoMarket" expanded="True">
+            <Node name="EnvatoMarket" expanded="True">
+              <Node name="Areas" expanded="True">
+                <Node name="AdminArea" expanded="True">
+                  <Node name="Controllers" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="DAL" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="ServiceRegistration.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

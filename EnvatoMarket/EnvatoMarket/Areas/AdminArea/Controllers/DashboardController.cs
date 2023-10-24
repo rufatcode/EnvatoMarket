@@ -8,10 +8,31 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EnvatoMarket.Areas.AdminArea.Controllers
 {
+    [Area("AdminArea")]
     public class DashboardController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Accordion()
+        {
+            return View();
+        }
+        public IActionResult Breadcrumb()
+        {
+            return View();
+        }
+        public IActionResult Button()
+        {
+            return View();
+        }
+        public IActionResult Tabs()
+        {
+            return View();
+        }
+        public IActionResult Color()
         {
             return View();
         }

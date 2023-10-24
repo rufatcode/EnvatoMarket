@@ -1,42 +1,35 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/ServiceRegistration.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/Areas/AdminArea/Controllers/DashboardController.cs">
     <Files>
-      <File FileName="EnvatoMarket/Views/Shared/_Layout.cshtml" Line="1019" Column="72" />
-      <File FileName="EnvatoMarket/ServiceRegistration.cs" Line="27" Column="48" />
-      <File FileName="EnvatoMarket/DAL/AppDbContext.cs" Line="36" Column="38" />
-      <File FileName="EnvatoMarket/Models/AppUser.cs" Line="9" Column="17" />
+      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/DashboardController.cs" Line="1" Column="1" />
+      <File FileName="EnvatoMarket/Areas/AdminArea/Views/Dashboard/Color.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="EnvatoMarket">
+          <Node name="EnvatoMarket" expanded="True">
             <Node name="EnvatoMarket">
-              <Node name="Areas" expanded="True">
-                <Node name="AdminArea" expanded="True">
-                  <Node name="Controllers" expanded="True" />
+              <Node name="Areas">
+                <Node name="AdminArea">
+                  <Node name="Controllers">
+                    <Node name="DashboardController.cs" selected="True" />
+                  </Node>
+                  <Node name="Views">
+                    <Node name="Dashboard" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="assets" expanded="True">
-                  <Node name="css" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="ServiceRegistration.cs" selected="True" />
+              <Node name="wwwroot" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

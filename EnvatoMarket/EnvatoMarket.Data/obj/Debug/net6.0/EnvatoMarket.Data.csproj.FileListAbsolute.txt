@@ -1,0 +1,17 @@
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/bin/Debug/net6.0/EnvatoMarket.Data.deps.json
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/bin/Debug/net6.0/EnvatoMarket.Data.runtimeconfig.json
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/bin/Debug/net6.0/EnvatoMarket.Data.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/bin/Debug/net6.0/EnvatoMarket.Data.pdb
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/bin/Debug/net6.0/EnvatoMarket.Core.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/bin/Debug/net6.0/EnvatoMarket.Core.pdb
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.csproj.AssemblyReference.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.AssemblyInfoInputs.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.AssemblyInfo.cs
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.csproj.CoreCompileInputs.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.csproj.CopyComplete
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/refint/EnvatoMarket.Data.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.pdb
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/EnvatoMarket.Data.genruntimeconfig.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/obj/Debug/net6.0/ref/EnvatoMarket.Data.dll

@@ -18,7 +18,11 @@ namespace EnvatoMarket
 			});
 			services.AddDbContext<AppDbContext>(option =>
 			{
-				option.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+				option.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                    opt =>
+
+                        opt.MigrationsAssembly("EnvatoMarket.Data")
+                    );
 			});
 			services.AddIdentity<AppUser, IdentityRole>(option =>
 			{

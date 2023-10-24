@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N0MYod6ka3O4X9DoGquoY6YksohReP1EoWkQVwdGhYLQeylKpqXfPIADSjBI9oWpV/3GABFLAAPnKHDBoPzvwA==",
+  "dgSpecHash": "oKwamEVYqQ8a8JR7o3y1ycyYaRHKJKI6aqjyuO/KrNAQrFOKuJAp90o0cMI/jVQ1AOXKHGIamVr5LKRfE2ZB9g==",
   "success": true,
-  "projectFilePath": "/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/EnvatoMarket.csproj",
+  "projectFilePath": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/EnvatoMarket.csproj",
   "expectedPackageFiles": [
     "/Users/rufat/.nuget/packages/castle.core/4.4.1/castle.core.4.4.1.nupkg.sha512",
     "/Users/rufat/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

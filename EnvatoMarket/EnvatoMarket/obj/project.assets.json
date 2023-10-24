@@ -2451,6 +2451,62 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "EnvatoMarket.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "EnvatoMarket.Data": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
+          "Microsoft.EntityFrameworkCore": "6.0.0",
+          "Microsoft.EntityFrameworkCore.Proxies": "6.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "Newtonsoft.Json": "6.0.1"
+        },
+        "compile": {
+          "bin/placeholder/EnvatoMarket.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EnvatoMarket.Business.dll": {}
+        }
+      },
+      "EnvatoMarket.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
+          "Microsoft.EntityFrameworkCore": "6.0.0",
+          "Microsoft.EntityFrameworkCore.Proxies": "6.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "Newtonsoft.Json": "6.0.1"
+        },
+        "compile": {
+          "bin/placeholder/EnvatoMarket.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EnvatoMarket.Core.dll": {}
+        }
+      },
+      "EnvatoMarket.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "EnvatoMarket.Core": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
+          "Microsoft.EntityFrameworkCore": "6.0.0",
+          "Microsoft.EntityFrameworkCore.Proxies": "6.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "Newtonsoft.Json": "6.0.1"
+        },
+        "compile": {
+          "bin/placeholder/EnvatoMarket.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EnvatoMarket.Data.dll": {}
+        }
       }
     }
   },
@@ -7529,10 +7585,27 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "EnvatoMarket.Business/1.0.0": {
+      "type": "project",
+      "path": "../EnvatoMarket.Business/EnvatoMarket.Business.csproj",
+      "msbuildProject": "../EnvatoMarket.Business/EnvatoMarket.Business.csproj"
+    },
+    "EnvatoMarket.Core/1.0.0": {
+      "type": "project",
+      "path": "../EnvatoMarket.Core/EnvatoMarket.Core.csproj",
+      "msbuildProject": "../EnvatoMarket.Core/EnvatoMarket.Core.csproj"
+    },
+    "EnvatoMarket.Data/1.0.0": {
+      "type": "project",
+      "path": "../EnvatoMarket.Data/EnvatoMarket.Data.csproj",
+      "msbuildProject": "../EnvatoMarket.Data/EnvatoMarket.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "EnvatoMarket.Business >= 1.0.0",
+      "EnvatoMarket.Data >= 1.0.0",
       "Microsoft.AspNetCore.Http >= 2.2.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.0",
@@ -7549,11 +7622,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/EnvatoMarket.csproj",
+      "projectUniqueName": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/EnvatoMarket.csproj",
       "projectName": "EnvatoMarket",
-      "projectPath": "/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/EnvatoMarket.csproj",
+      "projectPath": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/EnvatoMarket.csproj",
       "packagesPath": "/Users/rufat/.nuget/packages/",
-      "outputPath": "/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/obj/",
+      "outputPath": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/rufat/.nuget/NuGet/NuGet.Config"
@@ -7569,7 +7642,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Business/EnvatoMarket.Business.csproj": {
+              "projectPath": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Business/EnvatoMarket.Business.csproj"
+            },
+            "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/EnvatoMarket.Data.csproj": {
+              "projectPath": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Data/EnvatoMarket.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

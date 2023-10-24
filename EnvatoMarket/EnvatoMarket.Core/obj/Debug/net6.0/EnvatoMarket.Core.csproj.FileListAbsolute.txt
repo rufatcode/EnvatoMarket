@@ -1,0 +1,14 @@
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/bin/Debug/net6.0/EnvatoMarket.Core.deps.json
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/bin/Debug/net6.0/EnvatoMarket.Core.runtimeconfig.json
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/bin/Debug/net6.0/EnvatoMarket.Core.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/bin/Debug/net6.0/EnvatoMarket.Core.pdb
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.csproj.AssemblyReference.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.AssemblyInfoInputs.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.AssemblyInfo.cs
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.csproj.CoreCompileInputs.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/refint/EnvatoMarket.Core.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.pdb
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/EnvatoMarket.Core.genruntimeconfig.cache
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/obj/Debug/net6.0/ref/EnvatoMarket.Core.dll

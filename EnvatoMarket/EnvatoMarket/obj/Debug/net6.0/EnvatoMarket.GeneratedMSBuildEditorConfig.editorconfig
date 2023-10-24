@@ -9,41 +9,61 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EnvatoMarket
 build_property.RootNamespace = EnvatoMarket
-build_property.ProjectDir = /Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/
+build_property.ProjectDir = /Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket
+build_property.MSBuildProjectDirectory = /Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket
 build_property._RazorSourceGeneratorDebug = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Dashboard/Index.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Dashboard/Accordion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL0Rhc2hib2FyZC9BY2NvcmRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Dashboard/Breadcrumb.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL0Rhc2hib2FyZC9CcmVhZGNydW1iLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Dashboard/Button.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL0Rhc2hib2FyZC9CdXR0b24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Dashboard/Color.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL0Rhc2hib2FyZC9Db2xvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL0Rhc2hib2FyZC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Dashboard/Tabs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL0Rhc2hib2FyZC9UYWJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL1NoYXJlZC9fQWRtaW5MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/_ViewImports.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL19WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/_ViewStart.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Areas/AdminArea/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW5BcmVhL1ZpZXdzL19WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Views/Home/Index.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Views/Shared/_Layout.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Views/_ViewImports.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/Mac/AspNet/BackendProject_EnvatoMarket/EnvatoMarket/EnvatoMarket/Views/_ViewStart.cshtml]
+[/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

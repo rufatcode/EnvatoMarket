@@ -21,6 +21,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnvatoMarket.Data\EnvatoMarket.Data.csproj" />
@@ -29,10 +30,12 @@
     <None Remove="Interfaces\" />
     <None Remove="Services\" />
     <None Remove="ViewModels\" />
+    <None Remove="ViewModels\AccountVM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\AccountVM\" />
   </ItemGroup>
 </Project>

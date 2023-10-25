@@ -12,6 +12,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
     public class DashboardController : Controller
     {
         // GET: /<controller>/
+
         public IActionResult Index()
         {
             return View();
@@ -33,6 +34,58 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             return View();
         }
         public IActionResult Color()
+        {
+            return View();
+        }
+        public IActionResult LabelBadge()
+        {
+            return View();
+        }
+        public IActionResult ToolTip()
+        {
+            return View();
+        }
+        public IActionResult Typography()
+        {
+            return View();
+        }
+        public IActionResult Notification()
+        {
+            return View();
+        }
+        public IActionResult Themify()
+        {
+            return View();
+        }
+        public IActionResult FormElements()
+        {
+            return View();
+        }
+        public IActionResult BasicTable()
+        {
+            return View();
+        }
+        public IActionResult Chart()
+        {
+            return View();
+        }
+        public IActionResult GoogleMap()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult SamplePage()
+        {
+            return View();
+        }
+        public IActionResult LogOut()
         {
             return View();
         }

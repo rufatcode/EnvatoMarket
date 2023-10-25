@@ -25,10 +25,12 @@
   <ItemGroup>
     <None Remove="DAL\" />
     <None Remove="Implimentations\" />
+    <None Remove="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
     <Folder Include="Implimentations\" />
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnvatoMarket.Core\EnvatoMarket.Core.csproj" />

@@ -30,9 +30,16 @@ namespace EnvatoMarket.DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("AddedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -46,6 +53,9 @@ namespace EnvatoMarket.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
@@ -74,11 +84,17 @@ namespace EnvatoMarket.DAL.Migrations
                     b.Property<string>("ProfileImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("Removed")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -99,39 +115,45 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2c3a0857-9869-4ac3-bf3e-46a250632ea9",
+                            Id = "ca5c7e1d-4248-4537-b0d5-bce7a6ca901e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a293291c-0e93-4eaa-997c-93a9b58b5b7e",
+                            AddedBy = "System",
+                            ConcurrencyStamp = "cede1c50-852d-418a-bc6d-509beb4b6aae",
+                            Created = new DateTime(2023, 10, 25, 19, 18, 53, 706, DateTimeKind.Local).AddTicks(6370),
                             Email = "rufatri@code.edu.az",
                             EmailConfirmed = true,
                             FullName = "Rufat Azerbaijan",
                             IsActive = true,
+                            IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "RUFATRI@CODE.EDU.AZ",
                             NormalizedUserName = "RUFATCODE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK0R7HQszmC5pyTlbt8zFDV8Gs07EPIjPFEjfJqEwXZMjv6KezEy61ZPyf+2dse6GA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBg8CfdSfjgtgdhPGCms8RD56YseNJR2qgnLCuedrGHPoYDgMGZhOEmpRuW14UIDqw==",
                             PhoneNumber = "+994513004484",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "40f9836b-2b94-455c-869b-9a631d5bf3b2",
+                            SecurityStamp = "0e042ac4-f80c-4843-995d-6e0230622d81",
                             TwoFactorEnabled = false,
                             UserName = "RufatCode"
                         },
                         new
                         {
-                            Id = "54412fe9-790b-4b48-8d02-c561afcbe23d",
+                            Id = "964ce9dd-5320-42b4-8b74-5a4337b21f89",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bf3ba913-3bf8-4df8-80d3-42071faaa066",
+                            AddedBy = "System",
+                            ConcurrencyStamp = "4a183837-5d6b-483a-a3e8-64be4a05c8e5",
+                            Created = new DateTime(2023, 10, 25, 19, 18, 53, 706, DateTimeKind.Local).AddTicks(6400),
                             Email = "rft.smayilov@bk.ru",
                             EmailConfirmed = true,
                             FullName = "Rufat Code",
                             IsActive = true,
+                            IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "RFT.SMAYILOV@BK.RU",
                             NormalizedUserName = "RUFAT_2003",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH02E4DrGOFmM//RrmYu+sLD6m+6hHA0fLq6zq7AtNNV+WQqP4XjBx/rAe31V4Q2+Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOzr2IH6/2NewlSQVUXlD3Li/0R+5AdFd1APNyp1DOP9IQOUj0DVCYUQ927t/szz0A==",
                             PhoneNumber = "+994513004484",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "6f76cb75-b8ee-4015-bdaa-d0bc51fcb2dd",
+                            SecurityStamp = "a1b8ac5f-d05c-405d-8ab8-a20863f45b98",
                             TwoFactorEnabled = false,
                             UserName = "Rufat_2003"
                         });
@@ -166,22 +188,22 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "11152a9b-b923-4fd5-a826-426b27386e77",
-                            ConcurrencyStamp = "d3592aad-0134-49d9-83c4-707c1f5b171e",
+                            Id = "1fbddfc1-5f33-4fa8-9372-592db298fd61",
+                            ConcurrencyStamp = "cdace586-b704-41f0-93a3-d59b2ac2d2df",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "428eb54d-0e6b-47a4-92c3-b1fede867d15",
-                            ConcurrencyStamp = "c06a97b2-ea21-490d-89d7-34191bf3325f",
+                            Id = "b641bc20-8276-4cfd-97ca-243ca0e87851",
+                            ConcurrencyStamp = "384ef174-dfc7-4ccc-bb63-a476676bb6b6",
                             Name = "SupperAdmin",
                             NormalizedName = "SUPPERADMIN"
                         },
                         new
                         {
-                            Id = "54426e5b-a207-43ad-aab6-455e4bffa45f",
-                            ConcurrencyStamp = "2064bfdd-4691-48a8-8704-b973e9b1d8fc",
+                            Id = "f4ace3f9-34a6-4acb-aa58-a32c940062c2",
+                            ConcurrencyStamp = "819a0534-70b3-4876-a157-f37e205e3d7d",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -276,13 +298,13 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2c3a0857-9869-4ac3-bf3e-46a250632ea9",
-                            RoleId = "11152a9b-b923-4fd5-a826-426b27386e77"
+                            UserId = "ca5c7e1d-4248-4537-b0d5-bce7a6ca901e",
+                            RoleId = "1fbddfc1-5f33-4fa8-9372-592db298fd61"
                         },
                         new
                         {
-                            UserId = "54412fe9-790b-4b48-8d02-c561afcbe23d",
-                            RoleId = "428eb54d-0e6b-47a4-92c3-b1fede867d15"
+                            UserId = "964ce9dd-5320-42b4-8b74-5a4337b21f89",
+                            RoleId = "b641bc20-8276-4cfd-97ca-243ca0e87851"
                         });
                 });
 

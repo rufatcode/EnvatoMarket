@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IuMYs6mPB+08cP1Ut5rS7Mxdys3hVo/ymk2UoMIvtFg=",
+  "Hash": "APMU6xeZcMD14vMgY+NR/yyK4/nqlsV7KoaQx0lp4Wc=",
   "Source": "EnvatoMarket",
   "BasePath": "_content/EnvatoMarket",
   "Mode": "Default",
@@ -3024,6 +3024,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/admin/pages/widget/excanvas.js"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/.DS_Store",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/.DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/.DS_Store"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/css/plugins/animate.css",
@@ -6543,6 +6560,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/Verification/VerificationEmail.html",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "Verification/VerificationEmail.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Verification/VerificationEmail.html"
     }
   ]
 }

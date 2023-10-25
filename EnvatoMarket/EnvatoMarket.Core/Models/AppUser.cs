@@ -8,7 +8,12 @@ namespace EnvatoMarket.Models
 		public string FullName { get; set; }
 		public string? ProfileImageUrl { get; set; }
 		public bool IsActive { get; set; }
-		public AppUser()
+        public DateTime Created { get; set; }
+        public DateTime? Removed { get; set; }
+        public DateTime? Updated { get; set; }
+        public string AddedBy { get; set; }
+        public bool IsDeleted { get; set; }
+        public AppUser()
 		{
 		}
 	}

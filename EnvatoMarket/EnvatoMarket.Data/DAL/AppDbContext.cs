@@ -13,6 +13,7 @@ namespace EnvatoMarket.DAL
 		}
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
             string AdminRoleId = Guid.NewGuid().ToString();
             string SupperAdminRoleId = Guid.NewGuid().ToString();
             string UserRoleId = Guid.NewGuid().ToString();
@@ -45,8 +46,9 @@ namespace EnvatoMarket.DAL
                 IsActive = true,
                 FullName = "Rufat Azerbaijan",
                 PhoneNumber = "+994513004484",
-                PhoneNumberConfirmed = true
-
+                PhoneNumberConfirmed = true,
+                Created = DateTime.Now,
+                AddedBy = "System"
             };
             AppUser SupperAdmin = new AppUser
             {
@@ -59,7 +61,9 @@ namespace EnvatoMarket.DAL
                 IsActive = true,
                 FullName = "Rufat Code",
                 PhoneNumber = "+994513004484",
-                PhoneNumberConfirmed = true
+                PhoneNumberConfirmed = true,
+                Created = DateTime.Now,
+                AddedBy="System"
 
             };
             PasswordHasher<AppUser> hasher = new PasswordHasher<AppUser>();

@@ -41,6 +41,7 @@
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Header\" />
     <None Remove="Views\Shared\Components\Footer\" />
+    <None Remove="Areas\AdminArea\Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -58,6 +59,7 @@
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\Header\" />
     <Folder Include="Views\Shared\Components\Footer\" />
+    <Folder Include="Areas\AdminArea\Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnvatoMarket.Business\EnvatoMarket.Business.csproj">

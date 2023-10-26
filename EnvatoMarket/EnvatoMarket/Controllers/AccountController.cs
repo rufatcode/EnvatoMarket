@@ -54,6 +54,7 @@ namespace EnvatoMarket.Controllers
             appUser.Created = DateTime.Now;
             appUser.AddedBy = "System";
             appUser.IsActive = true;
+            await _userManager.AddToRoleAsync(appUser, "User");
             IdentityResult resoult =await _userManager.CreateAsync(appUser, registerVM.Password);
             if (!resoult.Succeeded)
             {

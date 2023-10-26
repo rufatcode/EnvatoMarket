@@ -145,6 +145,52 @@ namespace EnvatoMarket.DAL
                 Value = "rft.smayilov@bk.ru",
                 AddedBy = "System",
                 Created = DateTime.Now
+            },new Setting
+            {
+                Id=Guid.NewGuid().ToString(),
+                Key= "currency1",
+                Value="USD$",
+                AddedBy = "System",
+                Created = DateTime.Now
+            }, new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "currency2",
+                Value = "EUR$",
+                AddedBy = "System",
+                Created = DateTime.Now
+            },
+            new Setting
+            {
+                Id=Guid.NewGuid().ToString(),
+                Key="Language1",
+                Value="English",
+                AddedBy = "System",
+                Created = DateTime.Now
+            },
+            new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "Language2",
+                Value = "Franch",
+                AddedBy = "System",
+                Created = DateTime.Now
+            },
+            new Setting
+            {
+                Id=Guid.NewGuid().ToString(),
+                Key="Flag1",
+                Value= "1.jpg",
+                AddedBy = "System",
+                Created = DateTime.Now
+            },
+            new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "Flag2",
+                Value = "2.jpg",
+                AddedBy = "System",
+                Created = DateTime.Now
             });
             base.OnModelCreating(builder); 
         }

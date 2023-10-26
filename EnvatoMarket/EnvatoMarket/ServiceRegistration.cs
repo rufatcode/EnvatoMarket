@@ -50,6 +50,7 @@ namespace EnvatoMarket
             });
 			services.AddScoped<ISendEmail, SendEmail>();
 			services.AddAutoMapper(typeof(HomeProfile).Assembly);
+			services.AddAutoMapper(typeof(UserProfile).Assembly);
         }
 	}
 }

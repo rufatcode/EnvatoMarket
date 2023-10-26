@@ -37,6 +37,7 @@
     <None Remove="Mappings\" />
     <None Remove="Mappings\AutoMapper\" />
     <None Remove="ViewModels\HomeVM\" />
+    <None Remove="ViewModels\UsersVM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -47,5 +48,6 @@
     <Folder Include="Mappings\" />
     <Folder Include="Mappings\AutoMapper\" />
     <Folder Include="ViewModels\HomeVM\" />
+    <Folder Include="ViewModels\UsersVM\" />
   </ItemGroup>
 </Project>

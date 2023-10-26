@@ -139,3 +139,5 @@
 /Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/bin/Debug/net6.0/EnvatoMarket.Data.pdb
 /Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/bin/Debug/net6.0/EnvatoMarket.Core.pdb
 /Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/bin/Debug/net6.0/AutoMapper.dll
+/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EnvatoMarket.ViewComponents
 {
-	public class FooterViewCompnent:ViewComponent
+	public class FooterViewComponent:ViewComponent
 	{
 		private readonly AppDbContext _context;
-		public FooterViewCompnent(AppDbContext context)
+		public FooterViewComponent(AppDbContext context)
 		{
 			_context = context;
 		}
 		public async Task<IViewComponentResult> InvokeAsync()
 		{
-			var data = await _context.Settings.ToListAsync();
+			var data = await _context.Settings.ToDictionaryAsync(s=>s.Key,s=>s.Value);
 			return View(await Task.FromResult(data));
 		}
 	}

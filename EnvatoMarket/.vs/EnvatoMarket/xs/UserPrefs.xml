@@ -1,4 +1,9 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
+  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench>
@@ -7,15 +12,20 @@
         <State name="__root__">
           <Node name="EnvatoMarket" expanded="True">
             <Node name="EnvatoMarket">
+              <Node name="Areas">
+                <Node name="AdminArea">
+                  <Node name="Controllers" expanded="True" />
+                  <Node name="Views">
+                    <Node name="Shared" expanded="True" />
+                    <Node name="User" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
               <Node name="ViewComponents" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
-                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True">
                   <Node name="Components" expanded="True">
-                    <Node name="Footer" expanded="True">
-                      <Node name="Default.cshtml" selected="True" />
-                    </Node>
                     <Node name="Header" expanded="True" />
                   </Node>
                 </Node>
@@ -25,22 +35,15 @@
               <Node name="Mappings" expanded="True">
                 <Node name="AutoMapper" expanded="True" />
               </Node>
-              <Node name="ViewModels">
-                <Node name="HomeVM" expanded="True" />
-                <Node name="SettingsVM" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="SettingsVM" expanded="True">
+                  <Node name="HeaderVM.cs" selected="True" />
+                </Node>
               </Node>
-            </Node>
-            <Node name="EnvatoMarket.Data">
-              <Node name="Configuration" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

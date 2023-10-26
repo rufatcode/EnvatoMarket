@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
+@model HeaderVM
 <header class="header-area">
     <div class="desktop-nav d-none d-lg-block">
         <div class="header-nav">
@@ -19,9 +19,16 @@
                                     <button type="button" id="setting" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Setting <i class="icon ion-chevron-down"></i></button>
 
                                     <ul class="dropdown-menu" aria-labelledby="setting">
-                                        <li><a href="my-account.html">My account</a></li>
+                                        @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a href="my-account.html">My account</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a asp-controller="Account" asp-action="Login">Sign in</a></li>
+                                            }
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="login.html">Sign in</a></li>
+                                        
                                     </ul>
                                 </div>
                             </li>
@@ -30,8 +37,10 @@
                                     <button type="button" id="currency" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">USD $ <i class="icon ion-chevron-down"></i></button>
 
                                     <ul class="dropdown-menu" aria-labelledby="currency">
-                                        <li><a href="#">EUR €</a></li>
-                                        <li><a href="#">USD $</a></li>
+                                        @foreach (var item in Model.Settings.Where(s => s.Key.Contains("currency")).ToList())
+                                            {
+                                                <li><a href="#">@item.Value</a></li>
+                                            }
                                     </ul>
                                 </div>
                             </li>
@@ -40,8 +49,8 @@
                                     <button type="button" id="langue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/assets/images/flag/1.jpg" alt=""> English <i class="icon ion-chevron-down"></i></button>
 
                                     <ul class="dropdown-menu" aria-labelledby="langue">
-                                        <li><a href="#"><img src="~/assets/images/flag/1.jpg" alt=""> English</a></li>
-                                        <li><a href="#"><img src="~/assets/images/flag/2.jpg" alt=""> Français</a></li>
+                                        <li><a href="#"><img src="~/assets/images/flag/@Model.Settings["Flag1"]" alt=""> @Model.Settings["Language1"]</a></li>
+                                        <li><a href="#"><img src="~/assets/images/flag/@Model.Settings["Flag2"]" alt=""> @Model.Settings["Language2"]</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -58,7 +67,7 @@
                         <div class="header-logo-contact d-flex  ">
                             <div class="desktop-logo">
                                 <a href="index.html">
-                                    <img src="~/assets/images/logo.png" alt="Logo">
+                                    <img src="~/assets/images/@Model.Settings["Logo"]" alt="Logo">
                                 </a>
                             </div> <!-- desktop logo -->
                         </div>
@@ -69,7 +78,7 @@
                                 <i class="icon ion-ios-telephone-outline"></i>
                                 <div class="phone media-body">
                                     <p>24/7 Support</p>
-                                    <a href="tel:+48500500500">+48 500 500 500</a>
+                                    <a href="tel:+48500500500">@Model.Settings["Hotline"]</a>
                                 </div>
                             </div>
                             <div class="header-search media-body">
@@ -373,12 +382,24 @@
                                         }
                                         else
                                         {
-                                            <li class="text-danger">@User.Identity.Name</li>
+
+
+                                            @if (Model.UserVM.ProfileImageUrl == null)
+                                            {
+                                                <li ><a><img style="border-radius:50%;" width="75" height="75" src="~/assets/images/DemoProfileImage.png" /></a></li>
+                                            }
+                                            else
+                                            {
+
+                                                <li><a><img style="border-radius:50%;"  width="75" height="75" src="~/assets/images/@Model.UserVM.ProfileImageUrl" /></a></li>
+                                            }
+
+                                            <li ><a class="text-danger">@Model.UserVM.FullName</a></li>
                                             <li><a href="my-account.html">My Account</a></li>
                                             <li><a asp-action="LogOut" asp-controller="Account">LogOut</a></li>
                                             @if (User.IsInRole("Admin") || User.IsInRole("SupperAdmin"))
                                             {
-                                                <li><a asp-area="AdminArea" asp-controller="Dashboard" asp-action="Index">Admin</a></li>
+                                                <li class="text-danger"><a asp-area="AdminArea" asp-controller="Dashboard" asp-action="Index">Admin</a></li>
                                             }
                                         }
                                     </ul>

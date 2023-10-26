@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "APMU6xeZcMD14vMgY+NR/yyK4/nqlsV7KoaQx0lp4Wc=",
+  "Hash": "FMdjGJ3SkeQLXt1chAHQmvWX2aJVGXeK1ImyCeqvhVc=",
   "Source": "EnvatoMarket",
   "BasePath": "_content/EnvatoMarket",
   "Mode": "Default",
@@ -3281,6 +3281,23 @@
       "OriginalItemSpec": "wwwroot/assets/css/style.css"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/css/TokenIsValid.css",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/css/TokenIsValid.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/css/TokenIsValid.css"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/fonts/fa-brands-400.eot",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -4571,6 +4588,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/custom_banner.jpg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/DemoProfileImage.png",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/DemoProfileImage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/DemoProfileImage.png"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/favicon.png",
@@ -6560,6 +6594,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/Verification/ResetPassword.html",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "Verification/ResetPassword.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Verification/ResetPassword.html"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/Verification/VerificationEmail.html",

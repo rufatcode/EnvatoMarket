@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.ViewModels.AccountVM;
 using EnvatoMarket.Models;
 using Microsoft.AspNetCore.Identity;
@@ -21,11 +22,13 @@ namespace EnvatoMarket.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager)
+        private readonly ISendEmail _sendEmail;
+        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager, ISendEmail sendEmail)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _sendEmail = sendEmail;
         }
         public IActionResult Register()
         {
@@ -62,25 +65,15 @@ namespace EnvatoMarket.Controllers
             }
             string token =await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
             string link = Url.Action(nameof(VerifyEmail), "Account", new { VerifyEmail = appUser.Email, token }, Request.Scheme, Request.Host.ToString());
-            MailMessage mailMessage = new();
-            mailMessage.From = new MailAddress("rufatri@code.edu.az");
-            mailMessage.To.Add(new MailAddress(appUser.Email, "Allup"));
-            mailMessage.Subject = "verify email";
+            
             string verificationMessageBody = string.Empty;
             using (StreamReader fileStream = new StreamReader("wwwroot/Verification/VerificationEmail.html"))
             {
                 verificationMessageBody = await fileStream.ReadToEndAsync();
             }
-            verificationMessageBody.Replace("{{link}}", link);
-            verificationMessageBody.Replace("{{userName}}", appUser.UserName);
-            mailMessage.Body = verificationMessageBody;
-            mailMessage.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Port = 587;
-            smtp.EnableSsl = true;
-            smtp.Host = "smtp.gmail.com";
-            smtp.Credentials = new NetworkCredential("rufatri@code.edu.az", "bazi tvxk bnta hymo");
-            smtp.Send(mailMessage);
+            verificationMessageBody=verificationMessageBody.Replace("{{link}}", link);
+            verificationMessageBody=verificationMessageBody.Replace("{{userName}}", appUser.UserName);
+            _sendEmail.Send("rufatri@code.edu.az", "Allup", appUser.Email, verificationMessageBody, "Confirm Account");
             return RedirectToAction("Login", "Account");
         }
         public async Task<IActionResult> VerifyEmail(string VerifyEmail,string token)
@@ -119,6 +112,120 @@ namespace EnvatoMarket.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Login(LoginVM loginVM,string? ReturnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            AppUser appUser =await _userManager.FindByEmailAsync(loginVM.EmailOrUserName);
+            if (appUser==null)
+            {
+                appUser = await _userManager.FindByNameAsync(loginVM.EmailOrUserName);
+                if (appUser==null)
+                {
+                    ModelState.AddModelError("EmailOrUserName", "Invalid User");
+                    return View();
+                }
+            }
+            else if (!appUser.IsActive)
+            {
+                ModelState.AddModelError("", "User is blocked");
+                return View();
+            }
+            var resoult = await _signInManager.PasswordSignInAsync(appUser, loginVM.Password,loginVM.IsRemember,true);
+            if (resoult.IsLockedOut)
+            {
+                ModelState.AddModelError("", "User is blocked");
+                return View();
+            }
+            else if (!appUser.EmailConfirmed)
+            {
+                ModelState.AddModelError("", "Something went wrong");
+                return View();
+            }
+            else if (!resoult.Succeeded)
+            {
+                ModelState.AddModelError("", "Something went wrong");
+                return View();
+            }
+            await _signInManager.SignInAsync(appUser, loginVM.IsRemember);
+            if (ReturnUrl!=null)
+            {
+                return Redirect(ReturnUrl);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login");
+        }
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgetPassword(string email)
+        {
+            AppUser appUser =await _userManager.FindByEmailAsync(email);
+            if (appUser==null)
+            {
+                ModelState.AddModelError("", "User is not valid");
+                return View();
+            }
+            string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+            string link = Url.Action(nameof(ResetPassword), "Account", new { email = appUser.Email, token }, Request.Scheme, Request.Host.ToString());
+            
+            string resetPasswordBody = string.Empty;
+            using (StreamReader stream = new StreamReader("wwwroot/Verification/ResetPassword.html"))
+            {
+                resetPasswordBody =await stream.ReadToEndAsync();
+            };
+            resetPasswordBody = resetPasswordBody.Replace("{{link}}", link);
+            resetPasswordBody = resetPasswordBody.Replace("{{userName}}", appUser.UserName);
+            _sendEmail.Send("rufatri@code.edu.az", "Allup", appUser.Email, resetPasswordBody, "Reset Password");
+           
+           
+            return RedirectToAction("Login", "Account");
+        }
+        public async Task<IActionResult> ResetPassword(string email,string token)
+        {
+            AppUser appUser =await _userManager.FindByEmailAsync(email);
+            if (appUser==null)
+            {
+                return RedirectToAction("TokenIsNotValid");
+            }
+            var resoult = await _userManager.VerifyUserTokenAsync(appUser, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", token);
+            if (!resoult)
+            {
+                return RedirectToAction("TokenIsNotValid");
+            }
+            return View();
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> ResetPassword(string email, string token,ResetPasswordVM resetPasswordVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            AppUser appUser =await _userManager.FindByEmailAsync(email);
+            IdentityResult resoult=await _userManager.ResetPasswordAsync(appUser, token, resetPasswordVM.Password);
+            if (!resoult.Succeeded)
+            {
+                foreach (var error in resoult.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View();
+            }
+            await _userManager.UpdateSecurityStampAsync(appUser);
+            return RedirectToAction("Login");
         }
     }
 }

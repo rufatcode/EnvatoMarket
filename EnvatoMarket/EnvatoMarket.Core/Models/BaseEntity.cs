@@ -7,7 +7,8 @@ namespace EnvatoMarket.Core.Models
 {
 	public abstract  class BaseEntity
     {
-		public int Id { get; set; }
+		[Key]
+		public string Id { get; set; }
 		public DateTime Created { get; set; } = DateTime.Now;
 		public DateTime? Removed { get; set; }
 		public DateTime? Updated { get; set; }

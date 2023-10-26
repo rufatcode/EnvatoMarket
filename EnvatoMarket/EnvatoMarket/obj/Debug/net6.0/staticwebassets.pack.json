@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/.DS_Store"
     },
     {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/Verification/ResetPassword.html",
+      "PackagePath": "staticwebassets/Verification/ResetPassword.html"
+    },
+    {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/Verification/VerificationEmail.html",
       "PackagePath": "staticwebassets/Verification/VerificationEmail.html"
     },
@@ -717,6 +721,10 @@
       "PackagePath": "staticwebassets/assets/.DS_Store"
     },
     {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/css/TokenIsValid.css",
+      "PackagePath": "staticwebassets/assets/css/TokenIsValid.css"
+    },
+    {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/css/plugins/animate.css",
       "PackagePath": "staticwebassets/assets/css/plugins/animate.css"
     },
@@ -883,6 +891,10 @@
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/fonts/ionicons28b5.woff",
       "PackagePath": "staticwebassets/assets/fonts/ionicons28b5.woff"
+    },
+    {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/DemoProfileImage.png",
+      "PackagePath": "staticwebassets/assets/images/DemoProfileImage.png"
     },
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/author-1.png",

@@ -1,4 +1,5 @@
 ﻿using System;
+using EnvatoMarket.Core.Models;
 using EnvatoMarket.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -8,6 +9,7 @@ namespace EnvatoMarket.DAL
 {
 	public class AppDbContext:IdentityDbContext<AppUser>
 	{
+        public DbSet<Setting> Settings { get; set; }
 		public AppDbContext(DbContextOptions options):base(options)
 		{
 		}
@@ -86,6 +88,64 @@ namespace EnvatoMarket.DAL
 
                 
             }) ;
+            builder.Entity<Setting>().HasData(new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "Hotline",
+                Value = "+48 500 500 500",
+                AddedBy = "System",
+                Created = DateTime.Now,
+            },
+            new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "Logo",
+                Value = "logo.png",
+                AddedBy = "System",
+                Created = DateTime.Now
+            }, new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "Location",
+                Value = "45 Grand Central Terminal New York,NY 1017 United State USA",
+                AddedBy = "System",
+                Created = DateTime.Now
+            }, new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "PhoneNumber",
+                Value = "+994513004484",
+                AddedBy = "System",
+                Created = DateTime.Now
+            }, new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "Email",
+                Value = "rufatri@code.edu.az",
+                AddedBy = "System",
+                Created = DateTime.Now
+            }, new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "Work Time",
+                Value = "Mon-Sat 9:00pm - 5:00pm Sun:Closed",
+                AddedBy = "System",
+                Created = DateTime.Now
+            },new Setting
+            {
+                Id=Guid.NewGuid().ToString(),
+                Key="Payment",
+                Value= "payment.png",
+                AddedBy="System",
+                Created=DateTime.Now
+            }, new Setting
+            {
+                Id = Guid.NewGuid().ToString(),
+                Key = "CompanyEmail",
+                Value = "rft.smayilov@bk.ru",
+                AddedBy = "System",
+                Created = DateTime.Now
+            });
             base.OnModelCreating(builder); 
         }
     }

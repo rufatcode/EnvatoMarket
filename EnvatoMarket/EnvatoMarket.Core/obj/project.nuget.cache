@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "PWqCMxAhhTTD+xDYDYbm68UMqtiCUkz7WlXCZ+ILQMHQEd89CesH4KHOwVWnk2Z1V0F6Fe+q1IqBqKp3K+rF7A==",
+  "dgSpecHash": "6TI71/5j+JZRzmVAzzKLss+mG9S6QmPlcsQXYRb6Cp4z6zHv1fpAEhchTAThcB3ECm8XJH3wDp5kwniKLMVgkQ==",
   "success": true,
   "projectFilePath": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket.Core/EnvatoMarket.Core.csproj",
   "expectedPackageFiles": [
+    "/Users/rufat/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/rufat/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/rufat/.nuget/packages/castle.core/4.4.1/castle.core.4.4.1.nupkg.sha512",
     "/Users/rufat/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/rufat/.nuget/packages/microsoft.aspnetcore.cryptography.internal/6.0.0/microsoft.aspnetcore.cryptography.internal.6.0.0.nupkg.sha512",
@@ -13,7 +15,7 @@
     "/Users/rufat/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/Users/rufat/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/6.0.0/microsoft.aspnetcore.identity.entityframeworkcore.6.0.0.nupkg.sha512",
     "/Users/rufat/.nuget/packages/microsoft.aspnetcore.webutilities/2.2.0/microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
-    "/Users/rufat/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/rufat/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/rufat/.nuget/packages/microsoft.data.sqlclient/2.1.4/microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "/Users/rufat/.nuget/packages/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "/Users/rufat/.nuget/packages/microsoft.entityframeworkcore/6.0.0/microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

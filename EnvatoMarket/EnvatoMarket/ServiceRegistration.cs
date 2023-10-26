@@ -1,9 +1,11 @@
 ﻿using System;
+using EnvatoMarket.Business.Interfaces;
+using EnvatoMarket.Business.Mappings.AutoMapper;
+using EnvatoMarket.Business.Services;
 using EnvatoMarket.DAL;
 using EnvatoMarket.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
 namespace EnvatoMarket
 {
 	public static class ServiceRegistration
@@ -27,7 +29,7 @@ namespace EnvatoMarket
 			services.AddIdentity<AppUser, IdentityRole>(option =>
 			{
 				option.User.RequireUniqueEmail = true;
-				option.SignIn.RequireConfirmedPhoneNumber = true;
+				option.SignIn.RequireConfirmedPhoneNumber = false;
 				option.SignIn.RequireConfirmedEmail = true;
 				option.Password.RequireDigit = true;
 				option.Password.RequiredLength = 8;
@@ -46,6 +48,8 @@ namespace EnvatoMarket
                 option.TokenLifespan = TimeSpan.FromMinutes(10);
 
             });
+			services.AddScoped<ISendEmail, SendEmail>();
+			services.AddAutoMapper(typeof(HomeProfile).Assembly);
         }
 	}
 }

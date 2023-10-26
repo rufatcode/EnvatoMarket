@@ -14,7 +14,6 @@ namespace EnvatoMarket.Business.ViewModels.AccountVM
 		public string Password { get; set; }
 		[DataType(DataType.Password),Compare(nameof(ConfirmPassword))]
 		public string ConfirmPassword { get; set; }
-		public bool IsRemember { get; set; }
 		public RegisterVM()
 		{
 		}

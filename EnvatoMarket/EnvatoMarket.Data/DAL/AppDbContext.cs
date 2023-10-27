@@ -10,6 +10,7 @@ namespace EnvatoMarket.DAL
 	public class AppDbContext:IdentityDbContext<AppUser>
 	{
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
 		public AppDbContext(DbContextOptions options):base(options)
 		{
 		}

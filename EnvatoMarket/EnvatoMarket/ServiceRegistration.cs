@@ -2,7 +2,9 @@
 using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.Mappings.AutoMapper;
 using EnvatoMarket.Business.Services;
+using EnvatoMarket.Core.Interfaces;
 using EnvatoMarket.DAL;
+using EnvatoMarket.Data.Implimentations;
 using EnvatoMarket.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -49,8 +51,13 @@ namespace EnvatoMarket
 
             });
 			services.AddScoped<ISendEmail, SendEmail>();
+			services.AddScoped<IUserService, UserService>();
+			services.AddScoped<ISliderService, SliderService>();
+			services.AddScoped<ISliderRepository, SliderRepository>();
+			services.AddScoped<IFileService, FileService>();
 			services.AddAutoMapper(typeof(HomeProfile).Assembly);
 			services.AddAutoMapper(typeof(UserProfile).Assembly);
+			services.AddAutoMapper(typeof(SliderProfile).Assembly);
         }
 	}
 }

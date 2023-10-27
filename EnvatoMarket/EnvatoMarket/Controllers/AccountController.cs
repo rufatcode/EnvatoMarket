@@ -132,7 +132,7 @@ namespace EnvatoMarket.Controllers
                     return View();
                 }
             }
-            else if (!appUser.IsActive)
+            if (!appUser.IsActive)
             {
                 ModelState.AddModelError("", "User is blocked");
                 return View();

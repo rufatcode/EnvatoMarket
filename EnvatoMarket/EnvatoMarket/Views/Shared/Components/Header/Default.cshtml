@@ -2,6 +2,7 @@
     Layout = null;
 }
 @model HeaderVM
+
 <header class="header-area">
     <div class="desktop-nav d-none d-lg-block">
         <div class="header-nav">
@@ -356,7 +357,7 @@
                         <div class="header-horizontal-menu">
                             <ul class="menu-content">
                                 <li class="active">
-                                    <a href="#">Home <i class="fal fa-chevron-down"></i></a>
+                                    <a asp-action="Index" asp-controller="Home">Home <i class="fal fa-chevron-down"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="index.html">Home 01</a></li>
                                         <li><a href="index-2.html">Home 02</a></li>

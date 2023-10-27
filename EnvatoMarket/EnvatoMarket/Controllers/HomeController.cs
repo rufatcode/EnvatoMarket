@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EnvatoMarket.Business.Interfaces;
+using EnvatoMarket.Business.ViewModels.HomeVM;
 using EnvatoMarket.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +14,19 @@ namespace EnvatoMarket.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly SignInManager<AppUser>  signInManager;
+        private readonly ISliderService _sliderService;
+        public HomeController(ISliderService sliderService)
+        {
+            _sliderService = sliderService;
+        }
         // GET: /<controller>/
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            HomeIndexVM homeIndexVM = new();
+            homeIndexVM.Sliders = await _sliderService.GetAll();
+            return View(homeIndexVM);
+        }
+        public IActionResult Contact()
         {
             return View();
         }

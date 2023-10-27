@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+<div class="breadcrumb-area">
+    <div class="container-fluid custom-container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Contact</li>
+            </ol>
+        </nav>
+    </div> <!-- container -->
+</div>
+
+<!--====== Breadcrumb Part Ends ======-->
+<!--====== Contact PART START ======-->
+
+<div class="contact-map-area pt-50">
+    <div id="contact-map"></div>
+</div>
+
+<!--====== Contact PART ENDS ======-->
+<!--====== Contact Part Start ======-->
+
+<section class="contact-page pt-20">
+    <div class="container-fluid custom-container">
+        <div class="row">
+            <div class="col-lg-7 col-xl-8">
+                <div class="contact-form mt-30">
+                    <h4 class="allup-title">Billing Address</h4>
+                    <form id="contact-form" action="https://demo.hasthemes.com/allup/allup/~/assets/contact.php" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="single-form">
+                                    <input type="text" name="name" placeholder="Your Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-form">
+                                    <input type="email" name="email" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-form">
+                                    <input type="text" name="subject" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-form">
+                                    <textarea name="message" placeholder="Your Message"></textarea>
+                                </div>
+                            </div>
+                            <p class="form-message"></p>
+                            <div class="col-md-12">
+                                <div class="single-form">
+                                    <button class="main-btn main-btn-2">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           @await Component.InvokeAsync("Contact");
+        </div>
+    </div>
+</section>
+
+<!--====== Contact Part Ends ======-->
+<!--====== Brand Part Start ======-->
+
+<div class="brand-area pt-80">
+    <div class="container-fluid custom-container">
+        <div class="row brand-active">
+            <div class="col-lg-2">
+                <div class="single-brand">
+                    <a href="#">
+                        <img src="~/assets/images/brand/brand-1.jpg" alt="brand">
+                    </a>
+                </div> <!-- single brand -->
+            </div>
+            <div class="col-lg-2">
+                <div class="single-brand">
+                    <a href="#">
+                        <img src="~/assets/images/brand/brand-2.jpg" alt="brand">
+                    </a>
+                </div> <!-- single brand -->
+            </div>
+            <div class="col-lg-2">
+                <div class="single-brand">
+                    <a href="#">
+                        <img src="~/assets/images/brand/brand-3.jpg" alt="brand">
+                    </a>
+                </div> <!-- single brand -->
+            </div>
+            <div class="col-lg-2">
+                <div class="single-brand">
+                    <a href="#">
+                        <img src="~/assets/images/brand/brand-4.jpg" alt="brand">
+                    </a>
+                </div> <!-- single brand -->
+            </div>
+            <div class="col-lg-2">
+                <div class="single-brand">
+                    <a href="#">
+                        <img src="~/assets/images/brand/brand-5.jpg" alt="brand">
+                    </a>
+                </div> <!-- single brand -->
+            </div>
+            <div class="col-lg-2">
+                <div class="single-brand">
+                    <a href="#">
+                        <img src="~/assets/images/brand/brand-6.jpg" alt="brand">
+                    </a>
+                </div> <!-- single brand -->
+            </div>
+            <div class="col-lg-2">
+                <div class="single-brand">
+                    <a href="#">
+                        <img src="~/assets/images/brand/brand-4.jpg" alt="brand">
+                    </a>
+                </div> <!-- single brand -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+
+<!--====== Brand Part Ends ======-->
+<!--====== Features Banner Part Start ======-->
+
+<section class="features-banner-area pt-80 pb-100">
+    <div class="container-fluid custom-container">
+        <div class="features-banner-wrapper d-flex flex-wrap">
+            <div class="single-features-banner d-flex">
+                <div class="banner-icon">
+                    <img src="~/assets/images/banner-icon/icon1.png" alt="Icon">
+                </div>
+                <div class="banner-content media-body">
+                    <h3 class="banner-title">Free Shipping</h3>
+                    <p>Free shipping on all US order</p>
+                </div>
+            </div> <!-- single features banner -->
+            <div class="single-features-banner d-flex">
+                <div class="banner-icon">
+                    <img src="~/assets/images/banner-icon/icon2.png" alt="Icon">
+                </div>
+                <div class="banner-content media-body">
+                    <h3 class="banner-title">Support 24/7</h3>
+                    <p>Contact us 24 hours a day</p>
+                </div>
+            </div> <!-- single features banner -->
+            <div class="single-features-banner d-flex">
+                <div class="banner-icon">
+                    <img src="~/assets/images/banner-icon/icon3.png" alt="Icon">
+                </div>
+                <div class="banner-content media-body">
+                    <h3 class="banner-title">100% Money Back</h3>
+                    <p>You have 30 days to Return</p>
+                </div>
+            </div> <!-- single features banner -->
+            <div class="single-features-banner d-flex">
+                <div class="banner-icon">
+                    <img src="~/assets/images/banner-icon/icon4.png" alt="Icon">
+                </div>
+                <div class="banner-content media-body">
+                    <h3 class="banner-title">90 Days Return</h3>
+                    <p>If goods have problems</p>
+                </div>
+            </div> <!-- single features banner -->
+            <div class="single-features-banner d-flex">
+                <div class="banner-icon">
+                    <img src="~/assets/images/banner-icon/icon5.png" alt="Icon">
+                </div>
+                <div class="banner-content media-body">
+                    <h3 class="banner-title">Payment Secure</h3>
+                    <p>We ensure secure payment</p>
+                </div>
+            </div> <!-- single features banner -->
+        </div> <!-- features banner wrapper -->
+    </div> <!-- container -->
+</section>
+
+<!--====== Features Banner Part Ends ======-->
+@section CostumScripts{
+    <!--====== Vendors js ======-->
+    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/assets/js/vendor/modernizr-3.7.1.min.js"></script>
+
+    <!--====== Plugins js ======-->
+    <script src="~/assets/js/plugins/popper.min.js"></script>
+    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="~/assets/js/plugins/slick.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="~/assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="~/assets/plugins/js/ajax-contact.js"></script>
+
+
+    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+    <!-- <script src="~/assets/js/plugins.min.js"></script> -->
+    <!--====== Main Activation js ======-->
+    <script src="~/assets/js/main.js"></script>
+
+    <!--======  Ajax Contact js ======-->
+    <!--====== Google Map js ======-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
+    <script src="~/assets/js/map-script.js"></script>
+}

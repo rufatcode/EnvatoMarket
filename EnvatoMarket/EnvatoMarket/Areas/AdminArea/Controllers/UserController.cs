@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.ViewModels.UsersVM;
 using EnvatoMarket.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,17 +16,20 @@ using Microsoft.EntityFrameworkCore;
 namespace EnvatoMarket.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin,SupperAdmin")]
     public class UserController : Controller
     {
         // GET: /<controller>/
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public UserController(UserManager<AppUser> userManager,IMapper mapper,RoleManager<IdentityRole> roleManager)
+        private readonly IUserService _userService;
+        public UserController(UserManager<AppUser> userManager,IMapper mapper,RoleManager<IdentityRole> roleManager,IUserService userService)
         {
             _userManager = userManager;
             _mapper = mapper;
             _roleManager = roleManager;
+            _userService = userService;
         }
         public async Task<IActionResult>Index()
         {
@@ -36,6 +41,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             }
             return View(userVMs);
         }
+        [Authorize(Roles = "SupperAdmin")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id==null)
@@ -56,6 +62,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 }
             }
             appUser.IsDeleted = true;
+            appUser.Removed = DateTime.Now;
             await _userManager.UpdateAsync(appUser);
             return RedirectToAction("Index");
         }
@@ -73,6 +80,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             GetUserVM userVM = _mapper.Map<GetUserVM>(appUser);
             return View(userVM);
         }
+        [Authorize(Roles = "SupperAdmin")] 
         public async Task<IActionResult> Update(string id)
         {
             if (id==null)
@@ -85,10 +93,48 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 return BadRequest();
             }
             UserUpdateVM userUpdateVM = _mapper.Map<UserUpdateVM>(appUser);
-            userUpdateVM.Roles =await _userManager.GetRolesAsync(appUser);
-            ViewBag.Roles =await _roleManager.Roles.ToListAsync();
+            userUpdateVM.Roles = await _userManager.GetRolesAsync(appUser);
+            ViewBag.Roles =await _userService.GetExistRolesForUser(appUser,userUpdateVM);
             return View(userUpdateVM);
         }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Update(string id,UserUpdateVM userUpdateVM)
+        {
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+            UserUpdateVM existUserUpdateVM = _mapper.Map<UserUpdateVM>(appUser);
+            existUserUpdateVM.Roles = await _userManager.GetRolesAsync(appUser);
+            ViewBag.Roles = await _userService.GetExistRolesForUser(appUser, existUserUpdateVM);
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else if (userUpdateVM.Roles==null||userUpdateVM.Roles.Count==0)
+            {
+                ModelState.AddModelError("Roles", "Roles Must not be Null");
+                return View();
+            }
+           
+            await _userManager.RemoveFromRolesAsync(appUser, existUserUpdateVM.Roles);
+            appUser.UserName = userUpdateVM.UserName;
+            appUser.Email = userUpdateVM.Email;
+            appUser.PhoneNumber = userUpdateVM.PhoneNumber;
+            appUser.IsActive = userUpdateVM.IsActive;
+            appUser.FullName = userUpdateVM.FullName;
+            appUser.Updated = DateTime.Now;
+            await _userManager.AddToRolesAsync(appUser, userUpdateVM.Roles);
+            IdentityResult result= await _userManager.UpdateAsync(appUser);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View();
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }
 

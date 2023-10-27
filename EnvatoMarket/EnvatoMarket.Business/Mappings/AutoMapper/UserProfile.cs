@@ -12,6 +12,7 @@ namespace EnvatoMarket.Business.Mappings.AutoMapper
 		{
 			CreateMap<AppUser, GetUserVM>();
 			CreateMap<AppUser, UserUpdateVM>();
+			CreateMap<UserUpdateVM, AppUser>();
 		}
 	}
 }

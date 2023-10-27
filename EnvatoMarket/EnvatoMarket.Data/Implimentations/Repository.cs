@@ -23,55 +23,104 @@ namespace EnvatoMarket.Data.Implimentations
 
         public async  Task Create(T entity)
         {
-            var resoult = _context.Entry(entity);
-            resoult.State = EntityState.Added;
+            try
+            {
+                var resoult = _context.Entry(entity);
+                resoult.State = EntityState.Added;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
         public async Task Delete(T entity)
         {
-            var resoult = _context.Entry(entity);
-            resoult.State = EntityState.Deleted;
+            try
+            {
+                var resoult = _context.Entry(entity);
+                resoult.State = EntityState.Deleted;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
         public async Task<List<T>> GetAll(System.Linq.Expressions.Expression<Func<T, bool>> predicate = null, params string[] includes)
         {
             IQueryable<T> query = Table ;
-            if (includes.Length>0)
+            try
             {
-                query= GetAllIncludes(includes);
+                if (includes.Length > 0)
+                {
+                    query = GetAllIncludes(includes);
+                }
+                return predicate == null ? await query.ToListAsync() : await query.Where(predicate).ToListAsync();
             }
-            return predicate == null ? await query.ToListAsync() :await query.Where(predicate).ToListAsync();
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
            
         }
 
-        public async Task<T> GetById(System.Linq.Expressions.Expression<Func<T, bool>> predicate = null, params string[] includes)
+        public async Task<T> GetEntity(System.Linq.Expressions.Expression<Func<T, bool>> predicate = null, params string[] includes)
         {
-            IQueryable<T> query = Table;
-            if (includes.Length>0)
+            try
             {
-                query = GetAllIncludes(includes);
+                IQueryable<T> query = Table;
+                if (includes.Length > 0)
+                {
+                    query = GetAllIncludes(includes);
+                }
+                return predicate == null ? await query.FirstOrDefaultAsync() : await query.FirstOrDefaultAsync(predicate);
             }
-            return predicate == null ? await query.FirstOrDefaultAsync() : await query.FirstOrDefaultAsync(predicate);
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
         public async Task<bool> IsExist(System.Linq.Expressions.Expression<Func<T, bool>> predicate=null)
         {
 
-            return predicate == null ? false :await Table.AnyAsync(predicate);
+            try
+            {
+                return predicate == null ? false : await Table.AnyAsync(predicate);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
          public IQueryable<T> GetAllIncludes(params string[] includes)
         {
-            IQueryable<T> query = Table;
-            foreach (var include in includes)
+            try
             {
-                query = query.Include(include);
+                IQueryable<T> query = Table;
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+                return query;
             }
-            return query;
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
         public async Task Update(T entity)
         {
-            var resoult = _context.Entry(entity);
-            resoult.State = EntityState.Modified;
+            try
+            {
+                var resoult = _context.Entry(entity);
+                resoult.State = EntityState.Modified;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
     }
 }

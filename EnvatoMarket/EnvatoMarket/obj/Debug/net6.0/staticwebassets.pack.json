@@ -893,12 +893,32 @@
       "PackagePath": "staticwebassets/assets/fonts/ionicons28b5.woff"
     },
     {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/11b2dcc0-48e5-45fb-b709-b368fa22db54.jpeg",
+      "PackagePath": "staticwebassets/assets/images/11b2dcc0-48e5-45fb-b709-b368fa22db54.jpeg"
+    },
+    {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/2f05b146-5e0f-4f10-ba87-f3946d3faae5.jpeg",
+      "PackagePath": "staticwebassets/assets/images/2f05b146-5e0f-4f10-ba87-f3946d3faae5.jpeg"
+    },
+    {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/3caf9cd3-5870-42a8-b3f9-447b7e8fe997",
+      "PackagePath": "staticwebassets/assets/images"
+    },
+    {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/9cf69e88-f494-4407-8f3e-930dfbfdb671.jpeg",
+      "PackagePath": "staticwebassets/assets/images/9cf69e88-f494-4407-8f3e-930dfbfdb671.jpeg"
+    },
+    {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/DemoProfileImage.png",
       "PackagePath": "staticwebassets/assets/images/DemoProfileImage.png"
     },
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/author-1.png",
       "PackagePath": "staticwebassets/assets/images/author-1.png"
+    },
+    {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/b8f7efa9-1a86-4ab0-80ad-b3fae9189d1f.jpeg",
+      "PackagePath": "staticwebassets/assets/images/b8f7efa9-1a86-4ab0-80ad-b3fae9189d1f.jpeg"
     },
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/banner-1.png",
@@ -1087,6 +1107,10 @@
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/custom_banner.jpg",
       "PackagePath": "staticwebassets/assets/images/custom_banner.jpg"
+    },
+    {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/de3c57b4-f79b-4f94-ae9c-bc6e854b243d.jpeg",
+      "PackagePath": "staticwebassets/assets/images/de3c57b4-f79b-4f94-ae9c-bc6e854b243d.jpeg"
     },
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/favicon.png",

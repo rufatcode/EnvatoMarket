@@ -38,6 +38,8 @@
     <None Remove="Mappings\AutoMapper\" />
     <None Remove="ViewModels\HomeVM\" />
     <None Remove="ViewModels\UsersVM\" />
+    <None Remove="ViewModels\SliderVM\" />
+    <None Remove="ElementAttributes\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -49,5 +51,7 @@
     <Folder Include="Mappings\AutoMapper\" />
     <Folder Include="ViewModels\HomeVM\" />
     <Folder Include="ViewModels\UsersVM\" />
+    <Folder Include="ViewModels\SliderVM\" />
+    <Folder Include="ElementAttributes\" />
   </ItemGroup>
 </Project>

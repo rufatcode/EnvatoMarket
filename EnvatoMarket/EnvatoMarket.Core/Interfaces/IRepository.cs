@@ -8,7 +8,7 @@ namespace EnvatoMarket.Core.Interfaces
 		public Task Create(T entity);
 		public Task Delete(T entity);
 		public Task Update(T entity);
-		public Task<T> GetById(Expression<Func<T, bool>> predicate = null, params string[] includes);
+		public Task<T> GetEntity(Expression<Func<T, bool>> predicate = null, params string[] includes);
 		public Task<List<T>> GetAll(Expression<Func<T, bool>> predicate = null, params string[] includes);
 		public Task Commit();
 		public Task<bool> IsExist(Expression<Func<T, bool>> predicate=null);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using EnvatoMarket.Core.Interfaces;
 using EnvatoMarket.Core.Models;
 using EnvatoMarket.DAL;
@@ -47,7 +48,7 @@ namespace EnvatoMarket.Data.Implimentations
             }
         }
 
-        public async Task<List<T>> GetAll(System.Linq.Expressions.Expression<Func<T, bool>> predicate = null, params string[] includes)
+        public async Task<List<T>> GetAll(Expression<Func<T, bool>> predicate = null, params string[] includes)
         {
             IQueryable<T> query = Table ;
             try
@@ -65,7 +66,7 @@ namespace EnvatoMarket.Data.Implimentations
            
         }
 
-        public async Task<T> GetEntity(System.Linq.Expressions.Expression<Func<T, bool>> predicate = null, params string[] includes)
+        public async Task<T> GetEntity(Expression<Func<T, bool>> predicate = null, params string[] includes)
         {
             try
             {
@@ -82,7 +83,7 @@ namespace EnvatoMarket.Data.Implimentations
             }
         }
 
-        public async Task<bool> IsExist(System.Linq.Expressions.Expression<Func<T, bool>> predicate=null)
+        public async Task<bool> IsExist(Expression<Func<T, bool>> predicate=null)
         {
 
             try
@@ -122,6 +123,7 @@ namespace EnvatoMarket.Data.Implimentations
                 throw new Exception();
             }
         }
+
     }
 }
 

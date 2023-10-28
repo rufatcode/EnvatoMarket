@@ -36,11 +36,21 @@ namespace EnvatoMarket.Business.Services
         {
             try
             {
-                if (!await IsExist(s=>s.Id==id)||await IsExist(s=>s.IsDeleted==true))
+                if (!await IsExist(s=>s.Id==id))
                 {
                     return false;
                 }
                 Slider slider = await GetEntity(s=>s.Id==id);
+                if (slider.IsDeleted==true)
+                {
+                    return false;
+                }
+                List<Slider> sliders = await GetAll();
+                if (sliders.Where(s=>s.Id!=id).All(s=>s.IsDeleted))
+                {
+                    return false;
+                }
+                
                 slider.IsDeleted = true;
                 slider.Removed = DateTime.Now;
                 await _sliderRepozitory.Update(slider);
@@ -77,7 +87,6 @@ namespace EnvatoMarket.Business.Services
             }
         }
 
-        
 
         public async Task<bool> IsExist(Expression<Func<Slider, bool>> predicate = null)
         {

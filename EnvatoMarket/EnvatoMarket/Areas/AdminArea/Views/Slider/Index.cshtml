@@ -46,7 +46,7 @@
                                 }
                             </td>
                             <td>@slider.Title</td>
-                            <td>@slider.Description</td>
+                            <td >@(slider.Description.Length>30?slider.Description.Substring(0,60)+"....":slider.Description)</td>
                             <td>@(slider.IsDeleted?"Deleted":"Active")</td>
                             <td>
                                 @if (!slider.IsDeleted)

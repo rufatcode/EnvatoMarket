@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@model Category
+<div class="card" style="width:85%;float:right;">
+    <div class="card-header">
+        <h5>Inverse Table</h5>
+        <span>use class <code>table-inverse</code> inside table element</span>
+        <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                <li><i class="fa fa-window-maximize full-card"></i></li>
+                <li><i class="fa fa-minus minimize-card"></i></li>
+                <li><i class="fa fa-refresh reload-card"></i></li>
+                <li><i class="fa fa-trash close-card"></i></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <a asp-action="Create" class="btn btn-warning btn-md btn-block waves-effect waves-light text-center m-b-20 w-25 mx-3">Create Slider</a>
+            <table class="table table-inverse">
+                <thead>
+                    <tr>
+                        <th>Category Image</th>
+                        <th>Category Name</th>
+                        <th>IsMain</th>
+                        <th>IsDeleted</th>
+                        <th>DeletedAt</th>
+                        <th>UpdateAt</th>
+                        <th>Parent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img style="border-radius:50%;" width="75" height="75" src="~/assets/images/@Model.ImageUrl" />
+                        </td>
+                        <td>@Model.CategoryName</td>
+                        <td>@(Model.IsMain==true?"Main Category":"Sub Category")</td>
+                        <td>@(Model.IsDeleted?"Deleted":"Active")</td>
+                        <td>@(Model.Removed.HasValue?Model.Removed.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+                        <td>@(Model.Updated.HasValue?Model.Updated.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+                        <td>@(Model.IsMain==false?Model.Parent.CategoryName:"[N/A]")</td>
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section CostumScripts{
+    <script type="text/javascript" src="~/admin/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/admin/js/jquery-ui/jquery-ui.min.js "></script>
+    <script type="text/javascript" src="~/admin/js/popper.js/popper.min.js"></script>
+    <script type="text/javascript" src="~/admin/js/bootstrap/js/bootstrap.min.js "></script>
+    <!-- waves js -->
+    <script src="~/admin/pages/waves/js/waves.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="~/admin/js/jquery-slimscroll/jquery.slimscroll.js "></script>
+    <!-- waves js -->
+    <script src="~/admin/pages/waves/js/waves.min.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="~/admin/js/modernizr/modernizr.js "></script>
+    <!-- Custom js -->
+    <script src="~/admin/js/pcoded.min.js"></script>
+    <script src="~/admin/js/vertical-layout.min.js "></script>
+    <script src="~/admin/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="~/admin/js/script.js"></script>
+}
+

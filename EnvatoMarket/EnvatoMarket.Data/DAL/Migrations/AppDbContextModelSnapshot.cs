@@ -22,6 +22,78 @@ namespace EnvatoMarket.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("EnvatoMarket.Core.Models.Brand", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Removed")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("EnvatoMarket.Core.Models.Category", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ParentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("Removed")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("EnvatoMarket.Core.Models.Setting", b =>
                 {
                     b.Property<string>("Id")
@@ -58,126 +130,126 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7d4459f1-5031-4b3c-9b92-835191af0cbf",
+                            Id = "13e8541c-9b31-4f57-8857-0615ceedeef2",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(820),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2010),
                             IsDeleted = false,
                             Key = "Hotline",
                             Value = "+48 500 500 500"
                         },
                         new
                         {
-                            Id = "d31a3e27-f745-4e7e-b1b6-db0c4c3ece95",
+                            Id = "9903d949-9222-4fab-9e48-e307132310b7",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(830),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2020),
                             IsDeleted = false,
                             Key = "Logo",
                             Value = "logo.png"
                         },
                         new
                         {
-                            Id = "1bba2a6a-6bf4-446a-babe-c0fd180aab92",
+                            Id = "f6919325-7f81-4f34-a1ce-914d128beaa8",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(830),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2020),
                             IsDeleted = false,
                             Key = "Location",
                             Value = "45 Grand Central Terminal New York,NY 1017 United State USA"
                         },
                         new
                         {
-                            Id = "f962c4c4-f466-4e35-b5de-ba6aaf456923",
+                            Id = "cf4c5e83-5cc9-470e-9342-828048ce00a8",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(840),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2030),
                             IsDeleted = false,
                             Key = "PhoneNumber",
                             Value = "+994513004484"
                         },
                         new
                         {
-                            Id = "33d0af2b-16a5-4b14-a555-74a9c9e2356d",
+                            Id = "1523e27d-2517-4d50-87d5-809e04ff96cf",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(850),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2040),
                             IsDeleted = false,
                             Key = "Email",
                             Value = "rufatri@code.edu.az"
                         },
                         new
                         {
-                            Id = "f67b03df-f705-4276-a74d-f87e9b81492e",
+                            Id = "541cd79a-54f6-4df6-8a3a-dd782b45ed97",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(850),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2040),
                             IsDeleted = false,
                             Key = "Work Time",
                             Value = "Mon-Sat 9:00pm - 5:00pm Sun:Closed"
                         },
                         new
                         {
-                            Id = "076519ce-da54-460d-8b10-5f3f48f86cbb",
+                            Id = "e8e6bda2-80e6-49a2-9857-f5e9c80d8221",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(860),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2050),
                             IsDeleted = false,
                             Key = "Payment",
                             Value = "payment.png"
                         },
                         new
                         {
-                            Id = "9f574046-1192-4dca-80b4-6b2686fdb8d7",
+                            Id = "420982ff-a717-4bd4-b294-1875f996d392",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(870),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2060),
                             IsDeleted = false,
                             Key = "CompanyEmail",
                             Value = "rft.smayilov@bk.ru"
                         },
                         new
                         {
-                            Id = "e504fc56-3647-4fd2-af11-1904473cf338",
+                            Id = "cc983aa4-298b-42f6-8ae2-4df518ec994a",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(870),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2070),
                             IsDeleted = false,
                             Key = "currency1",
                             Value = "USD$"
                         },
                         new
                         {
-                            Id = "f8a8c633-dd3a-4ea9-a780-13396de6d903",
+                            Id = "f9f57e58-620f-4ae0-b949-fb5e150df1d6",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(880),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2070),
                             IsDeleted = false,
                             Key = "currency2",
                             Value = "EUR$"
                         },
                         new
                         {
-                            Id = "18bb6124-0b68-401c-890d-cf2eda9c4915",
+                            Id = "e6e3f52a-c81b-488c-8ba2-ae2e58c290ab",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(890),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2080),
                             IsDeleted = false,
                             Key = "Language1",
                             Value = "English"
                         },
                         new
                         {
-                            Id = "be41e6cb-a420-4fd2-a86d-6af5b5af9ee2",
+                            Id = "2696346a-2e2f-4a1f-9565-6c4e274808d7",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(890),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2080),
                             IsDeleted = false,
                             Key = "Language2",
                             Value = "Franch"
                         },
                         new
                         {
-                            Id = "99b2c592-50db-4abb-8f43-c4fa872d10b4",
+                            Id = "80c4f897-bce0-41b9-a225-5f342b2cad24",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(900),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2090),
                             IsDeleted = false,
                             Key = "Flag1",
                             Value = "1.jpg"
                         },
                         new
                         {
-                            Id = "59576887-0af9-4d94-89f1-02e0fdea56b3",
+                            Id = "d2783400-b7c4-4bc0-86a4-43a577f3fea6",
                             AddedBy = "System",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 826, DateTimeKind.Local).AddTicks(910),
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 605, DateTimeKind.Local).AddTicks(2100),
                             IsDeleted = false,
                             Key = "Flag2",
                             Value = "2.jpg"
@@ -207,10 +279,14 @@ namespace EnvatoMarket.DAL.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("MainTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("Removed")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("SubTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -220,6 +296,36 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("EnvatoMarket.Core.Models.Tag", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Removed")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("EnvatoMarket.Models.AppUser", b =>
@@ -315,11 +421,11 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4f18dd5b-3242-4700-9c18-55053e21f8d0",
+                            Id = "a3057c88-1519-4b31-9ce0-af6fdb68c106",
                             AccessFailedCount = 0,
                             AddedBy = "System",
-                            ConcurrencyStamp = "1211e6dc-c4d2-4556-bdc9-f26032cce955",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 822, DateTimeKind.Local).AddTicks(9830),
+                            ConcurrencyStamp = "4c9cf4a6-0316-490b-aa77-9f7d5ef2a826",
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 602, DateTimeKind.Local).AddTicks(1710),
                             Email = "rufatri@code.edu.az",
                             EmailConfirmed = true,
                             FullName = "Rufat Azerbaijan",
@@ -328,20 +434,20 @@ namespace EnvatoMarket.DAL.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "RUFATRI@CODE.EDU.AZ",
                             NormalizedUserName = "RUFATCODE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIne1aeXlMmyo4MsL4QQ6x7pLEpPKc434xIGRWaYgTY0n0BB1CkKwzjstHigvZGk1A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ3AEbc4I8wFoQ18sCm6xc4I4o/Q0UPTLFN2qPexjn5zkK6wAreQTgmJvuoykWLoaQ==",
                             PhoneNumber = "+994513004484",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "08d77937-4ec5-4490-8d16-081dbc9fc9dd",
+                            SecurityStamp = "a8193ec0-b4c4-4b09-a71d-bcf30ff413d9",
                             TwoFactorEnabled = false,
                             UserName = "RufatCode"
                         },
                         new
                         {
-                            Id = "964ae7f1-53a3-44d6-ba73-8fcc7d09dca6",
+                            Id = "1c825c52-5160-4ed0-ac8d-fdc66442bcf9",
                             AccessFailedCount = 0,
                             AddedBy = "System",
-                            ConcurrencyStamp = "3bc81311-e283-4b12-a4a5-f3e60d38b999",
-                            Created = new DateTime(2023, 10, 27, 15, 17, 8, 822, DateTimeKind.Local).AddTicks(9870),
+                            ConcurrencyStamp = "7c7fc387-9807-486f-b920-908161de362b",
+                            Created = new DateTime(2023, 10, 29, 22, 50, 51, 602, DateTimeKind.Local).AddTicks(1760),
                             Email = "rft.smayilov@bk.ru",
                             EmailConfirmed = true,
                             FullName = "Rufat Code",
@@ -350,10 +456,10 @@ namespace EnvatoMarket.DAL.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "RFT.SMAYILOV@BK.RU",
                             NormalizedUserName = "RUFAT_2003",
-                            PasswordHash = "AQAAAAEAACcQAAAAELuqdvcvHGI6h+v/fR1y628aGSZTuOe+8/PbWAXIofqvwt1vqDwDu+n3BidzRcVjsg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPObLT1s1w2K5ujH4UJ6oB7SmNrXXS0U+4QaBxASwlSTn17g8J/ezLhkEFJ5dAk9uw==",
                             PhoneNumber = "+994513004484",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "02563ed5-fbfe-4a50-b671-ae2b5485f68f",
+                            SecurityStamp = "cfc72483-b5bf-471a-9e69-7a420fc4ea44",
                             TwoFactorEnabled = false,
                             UserName = "Rufat_2003"
                         });
@@ -388,22 +494,22 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "af1f61f1-d86b-4249-be2f-4f7a5b6c1c82",
-                            ConcurrencyStamp = "cb108a99-12c9-450c-a147-d78325e6f193",
+                            Id = "c065ab54-f5d1-455e-b84e-7f60dddd7244",
+                            ConcurrencyStamp = "1bc4ac0a-39aa-42c0-a385-d8aafd539f55",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "8ff757ef-cb02-4336-b7af-6c551ff8d660",
-                            ConcurrencyStamp = "3673f12f-8ee9-49f3-88b9-66651a787eee",
+                            Id = "a6cc39f3-2570-4a36-ba6d-dec9545e6dcc",
+                            ConcurrencyStamp = "a1849043-356d-4295-a612-c86f5b2aed1f",
                             Name = "SupperAdmin",
                             NormalizedName = "SUPPERADMIN"
                         },
                         new
                         {
-                            Id = "13cad7c1-3ff8-4085-b22c-faf7f48d82c3",
-                            ConcurrencyStamp = "f3acb702-b6f3-4da1-9576-01005768fa99",
+                            Id = "595ef103-20b1-4f79-9b90-b3300fdd027b",
+                            ConcurrencyStamp = "e54b7719-45cd-4f77-8b7c-eb16af56a87c",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -498,13 +604,13 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "4f18dd5b-3242-4700-9c18-55053e21f8d0",
-                            RoleId = "af1f61f1-d86b-4249-be2f-4f7a5b6c1c82"
+                            UserId = "a3057c88-1519-4b31-9ce0-af6fdb68c106",
+                            RoleId = "c065ab54-f5d1-455e-b84e-7f60dddd7244"
                         },
                         new
                         {
-                            UserId = "964ae7f1-53a3-44d6-ba73-8fcc7d09dca6",
-                            RoleId = "8ff757ef-cb02-4336-b7af-6c551ff8d660"
+                            UserId = "1c825c52-5160-4ed0-ac8d-fdc66442bcf9",
+                            RoleId = "a6cc39f3-2570-4a36-ba6d-dec9545e6dcc"
                         });
                 });
 
@@ -525,6 +631,15 @@ namespace EnvatoMarket.DAL.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("EnvatoMarket.Core.Models.Category", b =>
+                {
+                    b.HasOne("EnvatoMarket.Core.Models.Category", "Parent")
+                        .WithMany("Categories")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -576,6 +691,11 @@ namespace EnvatoMarket.DAL.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EnvatoMarket.Core.Models.Category", b =>
+                {
+                    b.Navigation("Categories");
                 });
 #pragma warning restore 612, 618
         }

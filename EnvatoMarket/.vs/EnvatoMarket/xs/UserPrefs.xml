@@ -1,35 +1,37 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket.Business/Services/SliderService.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/Areas/AdminArea/Views/Category/Index.cshtml">
     <Files>
-      <File FileName="EnvatoMarket/Areas/AdminArea/Views/Slider/Index.cshtml" Line="49" Column="97" />
-      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/SliderController.cs" Line="77" Column="1" />
-      <File FileName="EnvatoMarket.Core/Models/Category.cs" Line="4" Column="34" />
-      <File FileName="EnvatoMarket/Views/Home/Index.cshtml" Line="31" Column="42" />
-      <File FileName="EnvatoMarket.Business/Services/SliderService.cs" Line="48" Column="58" />
-      <File FileName="EnvatoMarket.Data/Implimentations/Repository.cs" Line="137" Column="1" />
-      <File FileName="EnvatoMarket.Core/Interfaces/IRepository.cs" Line="15" Column="26" />
-      <File FileName="EnvatoMarket.Core/Interfaces/ISliderRepository.cs" Line="1" Column="1" />
-      <File FileName="EnvatoMarket.Business/Interfaces/IService.cs" Line="14" Column="71" />
+      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/CategoryController.cs" Line="33" Column="71" />
+      <File FileName="EnvatoMarket/Areas/AdminArea/Views/Category/Index.cshtml" Line="43" Column="95" />
+      <File FileName="EnvatoMarket/Areas/AdminArea/Views/Category/Create.cshtml" Line="21" Column="59" />
+      <File FileName="EnvatoMarket.Business/Services/CategoryService.cs" Line="27" Column="29" />
+      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/SliderController.cs" Line="43" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EnvatoMarket" expanded="True">
-            <Node name="EnvatoMarket" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="AdminArea" expanded="True">
-                  <Node name="Controllers" expanded="True" />
-                  <Node name="Views" expanded="True">
-                    <Node name="Shared" expanded="True" />
+            <Node name="EnvatoMarket">
+              <Node name="Areas">
+                <Node name="AdminArea">
+                  <Node name="Views">
+                    <Node name="Category" expanded="True">
+                      <Node name="Index.cshtml" selected="True" />
+                    </Node>
                     <Node name="Slider" expanded="True" />
                     <Node name="User" expanded="True" />
                   </Node>
                 </Node>
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Views">
                 <Node name="Shared" expanded="True">
                   <Node name="Components" expanded="True">
                     <Node name="Header" expanded="True" />
@@ -38,30 +40,25 @@
               </Node>
             </Node>
             <Node name="EnvatoMarket.Business">
-              <Node name="ElementAttributes" expanded="True" />
-              <Node name="Mappings" expanded="True">
-                <Node name="AutoMapper" expanded="True" />
-              </Node>
-              <Node name="Services" expanded="True">
-                <Node name="SliderService.cs" selected="True" />
-              </Node>
-              <Node name="ViewModels" expanded="True">
-                <Node name="HomeVM" expanded="True" />
-                <Node name="UsersVM" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Mappings" expanded="True" />
+              <Node name="ViewModels">
+                <Node name="Category" expanded="True" />
+                <Node name="SliderVM" expanded="True" />
               </Node>
             </Node>
             <Node name="EnvatoMarket.Core">
+              <Node name="Interfaces" expanded="True" />
               <Node name="Models" expanded="True" />
+            </Node>
+            <Node name="EnvatoMarket.Data">
+              <Node name="DAL" expanded="True" />
+              <Node name="Implimentations" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

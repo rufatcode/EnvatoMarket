@@ -26,9 +26,14 @@
                 <span asp-validation-for="Image" class="form-bar text-danger"></span>
             </div>
             <div class="form-group form-primary">
-                <input asp-for="Title" class="form-control" required />
-                <span asp-validation-for="Title" class="form-bar text-danger"></span>
-                <label class="float-label">Slider Title</label>
+                <input asp-for="MainTitle" class="form-control" required />
+                <span asp-validation-for="MainTitle" class="form-bar text-danger"></span>
+                <label class="float-label">Slider MainTitle</label>
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="SubTitle" class="form-control" required />
+                <span asp-validation-for="SubTitle" class="form-bar text-danger"></span>
+                <label class="float-label">Slider SubTitle</label>
             </div>
             <div class="form-group form-primary">
                 <textarea asp-for="Description" class="form-control" required></textarea>

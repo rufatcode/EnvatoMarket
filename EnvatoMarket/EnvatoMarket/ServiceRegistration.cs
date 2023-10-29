@@ -55,9 +55,18 @@ namespace EnvatoMarket
 			services.AddScoped<ISliderService, SliderService>();
 			services.AddScoped<ISliderRepository, SliderRepository>();
 			services.AddScoped<IFileService, FileService>();
-			services.AddAutoMapper(typeof(HomeProfile).Assembly);
+			services.AddScoped<ICategoryRepository, CategoryRepository>();
+			services.AddScoped<ICategoryService, CategoryService>();
+			services.AddScoped<IBrandRepository, BrandRepository>();
+			services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<ITagRepository, TagRepository>();
+            services.AddScoped<ITagService, TagService>();
+            services.AddAutoMapper(typeof(HomeProfile).Assembly);
 			services.AddAutoMapper(typeof(UserProfile).Assembly);
 			services.AddAutoMapper(typeof(SliderProfile).Assembly);
+			services.AddAutoMapper(typeof(CategoryProfile).Assembly);
+			services.AddAutoMapper(typeof(BrandProfile).Assembly);
+			services.AddAutoMapper(typeof(TagProfile).Assembly);
         }
 	}
 }

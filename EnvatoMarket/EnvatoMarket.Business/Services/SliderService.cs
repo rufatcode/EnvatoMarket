@@ -18,7 +18,7 @@ namespace EnvatoMarket.Business.Services
         {
             try
             {
-                if (entity==null||entity.Description==null||entity.Title==null||entity.ImageUrl==null)
+                if (entity==null||entity.Description==null||entity.MainTitle==null||entity.ImageUrl==null||entity.SubTitle==null)
                 {
                     return false;
                 }
@@ -110,6 +110,15 @@ namespace EnvatoMarket.Business.Services
                 if (!entity.IsDeleted)
                 {
                     entity.Removed = null;
+                }
+                List<Slider> sliders = await GetAll();
+                if (sliders.Where(s => s.Id != entity.Id).All(s => s.IsDeleted))
+                {
+                    if (entity.IsDeleted)
+                    {
+                        return false;
+                    }
+                    
                 }
                 await _sliderRepozitory.Update(entity);
                 await _sliderRepozitory.Commit();

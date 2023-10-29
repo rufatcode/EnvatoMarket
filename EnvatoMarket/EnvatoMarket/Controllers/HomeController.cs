@@ -15,15 +15,18 @@ namespace EnvatoMarket.Controllers
     public class HomeController : Controller
     {
         private readonly ISliderService _sliderService;
-        public HomeController(ISliderService sliderService)
+        private readonly ICategoryService _categoryService;
+        public HomeController(ISliderService sliderService,ICategoryService categoryService)
         {
             _sliderService = sliderService;
+            _categoryService = categoryService;
         }
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
             HomeIndexVM homeIndexVM = new();
             homeIndexVM.Sliders = await _sliderService.GetAll();
+            homeIndexVM.Categories = await _categoryService.GetAll(c=>!c.IsDeleted);
             return View(homeIndexVM);
         }
         public IActionResult Contact()

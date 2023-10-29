@@ -20,13 +20,11 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
         // GET: /<controller>/
         private readonly ISliderService _sliderService;
         private readonly IMapper _mapper;
-        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IFileService _fileService;
-        public SliderController(ISliderService sliderService,IMapper mapper,IWebHostEnvironment webHostEnvironment, IFileService fileService)
+        public SliderController(ISliderService sliderService,IMapper mapper,IFileService fileService)
         {
             _sliderService = sliderService;
             _mapper = mapper;
-            _webHostEnvironment = webHostEnvironment;
             _fileService = fileService;
         }
         public async Task<IActionResult> Index()

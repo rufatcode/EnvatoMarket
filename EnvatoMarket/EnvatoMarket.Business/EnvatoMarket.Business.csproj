@@ -40,6 +40,9 @@
     <None Remove="ViewModels\UsersVM\" />
     <None Remove="ViewModels\SliderVM\" />
     <None Remove="ElementAttributes\" />
+    <None Remove="ViewModels\CategoryVM\" />
+    <None Remove="ViewModels\BrandVM\" />
+    <None Remove="ViewModels\TagVM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -53,5 +56,8 @@
     <Folder Include="ViewModels\UsersVM\" />
     <Folder Include="ViewModels\SliderVM\" />
     <Folder Include="ElementAttributes\" />
+    <Folder Include="ViewModels\CategoryVM\" />
+    <Folder Include="ViewModels\BrandVM\" />
+    <Folder Include="ViewModels\TagVM\" />
   </ItemGroup>
 </Project>

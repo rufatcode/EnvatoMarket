@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>Profile Image</th>
-                        <th>Title</th>
+                        <th>MainTitle</th>
                         <th>Desctiption</th>
                         <th>IsDeleted</th>
                         <th>Settings</th>
@@ -45,8 +45,8 @@
                                     <img style="border-radius:50%;" width="75" height="75" src="~/assets/images/@slider.ImageUrl" />
                                 }
                             </td>
-                            <td>@slider.Title</td>
-                            <td >@(slider.Description.Length>30?slider.Description.Substring(0,60)+"....":slider.Description)</td>
+                            <td>@slider.MainTitle</td>
+                            <td>@(slider.Description.Length>30?slider.Description.Substring(0,60)+"....":slider.Description)</td>
                             <td>@(slider.IsDeleted?"Deleted":"Active")</td>
                             <td>
                                 @if (!slider.IsDeleted)

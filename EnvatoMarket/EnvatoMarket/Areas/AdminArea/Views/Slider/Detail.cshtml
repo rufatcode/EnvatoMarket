@@ -22,7 +22,8 @@
                 <thead>
                     <tr>
                         <th>Profile Image</th>
-                        <th>Title</th>
+                        <th>MainTitle</th>
+                        <th>SubTitle</th>
                         <th>IsDeleted</th>
                         <th>DeletedAt</th>
                         <th>UpdateAt</th>
@@ -40,11 +41,12 @@
                                 <img style="border-radius:50%;" width="75" height="75" src="~/assets/images/@Model.ImageUrl" />
                             }
                         </td>
-                        <td>@Model.Title</td>
+                        <td>@Model.MainTitle</td>
+                        <td>@Model.SubTitle</td>
                         <td>@(Model.IsDeleted?"Deleted":"Active")</td>
                         <td>@(Model.Removed.HasValue?Model.Removed.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
                         <td>@(Model.Updated.HasValue?Model.Updated.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
-                       
+
                     </tr>
 
 

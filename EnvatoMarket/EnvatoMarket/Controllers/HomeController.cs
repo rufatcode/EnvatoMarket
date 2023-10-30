@@ -16,10 +16,12 @@ namespace EnvatoMarket.Controllers
     {
         private readonly ISliderService _sliderService;
         private readonly ICategoryService _categoryService;
-        public HomeController(ISliderService sliderService,ICategoryService categoryService)
+        private readonly IProductService _productService;
+        public HomeController(ISliderService sliderService,ICategoryService categoryService,IProductService productService)
         {
             _sliderService = sliderService;
             _categoryService = categoryService;
+            _productService = productService;
         }
         // GET: /<controller>/
         public async Task<IActionResult> Index()
@@ -27,6 +29,7 @@ namespace EnvatoMarket.Controllers
             HomeIndexVM homeIndexVM = new();
             homeIndexVM.Sliders = await _sliderService.GetAll();
             homeIndexVM.Categories = await _categoryService.GetAll(c=>!c.IsDeleted);
+            homeIndexVM.Products = await _productService.GetAll(p => !p.IsDeleted, "Category", "Brand", "ProductImages", "ProductTags.Tag");
             return View(homeIndexVM);
         }
         public IActionResult Contact()

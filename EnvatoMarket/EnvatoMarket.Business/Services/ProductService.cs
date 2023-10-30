@@ -111,9 +111,70 @@ namespace EnvatoMarket.Business.Services
             }
         }
 
-        public Task<bool> Update(Product entity)
+        public async Task<bool> Update(Product entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                
+                List<Product> products = await GetAll();
+                if (products.Where(s => s.Id != entity.Id).All(s => s.IsDeleted))
+                {
+                    return false;
+                }
+                Product existProduct = await GetEntity(p => p.Id == entity.Id, "ProductImages", "ProductTags.Tag");
+                
+                if (existProduct.ProductImages.Count!=entity.ProductImages.Count)
+                {
+                    foreach (var existProductImage in existProduct.ProductImages)
+                    {
+                        await _productImageRepository.Delete(existProductImage);
+                    }
+                    foreach (var productImage in entity.ProductImages)
+                    {
+                        await _productImageRepository.Create(productImage);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < existProduct.ProductImages.Count; i++)
+                    {
+                        if (existProduct.ProductImages[i].Id != entity.ProductImages[i].Id)
+                        {
+                            foreach (var existProductImage in existProduct.ProductImages)
+                            {
+                                await _productImageRepository.Delete(existProductImage);
+                            }
+                            foreach (var productImage in entity.ProductImages)
+                            {
+                                await _productImageRepository.Create(productImage);
+                            }
+                        }
+                    }
+                }
+                if (entity.ProductImages.Count!=existProduct.ProductImages.Count)
+                {
+                    foreach (var existProductTag in existProduct.ProductTags)
+                    {
+                        await _productTagRepository.Delete(existProductTag);
+                    }
+                    foreach (var productTag in entity.ProductTags)
+                    {
+                        await _productTagRepository.Create(productTag);
+                    }
+                }
+                if (!entity.IsDeleted)
+                {
+                    entity.Removed = null;
+                }
+                entity.Updated = DateTime.Now;
+                await _productRepository.Update(entity);
+                await _productRepository.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("something went wrong");
+            }
         }
     }
 }

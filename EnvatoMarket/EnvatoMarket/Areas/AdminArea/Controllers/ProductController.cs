@@ -156,7 +156,154 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             {
                 return Redirect("/Account/TokenIsNotValid");
             }
-            return View(await _productService.GetEntity(null, "Category", "Brand", "ProductImages", "ProductTags.Tag"));
+            var data = await _productService.GetEntity(p=>p.Id==id, "Category", "Brand", "ProductImages", "ProductTags.Tag");
+            return View(data);
+        }
+        public async Task<IActionResult>Update(string id)
+        {
+            if (id==null)
+            {
+                return BadRequest();
+            }
+            else if (!await _productService.IsExist(p=>p.Id==id))
+            {
+                return BadRequest();
+            }
+            ViewBag.Brand = new SelectList(await _brandService.GetAll(b => !b.IsDeleted), "Id", "Name");
+            ViewBag.Tags = new SelectList(await _tagService.GetAll(t => !t.IsDeleted), "Id", "Name");
+            ViewBag.Category = new SelectList(await _categoryService.GetAll(c => !c.IsDeleted), "Id", "CategoryName");
+            Product product = await _productService.GetEntity(p => p.Id == id);
+            return View(_mapper.Map<UpdateProductVM>(product));
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult>Update(string id,UpdateProductVM updateProductVM)
+        {
+            ViewBag.Brand = new SelectList(await _brandService.GetAll(b => !b.IsDeleted), "Id", "Name");
+            ViewBag.Tags = new SelectList(await _tagService.GetAll(t => !t.IsDeleted), "Id", "Name");
+            ViewBag.Category = new SelectList(await _categoryService.GetAll(c => !c.IsDeleted), "Id", "CategoryName");
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            Product product = await _productService.GetEntity(p => p.Id == id, "Category", "Brand", "ProductImages", "ProductTags.Tag");
+             if (await _productService.IsExist(p=>p.Name.ToLower()==updateProductVM.Name.ToLower())&&product.Name.ToLower()!=updateProductVM.Name.ToLower())
+            {
+                return BadRequest();
+            }
+            if (updateProductVM.MainImage!=null)
+            {
+                if (!_fileService.IsLengthSuit(updateProductVM.MainImage, 1000))
+                {
+                    ModelState.AddModelError("", "Image Length must be smaller than 1 kb");
+                    return View();
+                }
+                else if (!_fileService.IsImage(updateProductVM.MainImage))
+                {
+                    ModelState.AddModelError("", "upload only image");
+                    return View();
+                }
+            }
+            if (updateProductVM.HoverImage!=null)
+            {
+                if (!_fileService.IsLengthSuit(updateProductVM.HoverImage,1000))
+                {
+                    ModelState.AddModelError("", "Image Length must be smaller than 1 kb");
+                    return View();
+                }
+                else if (!_fileService.IsImage(updateProductVM.HoverImage))
+                {
+                    ModelState.AddModelError("", "upload only image");
+                    return View();
+                }
+            }
+            if (updateProductVM.ExtraImages!=null)
+            {
+                foreach (var image in updateProductVM.ExtraImages)
+                {
+                    if (!_fileService.IsLengthSuit(image, 1000))
+                    {
+                        ModelState.AddModelError("", "Image Length must be smaller than 1 kb");
+                        return View();
+                    }
+                    else if (!_fileService.IsImage(image))
+                    {
+                        ModelState.AddModelError("", "upload only image");
+                        return View();
+                    }
+                }
+            }
+
+
+
+            //------
+            if (updateProductVM.MainImage != null)
+            {
+                
+                _fileService.DeleteImage(product.ProductImages.FirstOrDefault(pi => pi.IsMain).ImageUrl);
+                ProductImage productImage = product.ProductImages.FirstOrDefault(p => p.IsMain);
+                product.ProductImages.Remove(productImage);
+                product.ProductImages.Add(new ProductImage
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    ProductId = product.Id,
+                    IsMain = true,
+                    ImageUrl = _fileService.CreateImage(updateProductVM.MainImage)
+                });
+            }
+            if (updateProductVM.HoverImage != null)
+            {
+                
+                _fileService.DeleteImage(product.ProductImages.FirstOrDefault(pi => pi.IsHover).ImageUrl);
+                ProductImage productImage = product.ProductImages.FirstOrDefault(p => p.IsHover);
+                product.ProductImages.Remove(productImage);
+                product.ProductImages.Add(new ProductImage
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    ProductId = product.Id,
+                    IsHover = true,
+                    ImageUrl = _fileService.CreateImage(updateProductVM.HoverImage)
+                });
+            }
+            if (updateProductVM.ExtraImages != null)
+            {
+                foreach (var image in product.ProductImages.Where(pi => !pi.IsHover && !pi.IsMain).ToList())
+                {
+                    _fileService.DeleteImage(image.ImageUrl);
+                    ProductImage productImage = product.ProductImages.FirstOrDefault(p => p.Id==image.Id);
+                    product.ProductImages.Remove(productImage);
+                }
+                foreach (var image in updateProductVM.ExtraImages)
+                {
+                    product.ProductImages.Add(new ProductImage
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        ProductId = product.Id,
+                        ImageUrl = _fileService.CreateImage(image)
+                    });
+                }
+            }
+           
+            if (updateProductVM.TagIds.Count>0)
+            {
+                product.ProductTags.Clear();
+                foreach (var tagId in updateProductVM.TagIds)
+                {
+                    product.ProductTags.Add(new ProductTag
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        ProductId = product.Id,
+                        TagId = tagId
+                    });
+                }
+            }
+            _mapper.Map(updateProductVM, product);
+            bool isSuccess=await _productService.Update(product);
+            if (!isSuccess)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

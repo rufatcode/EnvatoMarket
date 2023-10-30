@@ -43,6 +43,7 @@
     <None Remove="ViewModels\CategoryVM\" />
     <None Remove="ViewModels\BrandVM\" />
     <None Remove="ViewModels\TagVM\" />
+    <None Remove="ViewModels\ProductVM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -59,5 +60,6 @@
     <Folder Include="ViewModels\CategoryVM\" />
     <Folder Include="ViewModels\BrandVM\" />
     <Folder Include="ViewModels\TagVM\" />
+    <Folder Include="ViewModels\ProductVM\" />
   </ItemGroup>
 </Project>

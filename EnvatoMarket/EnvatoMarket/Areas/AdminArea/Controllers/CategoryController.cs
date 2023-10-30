@@ -35,16 +35,16 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
         }
         public async Task<IActionResult> Create()
         {
-            ViewBag.CategoryCount = (await _categoryService.GetAll()).Count;
-            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain), "Id", "CategoryName");
+            ViewBag.CategoryCount = (await _categoryService.GetAll(c=>!c.IsDeleted)).Count;
+            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain&&!c.IsDeleted), "Id", "CategoryName");
             return View();
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(CreateCategoryVM createCategoryVM)
         {
-            ViewBag.CategoryCount = (await _categoryService.GetAll()).Count;
-            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain), "Id", "CategoryName");
+            ViewBag.CategoryCount = (await _categoryService.GetAll(c=>!c.IsDeleted)).Count;
+            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain&&!c.IsDeleted), "Id", "CategoryName");
             if (!ModelState.IsValid)
             {
                 return View();
@@ -102,8 +102,8 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
         [Authorize(Roles = "SupperAdmin")]
         public async Task<IActionResult> Update(string id)
         {
-            ViewBag.CategoryCount = (await _categoryService.GetAll()).Count;
-            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain), "Id", "CategoryName");
+            ViewBag.CategoryCount = (await _categoryService.GetAll(c => !c.IsDeleted)).Count;
+            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain && !c.IsDeleted), "Id", "CategoryName");
             if (id==null)
             {
                 return BadRequest();
@@ -120,8 +120,8 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult>Update(string id,UpdateCategoryVM updateCategoryVM)
         {
-            ViewBag.CategoryCount = (await _categoryService.GetAll()).Count;
-            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain), "Id", "CategoryName");
+            ViewBag.CategoryCount = (await _categoryService.GetAll(c => !c.IsDeleted)).Count;
+            ViewBag.Categories = new SelectList(await _categoryService.GetAll(c => c.IsMain && !c.IsDeleted), "Id", "CategoryName");
             if (!ModelState.IsValid)
             {
                 return View();

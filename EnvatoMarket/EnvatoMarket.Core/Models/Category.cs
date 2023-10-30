@@ -12,6 +12,7 @@ namespace EnvatoMarket.Core.Models
 		public string? ParentId { get; set; }
 		public Category Parent { get; set; }
 		public List<Category> Categories { get; set; }
+		public List<Product> Products { get; set; }
 		public Category()
 		{
 		}

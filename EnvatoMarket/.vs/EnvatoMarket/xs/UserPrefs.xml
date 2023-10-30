@@ -1,18 +1,11 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
+  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/Areas/AdminArea/Views/Category/Index.cshtml">
-    <Files>
-      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/CategoryController.cs" Line="33" Column="71" />
-      <File FileName="EnvatoMarket/Areas/AdminArea/Views/Category/Index.cshtml" Line="43" Column="95" />
-      <File FileName="EnvatoMarket/Areas/AdminArea/Views/Category/Create.cshtml" Line="21" Column="59" />
-      <File FileName="EnvatoMarket.Business/Services/CategoryService.cs" Line="27" Column="29" />
-      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/SliderController.cs" Line="43" Column="14" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -21,38 +14,26 @@
               <Node name="Areas">
                 <Node name="AdminArea">
                   <Node name="Views">
-                    <Node name="Category" expanded="True">
-                      <Node name="Index.cshtml" selected="True" />
+                    <Node name="Brand" expanded="True" />
+                    <Node name="Category" expanded="True" />
+                    <Node name="Product" expanded="True">
+                      <Node name="Detail.cshtml" selected="True" />
                     </Node>
-                    <Node name="Slider" expanded="True" />
-                    <Node name="User" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="Controllers" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="Views">
-                <Node name="Shared" expanded="True">
-                  <Node name="Components" expanded="True">
-                    <Node name="Header" expanded="True" />
                   </Node>
                 </Node>
               </Node>
             </Node>
             <Node name="EnvatoMarket.Business">
-              <Node name="Interfaces" expanded="True" />
               <Node name="Mappings" expanded="True" />
-              <Node name="ViewModels">
-                <Node name="Category" expanded="True" />
-                <Node name="SliderVM" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="ProductVM" expanded="True" />
               </Node>
             </Node>
             <Node name="EnvatoMarket.Core">
-              <Node name="Interfaces" expanded="True" />
               <Node name="Models" expanded="True" />
             </Node>
             <Node name="EnvatoMarket.Data">
-              <Node name="DAL" expanded="True" />
               <Node name="Implimentations" expanded="True" />
             </Node>
           </Node>
@@ -60,5 +41,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

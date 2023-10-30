@@ -1,0 +1,91 @@
+﻿
+
+@{
+    Layout = "_AdminFormLayout";
+    ViewBag.Title = "Create";
+}
+
+@model CreateProductVM
+
+<form method="post" class="md-float-material form-material" enctype="multipart/form-data">
+
+    <div class="text-center">
+        <img src="~/admin/images/logo.png" alt="logo.png">
+    </div>
+    <div class="auth-box card">
+        <div class="card-block">
+            <div class="row m-b-20">
+                <div class="col-md-12">
+                    <h3 class="text-center">Create Product</h3>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+            </div>
+            <div class="form-group form-primary">
+                <label>Main Image Of Product</label>
+                <input asp-for="MainImage" class="form-control" required />
+            </div>
+            <div class="form-group form-primary">
+                <label>Hover Image Of Product</label>
+                <input asp-for="HoverImage" class="form-control" required />
+            </div>
+            <div class="form-group form-primary">
+                <label>Extra Images Of Product</label>
+                <input asp-for="ExtraImages" class="form-control" required />
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="Name" class="form-control" required />
+                <label class="float-label">Product Name</label>
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="Price" class="form-control" required />
+                <label class="float-label">Product Price</label>
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="SalePercentage" class="form-control" required />
+                <label class="float-label">Product Sale Percentage</label>
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="Tax" class="form-control" required />
+                <label class="float-label">Product Tax</label>
+            </div>
+            <div class="form-group form-primary">
+                <label>Product Avaliable for Deliver</label>
+                <input style="width:20px;height:20px;" asp-for="IsAvailability" class="form-control" required />
+
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="Count" class="form-control" required />
+                <label class="float-label">Product Count </label>
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="Content" class="form-control" required />
+                <label class="float-label"> Information about product</label>
+            </div>
+            <div class="form-group form-primary">
+                <label>Product Brand</label>
+                <select asp-for="BrandId" asp-items="@ViewBag.Brand " required></select>
+
+            </div>
+            <div class="form-group form-primary">
+                <label >Product Tags</label>
+                <select asp-for="TagIds" asp-items="@ViewBag.Tags" required ></select>
+
+            </div>
+            <div class="form-group form-primary">
+                <label>Product Category</label>
+                <select asp-for="CategoryId" asp-items="@ViewBag.Category " required></select>
+
+            </div>
+            <div class="row m-t-30">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Create</button>
+                </div>
+                <div class="col-md-12">
+                    <a asp-action="Index" class="btn btn-danger btn-md btn-block waves-effect waves-light text-center m-b-20">Cancel</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+

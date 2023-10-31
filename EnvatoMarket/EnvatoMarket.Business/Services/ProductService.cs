@@ -23,7 +23,7 @@ namespace EnvatoMarket.Business.Services
         {
             try
             {
-                if (await IsExist(c => c.Name.ToLower() == entity.Name.ToLower()))
+                if (await IsExist(p => p.Name.ToLower() == entity.Name.ToLower()))
                 {
                     return false;
                 }
@@ -49,17 +49,17 @@ namespace EnvatoMarket.Business.Services
         {
             try
             {
-                if (!await IsExist(c => c.Id == id))
+                if (!await IsExist(p => p.Id == id))
                 {
                     return false;
                 }
-                Product product = await GetEntity(c => c.Id == id);
+                Product product = await GetEntity(p => p.Id == id);
                 if (product.IsDeleted)
                 {
                     return false;
                 }
                 List<Product> products = await GetAll();
-                if (products.Where(s => s.Id != id).All(s => s.IsDeleted))
+                if (products.Where(p => p.Id != id).All(p => p.IsDeleted))
                 {
                     return false;
                 }
@@ -117,7 +117,7 @@ namespace EnvatoMarket.Business.Services
             {
                 
                 List<Product> products = await GetAll();
-                if (products.Where(s => s.Id != entity.Id).All(s => s.IsDeleted))
+                if (products.Where(p => p.Id != entity.Id).All(p => p.IsDeleted))
                 {
                     return false;
                 }

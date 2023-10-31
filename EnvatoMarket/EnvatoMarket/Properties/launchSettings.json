@@ -11,7 +11,7 @@
     "EnvatoMarket": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5775",
+      "applicationUrl": "http://localhost:5772",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

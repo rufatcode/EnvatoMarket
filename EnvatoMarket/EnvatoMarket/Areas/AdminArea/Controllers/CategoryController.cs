@@ -59,9 +59,8 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Image", "Length is greater than 1kb");
                 return View();
             }
-            string fileName = _fileService.CreateImage(createCategoryVM.Image);
             Category category = _mapper.Map<Category>(createCategoryVM);
-            category.ImageUrl = fileName;
+            category.ImageUrl = _fileService.CreateImage(createCategoryVM.Image);
             category.Id = Guid.NewGuid().ToString();
             bool isSuccess = await _categoryService.Create(category);
             if (!isSuccess)
@@ -127,24 +126,25 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 return View();
             }
             Category category = await _categoryService.GetEntity(c => c.Id == id);
-            if (updateCategoryVM.Image!=null)
+            
+            if (await _categoryService.IsExist(c=>c.CategoryName==updateCategoryVM.CategoryName&&updateCategoryVM.CategoryName!=category.CategoryName))
+            {
+                ModelState.AddModelError("CategoryName", "This Category is exist");
+                return View();
+            }
+            if (updateCategoryVM.Image != null)
             {
                 if (!_fileService.IsImage(updateCategoryVM.Image))
                 {
                     ModelState.AddModelError("Image", "Upload Only Image");
                     return View();
                 }
-                else if (!_fileService.IsLengthSuit(updateCategoryVM.Image,1000))
+                else if (!_fileService.IsLengthSuit(updateCategoryVM.Image, 1000))
                 {
                     ModelState.AddModelError("Image", "File length must be smaller than 1 kb");
                     return View();
                 }
                 category.ImageUrl = _fileService.CreateImage(updateCategoryVM.Image);
-            }
-            if (await _categoryService.IsExist(c=>c.CategoryName==updateCategoryVM.CategoryName&&updateCategoryVM.CategoryName!=category.CategoryName))
-            {
-                ModelState.AddModelError("CategoryName", "This Category is exist");
-                return View();
             }
             _mapper.Map(updateCategoryVM, category);
             bool resoult = await _categoryService.Update(category);

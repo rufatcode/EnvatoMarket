@@ -53,8 +53,8 @@
                             <td>@product.Count</td>
                             <td>@product.ProductCode</td>
                             <td>@(product.IsDeleted?"Deleted":"Active")</td>
-                            <td>@(product.Removed.HasValue?product.Removed.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
-                            <td>@(product.Updated.HasValue?product.Updated.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+                            <td>@(product.Removed.HasValue?product.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+                            <td>@(product.Updated.HasValue?product.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
                             <td>
                                 @if (!product.IsDeleted)
                                 {

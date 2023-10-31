@@ -137,7 +137,7 @@
                             <div class="col-lg-2">
                                 <div class="single-product mt-30">
                                     <div class="product-image">
-                                        <a href="single-product.html">
+                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i+1].Id">
                                             <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@Model.Products[i+1].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
                                             <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@Model.Products[i+1].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
@@ -175,7 +175,7 @@
                                 </div> <!-- single product -->
                                 <div class="single-product mt-30">
                                     <div class="product-image">
-                                        <a href="single-product.html">
+                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i].Id">
                                             <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
                                             <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
@@ -232,20 +232,20 @@
                         <div class="special-products-gallery d-flex mt-50">
                             <div class="products-gallery-thumb">
                                 <ul class="products-thumb">
-                                    @foreach (var product in Model.Products.Take(4).ToList())
+                                    @foreach (var productImages in Model.Products.FirstOrDefault().ProductImages)
                                     {
-                                        <li><img src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="Products Thumb"></li>
+                                        <li><img src="~/assets/images/@productImages.ImageUrl" alt="Products Thumb"></li>
                                     }
 
 
                                 </ul>
                             </div> <!-- products gallery thumb -->
                             <div class="products-gallery-image">
-                                @foreach (var product in Model.Products.Take(4).ToList())
+                                @foreach (var productImages in Model.Products.FirstOrDefault().ProductImages)
                                 {
                                     <div class="single-products-image">
                                         <a href="#">
-                                            <img src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="products">
+                                            <img src="~/assets/images/@productImages.ImageUrl" alt="products">
                                         </a>
                                     </div>
                                 }
@@ -256,8 +256,8 @@
                     <div class="col-lg-6">
                         <div class="special-products-countdown mt-50">
                             <div class="products-countdown-wrapper">
-                                <h2 class="special-title">Deal of the week</h2>
-                                <h3 class="products-title"><a href="#">Originals Kaval Wind...</a></h3>
+                                <h2 class="special-title">@Model.Products.FirstOrDefault().Name</h2>
+                                <h3 class="products-title"><a href="#">@Model.Products.FirstOrDefault().Content.Substring(0, Model.Products.FirstOrDefault().Content.Length/2)...</a></h3>
                                 <div class="products-rating">
                                     <ul>
                                         <li><i class="fas fa-star"></i></li>
@@ -272,8 +272,8 @@
 
                                 <div class="product-price-and-cart d-sm-flex align-items-center">
                                     <div class="product-price">
-                                        <span class="price-sale">€110.03</span>
-                                        <span class="regular-price">€120.90</span>
+                                        <span class="price-sale">€@(Model.Products.FirstOrDefault().Price- Model.Products.FirstOrDefault().Price* Model.Products.FirstOrDefault().SalePercentage/100)</span>
+                                        <span class="regular-price">€@Model.Products.FirstOrDefault().Price</span>
                                     </div>
                                     <div class="product-cart">
                                         <a class="main-btn main-btn-2" href="#">Add to cart</a>
@@ -290,20 +290,20 @@
                         <div class="special-products-gallery d-flex mt-50">
                             <div class="products-gallery-thumb">
                                 <ul class="products-thumb">
-                                    @foreach (var product in Model.Products.Skip(4).Take(4).ToList())
+                                    @foreach (var productImages in Model.Products.Skip(1).FirstOrDefault().ProductImages)
                                     {
-                                        <li><img src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="Products Thumb"></li>
+                                        <li><img src="~/assets/images/@productImages.ImageUrl" alt="Products Thumb"></li>
                                     }
 
 
                                 </ul>
                             </div> <!-- products gallery thumb -->
                             <div class="products-gallery-image">
-                                @foreach (var product in Model.Products.Skip(4).Take(4).ToList())
+                                @foreach (var productImages in Model.Products.Skip(1).FirstOrDefault().ProductImages)
                                 {
                                     <div class="single-products-image">
                                         <a href="#">
-                                            <img src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="products">
+                                            <img src="~/assets/images/@productImages.ImageUrl" alt="products">
                                         </a>
                                     </div>
                                 }
@@ -314,8 +314,8 @@
                     <div class="col-lg-6">
                         <div class="special-products-countdown mt-50">
                             <div class="products-countdown-wrapper">
-                                <h2 class="special-title">Deal of the week</h2>
-                                <h3 class="products-title"><a href="#">Originals Kaval Wind...</a></h3>
+                                <h2 class="special-title">@Model.Products.Skip(1).FirstOrDefault().Name</h2>
+                                <h3 class="products-title"><a href="#">@Model.Products.Skip(1).FirstOrDefault().Content.Substring(0, Model.Products.FirstOrDefault().Content.Length / 2)...</a></h3>
                                 <div class="products-rating">
                                     <ul>
                                         <li><i class="fas fa-star"></i></li>
@@ -330,8 +330,8 @@
 
                                 <div class="product-price-and-cart d-sm-flex align-items-center">
                                     <div class="product-price">
-                                        <span class="price-sale">€95.03</span>
-                                        <span class="regular-price">€99.90</span>
+                                        <span class="price-sale">€@(Model.Products.Skip(1).FirstOrDefault().Price- Model.Products.FirstOrDefault().Price* Model.Products.FirstOrDefault().SalePercentage/100)</span>
+                                        <span class="regular-price">€@Model.Products.Skip(1).FirstOrDefault().Price</span>
                                     </div>
                                     <div class="product-cart">
                                         <a class="main-btn main-btn-2" href="#">Add to cart</a>
@@ -377,7 +377,7 @@
                             <div class="col-lg-4">
                                 <div class="single-product product-list d-sm-flex flex-wrap align-items-center mt-30">
                                     <div class="product-image">
-                                        <a href="single-product.html">
+                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i].Id">
                                             <img class="first-image" src="~/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
                                             <img class="second-image" src="/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
@@ -414,7 +414,7 @@
 
                                 <div class="single-product product-list d-sm-flex flex-wrap align-items-center mt-30">
                                     <div class="product-image">
-                                        <a href="single-product.html">
+                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i-1].Id">
                                             <img class="first-image" src="~/assets/images/@Model.Products[i-1].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
                                             <img class="second-image" src="/assets/images/@Model.Products[i-1].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
@@ -577,66 +577,24 @@
 <section class="blog-area blog-bg pt-100 pb-100">
     <div class="container">
         <div class="row blog-active">
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-1.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-2.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-3.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-4.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
+            @foreach (var blog in Model.Blogs)
+            {
+                <div class="col-lg-4">
+                    <div class="single-blog">
+                        <div class="blag-image">
+                            <a href="blog-single-left-sidebar.html"><img src="~/assets/images/@blog.BlogImage" alt="Blog"></a>
+                            <p class="meta-date">
+                                <span class="day">@blog.Created.ToString("d MMM yy h:mm tt").Split(" ")[0]</span>
+                                <span class="month">@blog.Created.ToString("d MMM yy h:mm tt").Split(" ")[1]</span>
+                            </p>
+                        </div>
+                        <div class="blag-content">
+                            <h2 class="blog-title"><a href="blog-single-left-sidebar.html">@blog.Title</a></h2>
+                            <p>@blog.Content</p>
+                        </div>
+                    </div> <!-- single blog -->
+                </div>
+            }
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
@@ -644,41 +602,24 @@
 <!--====== Blog Part Ends ======-->
 <!--====== Testimonial Part Start ======-->
 
-<section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(~/assets/images/bg_testimonial.jpg);">
+<section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(/assets/images/bg_testimonial.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-lg-10">
                 <div class="testimonial-active">
-                    <div class="single-testimonial d-sm-flex">
-                        <div class="testimonial-author">
-                            <img src="~/assets/images/author-1.png" alt="author">
-                        </div>
-                        <div class="testimonial-content media-body">
-                            <p> An has feugiat vivendum, ad vix tacimates accusamus, cum commune lucilius no. Sit at alia civibus indoctum, ea mel regione percipit adipisci. Per modus nostrum vituperata no, eam ne magna solum constituam.</p>
-                            <h4 class="author-name">John Doe</h4>
-                            <span class="designation">email@yourwebsitename.com</span>
-                        </div>
-                    </div> <!-- single testimonial -->
-                    <div class="single-testimonial d-sm-flex">
-                        <div class="testimonial-author">
-                            <img src="~/assets/images/author-1.png" alt="author">
-                        </div>
-                        <div class="testimonial-content media-body">
-                            <p> An has feugiat vivendum, ad vix tacimates accusamus, cum commune lucilius no. Sit at alia civibus indoctum, ea mel regione percipit adipisci. Per modus nostrum vituperata no, eam ne magna solum constituam.</p>
-                            <h4 class="author-name">John Doe</h4>
-                            <span class="designation">email@yourwebsitename.com</span>
-                        </div>
-                    </div> <!-- single testimonial -->
-                    <div class="single-testimonial d-sm-flex">
-                        <div class="testimonial-author">
-                            <img src="~/assets/images/author-1.png" alt="author">
-                        </div>
-                        <div class="testimonial-content media-body">
-                            <p> An has feugiat vivendum, ad vix tacimates accusamus, cum commune lucilius no. Sit at alia civibus indoctum, ea mel regione percipit adipisci. Per modus nostrum vituperata no, eam ne magna solum constituam.</p>
-                            <h4 class="author-name">John Doe</h4>
-                            <span class="designation">email@yourwebsitename.com</span>
-                        </div>
-                    </div> <!-- single testimonial -->
+                    @foreach (var author in Model.Authors)
+                    {
+                        <div class="single-testimonial d-sm-flex">
+                            <div class="testimonial-author">
+                                <img src="~/assets/images/@author.ProfileImage" alt="author">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p> @author.About.</p>
+                                <h4 class="author-name">@author.Name</h4>
+                                <span class="designation">@author.Email</span>
+                            </div>
+                        </div> <!-- single testimonial -->
+                    }
                 </div> <!-- testimonial Active -->
             </div>
         </div> <!-- row -->

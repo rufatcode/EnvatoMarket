@@ -17,7 +17,9 @@ namespace EnvatoMarket.DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
-		public AppDbContext(DbContextOptions options):base(options)
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public AppDbContext(DbContextOptions options):base(options)
 		{
 		}
         protected override void OnModelCreating(ModelBuilder builder)

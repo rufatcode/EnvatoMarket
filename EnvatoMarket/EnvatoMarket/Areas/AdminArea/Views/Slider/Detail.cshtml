@@ -44,8 +44,8 @@
                         <td>@Model.MainTitle</td>
                         <td>@Model.SubTitle</td>
                         <td>@(Model.IsDeleted?"Deleted":"Active")</td>
-                        <td>@(Model.Removed.HasValue?Model.Removed.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
-                        <td>@(Model.Updated.HasValue?Model.Updated.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+                        <td>@(Model.Removed.HasValue?Model.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+                        <td>@(Model.Updated.HasValue?Model.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
 
                     </tr>
 

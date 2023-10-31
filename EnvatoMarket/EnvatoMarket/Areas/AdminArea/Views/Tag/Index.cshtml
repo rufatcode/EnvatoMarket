@@ -37,8 +37,8 @@
                         <tr>
                             <td>@tag.Name</td>
                             <td>@(tag.IsDeleted?"Deleted":"Active")</td>
-                            <td>@(tag.Removed.HasValue?tag.Removed.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
-                            <td>@(tag.Updated.HasValue?tag.Updated.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+                            <td>@(tag.Removed.HasValue?tag.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+                            <td>@(tag.Updated.HasValue?tag.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
                             <td>
                                 @if (!tag.IsDeleted)
                                 {

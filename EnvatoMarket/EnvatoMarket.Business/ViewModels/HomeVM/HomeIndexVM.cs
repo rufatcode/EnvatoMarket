@@ -8,11 +8,15 @@ namespace EnvatoMarket.Business.ViewModels.HomeVM
 		public List<Slider> Sliders { get; set; }
 		public List<Category> Categories { get; set; }
 		public List<Product> Products { get; set; }
-		public HomeIndexVM()
+		public List<Author> Authors { get; set; }
+		public List<Blog> Blogs { get; set; }
+        public HomeIndexVM()
 		{
 			Sliders = new();
 			Categories = new();
 			Products = new();
+			Authors = new();
+			Blogs = new();
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Detail";
 }
 @model Category
 <div class="card" style="width:85%;float:right;">
@@ -18,7 +18,6 @@
     </div>
     <div class="card-block table-border-style">
         <div class="table-responsive">
-            <a asp-action="Create" class="btn btn-warning btn-md btn-block waves-effect waves-light text-center m-b-20 w-25 mx-3">Create Slider</a>
             <table class="table table-inverse">
                 <thead>
                     <tr>
@@ -39,8 +38,8 @@
                         <td>@Model.CategoryName</td>
                         <td>@(Model.IsMain==true?"Main Category":"Sub Category")</td>
                         <td>@(Model.IsDeleted?"Deleted":"Active")</td>
-                        <td>@(Model.Removed.HasValue?Model.Removed.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
-                        <td>@(Model.Updated.HasValue?Model.Updated.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+                        <td>@(Model.Removed.HasValue?Model.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+                        <td>@(Model.Updated.HasValue?Model.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
                         <td>@(Model.IsMain==false?Model.Parent.CategoryName:"[N/A]")</td>
 
                     </tr>

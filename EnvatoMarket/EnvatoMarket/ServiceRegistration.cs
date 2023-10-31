@@ -69,6 +69,8 @@ namespace EnvatoMarket
 			services.AddScoped<IAuthorService, AuthorService>();
 			services.AddScoped<IBlogRepository, BlogRepository>();
 			services.AddScoped<IBlogService, BlogService>();
+			services.AddScoped<IFeatureService, FeatureService>();
+			services.AddScoped<IFeatureRepository, FeatureRepository>();
             services.AddAutoMapper(typeof(HomeProfile).Assembly);
 			services.AddAutoMapper(typeof(UserProfile).Assembly);
 			services.AddAutoMapper(typeof(SliderProfile).Assembly);
@@ -78,6 +80,7 @@ namespace EnvatoMarket
 			services.AddAutoMapper(typeof(ProductProfile).Assembly);
 			services.AddAutoMapper(typeof(AuthorProfile).Assembly);
 			services.AddAutoMapper(typeof(BlogProfile).Assembly);
+			services.AddAutoMapper(typeof(FeatureProfile).Assembly);
         }
 	}
 }

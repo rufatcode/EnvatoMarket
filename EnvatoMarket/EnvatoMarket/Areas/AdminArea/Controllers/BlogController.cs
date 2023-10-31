@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.Features;
 using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.Services;
 using EnvatoMarket.Business.ViewModels.AuthorVM;
@@ -56,6 +57,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 return View();
             }
             Blog blog = _mapper.Map<Blog>(createBlogVM);
+            blog.AddedBy = User.Identity.Name.ToString();
             blog.BlogImage = _fileService.CreateImage(createBlogVM.Image);
             blog.Id = Guid.NewGuid().ToString();
             bool isSuccess = await _blogService.Create(blog);
@@ -132,6 +134,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                     return View();
                 }
                 blog.BlogImage = _fileService.CreateImage(updateBlogVM.Image);
+                _fileService.DeleteImage(blog.BlogImage);
             }
             _mapper.Map(updateBlogVM, blog);
             bool resoult = await _blogService.Update(blog);

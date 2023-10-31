@@ -19,6 +19,7 @@ namespace EnvatoMarket.DAL
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Feature> Features { get; set; }
         public AppDbContext(DbContextOptions options):base(options)
 		{
 		}

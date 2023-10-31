@@ -92,6 +92,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             Product product = _mapper.Map<Product>(createProductVM);
             product.Id = Guid.NewGuid().ToString();
             product.StarsCount = 0;
+            product.AddedBy = User.Identity.Name.ToString();
             product.ProductImages.Add(new ProductImage {
                 Id=Guid.NewGuid().ToString(),
                 ProductId=product.Id,
@@ -233,7 +234,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                     }
                 }
             }
-
+            
 
 
             //------

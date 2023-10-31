@@ -62,6 +62,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             Category category = _mapper.Map<Category>(createCategoryVM);
             category.ImageUrl = _fileService.CreateImage(createCategoryVM.Image);
             category.Id = Guid.NewGuid().ToString();
+            category.AddedBy = User.Identity.Name.ToString();
             bool isSuccess = await _categoryService.Create(category);
             if (!isSuccess)
             {
@@ -145,6 +146,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                     return View();
                 }
                 category.ImageUrl = _fileService.CreateImage(updateCategoryVM.Image);
+                _fileService.DeleteImage(category.ImageUrl);
             }
             _mapper.Map(updateCategoryVM, category);
             bool resoult = await _categoryService.Update(category);

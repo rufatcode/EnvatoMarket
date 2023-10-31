@@ -57,7 +57,8 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             Slider slider = _mapper.Map<Slider>(sliderVM);
             slider.ImageUrl = fileName;
             slider.Id = Guid.NewGuid().ToString();
-           bool resoult= await _sliderService.Create(slider);
+            slider.AddedBy = User.Identity.Name.ToString();
+            bool resoult= await _sliderService.Create(slider);
             if (resoult==false)
             {
                 ModelState.AddModelError("", "Something went wrong");

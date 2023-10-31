@@ -1,18 +1,11 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/Views/Home/Index.cshtml">
-    <Files>
-      <File FileName="EnvatoMarket/Controllers/HomeController.cs" Line="38" Column="65" />
-      <File FileName="EnvatoMarket/Views/Home/Index.cshtml" Line="588" Column="108" />
-      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/BlogController.cs" Line="137" Column="58" />
-      <File FileName="EnvatoMarket/Areas/AdminArea/Controllers/AuthorController.cs" Line="128" Column="14" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -20,16 +13,16 @@
             <Node name="EnvatoMarket">
               <Node name="Areas">
                 <Node name="AdminArea">
+                  <Node name="Controllers" expanded="True">
+                    <Node name="ProductController.cs" selected="True" />
+                  </Node>
                   <Node name="Views">
-                    <Node name="Author" expanded="True" />
                     <Node name="Blog" expanded="True" />
+                    <Node name="Feature" expanded="True" />
                   </Node>
                 </Node>
               </Node>
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
+              <Node name="Views">
                 <Node name="Shared" expanded="True">
                   <Node name="Components" expanded="True">
                     <Node name="Footer" expanded="True" />
@@ -39,18 +32,26 @@
               </Node>
             </Node>
             <Node name="EnvatoMarket.Business">
-              <Node name="ViewModels" expanded="True">
-                <Node name="AuthorVM" expanded="True" />
+              <Node name="Mappings" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels">
                 <Node name="BlogVM" expanded="True" />
+                <Node name="FeatureVM" expanded="True" />
                 <Node name="HomeVM" expanded="True" />
               </Node>
             </Node>
+            <Node name="EnvatoMarket.Core">
+              <Node name="Models" expanded="True" />
+            </Node>
             <Node name="EnvatoMarket.Data">
+              <Node name="Dependencies" expanded="True" />
               <Node name="DAL" expanded="True" />
+              <Node name="Implimentations" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
 </Properties>

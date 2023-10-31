@@ -49,6 +49,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 return View();
             }
             Tag tag = _mapper.Map<Tag>(createTagVM);
+            tag.AddedBy = User.Identity.Name.ToString();
             tag.Id = Guid.NewGuid().ToString();
 
             bool isSuccess = await _tagService.Create(tag);

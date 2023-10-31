@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.Features;
 using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.Services;
 using EnvatoMarket.Business.ViewModels.AuthorVM;
@@ -56,6 +57,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 return View();
             }
             Author author = _mapper.Map<Author>(createAuthorVM);
+            author.AddedBy = User.Identity.Name.ToString();
             author.ProfileImage = _fileService.CreateImage(createAuthorVM.Image);
             author.Id = Guid.NewGuid().ToString();
             bool isSuccess = await _authorService.Create(author);
@@ -136,7 +138,9 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                     ModelState.AddModelError("Image", "File length must be smaller than 1 kb");
                     return View();
                 }
+               
                 author.ProfileImage = _fileService.CreateImage(updateAuthorVM.Image);
+                _fileService.DeleteImage(author.ProfileImage);
             }
             _mapper.Map(updateAuthorVM, author);
             bool resoult = await _authorService.Update(author);

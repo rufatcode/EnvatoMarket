@@ -51,6 +51,7 @@
     <None Remove="Views\SingleProduct\" />
     <None Remove="Areas\AdminArea\Views\Author\" />
     <None Remove="Areas\AdminArea\Views\Blog\" />
+    <None Remove="Areas\AdminArea\Views\Feature\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -78,6 +79,7 @@
     <Folder Include="Views\SingleProduct\" />
     <Folder Include="Areas\AdminArea\Views\Author\" />
     <Folder Include="Areas\AdminArea\Views\Blog\" />
+    <Folder Include="Areas\AdminArea\Views\Feature\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnvatoMarket.Business\EnvatoMarket.Business.csproj">

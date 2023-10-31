@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.Services;
+using EnvatoMarket.Business.ViewModels.BlogVM;
 using EnvatoMarket.Business.ViewModels.BrandVM;
 using EnvatoMarket.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Stripe;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,10 +23,12 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
     {
         private readonly IBrandService _brandService;
         private readonly IMapper _mapper;
-        public BrandController(IBrandService brandService, IMapper mapper)
+        private readonly IFileService _fileService;
+        public BrandController(IBrandService brandService, IMapper mapper,IFileService fileService)
         {
             _brandService = brandService;
             _mapper = mapper;
+            _fileService = fileService;
         }
         public async Task<IActionResult> Index()
         {
@@ -46,9 +51,20 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Name", "Name is exist");
                 return View();
             }
+            else if (!_fileService.IsImage(createBrandVM.BrandImage))
+            {
+                ModelState.AddModelError("BrandImage", "Upload Only Image");
+                return View();
+            }
+            else if (!_fileService.IsLengthSuit(createBrandVM.BrandImage, 1000))
+            {
+                ModelState.AddModelError("BrandImage", "File length must be smaller than 1 kb");
+                return View();
+            }
             Brand brand = _mapper.Map<Brand>(createBrandVM);
             brand.Id = Guid.NewGuid().ToString();
-            
+            brand.ImageUrl = _fileService.CreateImage(createBrandVM.BrandImage);
+           brand.AddedBy = User.Identity.Name.ToString();
             bool isSuccess = await _brandService.Create(brand);
             if (!isSuccess)
             {
@@ -99,6 +115,21 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             {
                 ModelState.AddModelError("Name", "This brand is exist");
                 return View();
+            }
+            if (updateBrandVM.BrandImage != null)
+            {
+                if (!_fileService.IsImage(updateBrandVM.BrandImage))
+                {
+                    ModelState.AddModelError("BrandImage", "Upload Only Image");
+                    return View();
+                }
+                else if (!_fileService.IsLengthSuit(updateBrandVM.BrandImage, 1000))
+                {
+                    ModelState.AddModelError("BrandImage", "File length must be smaller than 1 kb");
+                    return View();
+                }
+                brand.ImageUrl = _fileService.CreateImage(updateBrandVM.BrandImage);
+                _fileService.DeleteImage(brand.ImageUrl);
             }
             _mapper.Map(updateBrandVM, brand);
             bool isSuccess=await _brandService.Update(brand);

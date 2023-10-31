@@ -19,8 +19,10 @@ namespace EnvatoMarket.Controllers
         private readonly IProductService _productService;
         private readonly IAuthorService _authorService;
         private readonly IBlogService _blogService;
-        public HomeController(IBlogService blogService,IAuthorService authorService,ISliderService sliderService,ICategoryService categoryService,IProductService productService)
+        private readonly IBrandService _brandService;
+        public HomeController(IBrandService brandService,IBlogService blogService,IAuthorService authorService,ISliderService sliderService,ICategoryService categoryService,IProductService productService)
         {
+            _brandService = brandService;
             _blogService = blogService;
             _sliderService = sliderService;
             _categoryService = categoryService;
@@ -36,6 +38,7 @@ namespace EnvatoMarket.Controllers
             homeIndexVM.Products = await _productService.GetAll(p => !p.IsDeleted, "Category", "Brand", "ProductImages", "ProductTags.Tag");
             homeIndexVM.Authors = await _authorService.GetAll(a=>!a.IsDeleted);
             homeIndexVM.Blogs = await _blogService.GetAll(b => !b.IsDeleted);
+            homeIndexVM.Brands = await _brandService.GetAll(b => !b.IsDeleted);
             return View(homeIndexVM);
         }
         public IActionResult Contact()

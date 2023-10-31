@@ -46,7 +46,7 @@ namespace EnvatoMarket.Business.Services
                     return false;
                 }
                 List<Category> categories = await GetAll();
-                if (categories.Where(s => s.Id != id).All(s => s.IsDeleted))
+                if (categories.Where(c => c.Id != id).All(c => c.IsDeleted))
                 {
                     return false;
                 }

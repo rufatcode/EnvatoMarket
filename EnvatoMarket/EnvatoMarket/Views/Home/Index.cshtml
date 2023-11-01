@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
+    int categoryIndex = 0;
 }
 @model HomeIndexVM
  
@@ -117,10 +118,13 @@
             <div class="col-lg-12">
                 <div class="product-menu pb-30">
                     <ul class="nav justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="active" id="new-tab" data-toggle="tab" data-id="0"  role="tab" aria-controls="new" aria-selected="true">All Products</a>
+                        </li>
                         @for (int i = 0; i < Model.Categories.Take(4).ToList().Count; i++)
                         {
                             <li class="nav-item" role="presentation">
-                                <a class="@(i==0?"active":"")" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="@(i==0?true:false)">@Model.Categories[i].CategoryName</a>
+                                <a  id="new-tab" data-toggle="tab" role="tab" data-id=@Model.Categories[i].Id aria-controls="new" aria-selected="true">@Model.Categories[i].CategoryName</a>
                             </li>
                         }
 
@@ -354,16 +358,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="product-menu pb-30">
-                    <ul class="nav justify-content-center" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="active" id="computer-tab" data-toggle="tab" href="#computer" role="tab" aria-controls="computer" aria-selected="true">Computer</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a id="smartphone-tab" data-toggle="tab" href="#smartphone" role="tab" aria-controls="smartphone" aria-selected="false">Smartphone</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a id="game-tab" data-toggle="tab" href="#game" role="tab" aria-controls="game" aria-selected="false">Game Consoles</a>
-                        </li>
+                    <ul class="nav justify-content-center" id="ProductMenu2" role="tablist">
+                        @foreach (var category in Model.Categories.OrderByDescending(c => c.Created).Take(4))
+                        {
+                            <li class="nav-item" role="presentation">
+                                <a class="@(categoryIndex==0?"active":"")" data-id=@category.Id id="computer-tab" data-toggle="tab" href="#computer" role="tab" aria-controls="computer" aria-selected="true">@category.CategoryName</a>
+                            </li>
+                                categoryIndex++;
+                            }
                     </ul>
                 </div> <!-- product menu -->
             </div>
@@ -483,51 +485,19 @@
 <section class="features-banner-area pt-80 pb-100">
     <div class="container-fluid custom-container">
         <div class="features-banner-wrapper d-flex flex-wrap">
-            <div class="single-features-banner d-flex">
-                <div class="banner-icon">
-                    <img src="~/assets/images/banner-icon/icon1.png" alt="Icon">
-                </div>
-                <div class="banner-content media-body">
-                    <h3 class="banner-title">Free Shipping</h3>
-                    <p>Free shipping on all US order</p>
-                </div>
-            </div> <!-- single features banner -->
-            <div class="single-features-banner d-flex">
-                <div class="banner-icon">
-                    <img src="~/assets/images/banner-icon/icon2.png" alt="Icon">
-                </div>
-                <div class="banner-content media-body">
-                    <h3 class="banner-title">Support 24/7</h3>
-                    <p>Contact us 24 hours a day</p>
-                </div>
-            </div> <!-- single features banner -->
-            <div class="single-features-banner d-flex">
-                <div class="banner-icon">
-                    <img src="~/assets/images/banner-icon/icon3.png" alt="Icon">
-                </div>
-                <div class="banner-content media-body">
-                    <h3 class="banner-title">100% Money Back</h3>
-                    <p>You have 30 days to Return</p>
-                </div>
-            </div> <!-- single features banner -->
-            <div class="single-features-banner d-flex">
-                <div class="banner-icon">
-                    <img src="~/assets/images/banner-icon/icon4.png" alt="Icon">
-                </div>
-                <div class="banner-content media-body">
-                    <h3 class="banner-title">90 Days Return</h3>
-                    <p>If goods have problems</p>
-                </div>
-            </div> <!-- single features banner -->
-            <div class="single-features-banner d-flex">
-                <div class="banner-icon">
-                    <img src="~/assets/images/banner-icon/icon5.png" alt="Icon">
-                </div>
-                <div class="banner-content media-body">
-                    <h3 class="banner-title">Payment Secure</h3>
-                    <p>We ensure secure payment</p>
-                </div>
-            </div> <!-- single features banner -->
+            @foreach (var feature in Model.Features)
+            {
+                <div class="single-features-banner d-flex">
+                    <div class="banner-icon">
+                        <img src="~/assets/images/@feature.ImageUrl" alt="Icon">
+                    </div>
+                    <div class="banner-content media-body">
+                        <h3 class="banner-title">@feature.Title</h3>
+                        <p>@(feature.Content.Length>20?feature.Content.Substring(0,20):feature.Content)</p>
+                    </div>
+                </div> <!-- single features banner -->
+            }
+
         </div> <!-- features banner wrapper -->
     </div> <!-- container -->
 </section>
@@ -590,5 +560,5 @@
 <!--====== Testimonial Part Ends ======-->
 
 @section CostumScripts{
-  
+    <script src="~/assets/js/home.js"></script>
 }

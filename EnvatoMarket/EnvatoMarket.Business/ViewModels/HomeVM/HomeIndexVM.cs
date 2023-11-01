@@ -11,6 +11,7 @@ namespace EnvatoMarket.Business.ViewModels.HomeVM
 		public List<Author> Authors { get; set; }
 		public List<Blog> Blogs { get; set; }
 		public List<Brand> Brands { get; set; }
+		public List<Feature> Features { get; set; }
         public HomeIndexVM()
 		{
 			Sliders = new();
@@ -19,6 +20,7 @@ namespace EnvatoMarket.Business.ViewModels.HomeVM
 			Authors = new();
 			Blogs = new();
 			Brands = new();
+			Features = new();
 		}
 	}
 }

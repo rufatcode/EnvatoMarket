@@ -54,7 +54,7 @@ namespace EnvatoMarket.Controllers
             appUser.Created = DateTime.Now;
             appUser.AddedBy = "System";
             appUser.IsActive = true;
-            await _userManager.AddToRoleAsync(appUser, "User");
+           
             IdentityResult resoult =await _userManager.CreateAsync(appUser, registerVM.Password);
             if (!resoult.Succeeded)
             {
@@ -64,6 +64,7 @@ namespace EnvatoMarket.Controllers
                 }
                 return View();
             }
+            await _userManager.AddToRoleAsync(appUser, "User");
             string token =await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
             string link = Url.Action(nameof(VerifyEmail), "Account", new { VerifyEmail = appUser.Email, token }, Request.Scheme, Request.Host.ToString());
             

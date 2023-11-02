@@ -28,7 +28,7 @@ namespace EnvatoMarket.Core.Models
 		public Brand Brand { get; set; }
 		public List<ProductImage> ProductImages { get; set; }
 		public List<ProductTag> ProductTags { get; set; }
-
+		public List<Comment> Comments { get; set; }
         public Product()
 		{
 			ProductImages = new();

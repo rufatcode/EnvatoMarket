@@ -1,46 +1,62 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/Views/Shared/Components/Brand/Default.cshtml">
+    <Files>
+      <File FileName="EnvatoMarket/wwwroot/assets/js/header.js" Line="26" Column="36" />
+      <File FileName="EnvatoMarket/Views/Shared/Components/Header/Default.cshtml" Line="6" Column="1" />
+      <File FileName="EnvatoMarket/Program.cs" Line="35" Column="1" />
+      <File FileName="EnvatoMarket/Properties/launchSettings.json" Line="14" Column="47" />
+      <File FileName="EnvatoMarket/Views/Home/Index.cshtml" Line="392" Column="36" />
+      <File FileName="EnvatoMarket/Controllers/SingleProductController.cs" Line="31" Column="136" />
+      <File FileName="EnvatoMarket/Views/SingleProduct/Index.cshtml" Line="776" Column="36" />
+      <File FileName="EnvatoMarket.Business/Services/CommentService.cs" Line="117" Column="41" />
+      <File FileName="EnvatoMarket/ViewComponents/FeatureViewComponent.cs" Line="17" Column="30" />
+      <File FileName="EnvatoMarket/ViewComponents/ContactViewComponent.cs" Line="1" Column="1" />
+      <File FileName="EnvatoMarket/Views/Shared/Components/Feature/Default.cshtml" Line="5" Column="43" />
+      <File FileName="EnvatoMarket.Business/ViewModels/HomeVM/HomeIndexVM.cs" Line="19" Column="18" />
+      <File FileName="EnvatoMarket/Views/Shared/_Layout.cshtml" Line="58" Column="2" />
+      <File FileName="EnvatoMarket/ViewComponents/FooterViewComponent.cs" Line="1" Column="1" />
+      <File FileName="EnvatoMarket/ViewComponents/BrandViewComponent.cs" Line="17" Column="42" />
+      <File FileName="EnvatoMarket/Views/Shared/Components/Brand/Default.cshtml" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EnvatoMarket" expanded="True">
             <Node name="EnvatoMarket">
               <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True">
+              <Node name="ViewComponents" expanded="True" />
+              <Node name="Views">
                 <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="Components" expanded="True">
+                    <Node name="Brand" expanded="True">
+                      <Node name="Default.cshtml" selected="True" />
+                    </Node>
+                    <Node name="Feature" expanded="True" />
+                    <Node name="Header" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="SingleProduct" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="assets" expanded="True">
-                  <Node name="js" expanded="True">
-                    <Node name="home.js" selected="True" />
-                  </Node>
+                  <Node name="js" expanded="True" />
                 </Node>
               </Node>
             </Node>
-            <Node name="EnvatoMarket.Business" expanded="True">
-              <Node name="Services" expanded="True" />
-              <Node name="ViewModels" expanded="True">
-                <Node name="HomeVM" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="EnvatoMarket.Core" expanded="True">
+            <Node name="EnvatoMarket.Core">
               <Node name="Models" expanded="True" />
-            </Node>
-            <Node name="EnvatoMarket.Data" expanded="True">
-              <Node name="DAL" expanded="True" />
-              <Node name="Implimentations" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
 </Properties>

@@ -1989,6 +1989,10 @@
       "PackagePath": "staticwebassets/assets/images/special-products/special-products-8.jpg"
     },
     {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/header.js",
+      "PackagePath": "staticwebassets/assets/js/header.js"
+    },
+    {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/home.js",
       "PackagePath": "staticwebassets/assets/js/home.js"
     },
@@ -2019,6 +2023,10 @@
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/plugins/slick.min.js",
       "PackagePath": "staticwebassets/assets/js/plugins/slick.min.js"
+    },
+    {
+      "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/singleProduct.js",
+      "PackagePath": "staticwebassets/assets/js/singleProduct.js"
     },
     {
       "Id": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/vendor/jquery-1.12.4.min.js",

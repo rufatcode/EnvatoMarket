@@ -1,9 +1,8 @@
 ﻿@{
     ViewBag.Title = "Index";
-    int categoryIndex = 0;
 }
 @model HomeIndexVM
- 
+
 
 @section CostumStyles{
 
@@ -119,12 +118,12 @@
                 <div class="product-menu pb-30">
                     <ul class="nav justify-content-center" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="active" id="new-tab" data-toggle="tab" data-id="0"  role="tab" aria-controls="new" aria-selected="true">All Products</a>
+                            <a class="active" id="new-tab" data-toggle="tab" data-id="0" role="tab" aria-controls="new" aria-selected="true">All Products</a>
                         </li>
                         @for (int i = 0; i < Model.Categories.Take(4).ToList().Count; i++)
                         {
                             <li class="nav-item" role="presentation">
-                                <a  id="new-tab" data-toggle="tab" role="tab" data-id=@Model.Categories[i].Id aria-controls="new" aria-selected="true">@Model.Categories[i].CategoryName</a>
+                                <a id="new-tab" data-toggle="tab" role="tab" data-id=@Model.Categories[i].Id aria-controls="new" aria-selected="true">@Model.Categories[i].CategoryName</a>
                             </li>
                         }
 
@@ -136,14 +135,14 @@
             <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
                 <div class="product-items">
                     <div class="row product-active">
-                        @for (int i = 0; i < Model.Products.Count - 1; i += 2)
+                        @foreach (var product in Model.Products)
                         {
                             <div class="col-lg-2">
                                 <div class="single-product mt-30">
                                     <div class="product-image">
-                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i+1].Id">
-                                            <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@Model.Products[i+1].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
-                                            <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@Model.Products[i+1].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
+                                        <a style="width:200px;height:300px;overflow:hidden;" asp-controller="SingleProduct" asp-action="Index" asp-route-id="@product.Id">
+                                            <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
+                                            <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
                                         <ul class="product-meta">
                                             <li><a href="#"><i class="icon ion-bag"></i></a></li>
@@ -151,54 +150,16 @@
                                             <li><a href="#"><i class="icon ion-android-options"></i></a></li>
                                             <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
                                         </ul>
-                                        @if (Model.Products[i].SalePercentage > 0)
-                                            {
-                                                 <span class="discount-product">-@Model.Products[i+1].SalePercentage %</span>
-                                            }
-                                    </div>
-                                    <div class="product-content">
-                                        <ul class="product-rating">
-                                            @for (int j = 0; j < 5; j++)
-                                            {
-                                                if (j < Model.Products[i + 1].StarsCount)
-                                                {
-                                                    <li><i style="color:orange;" class="fas fa-star"></i></li>
-                                                }
-                                                else
-                                                {
-                                                    <li><i class="fas fa-star"></i></li>
-                                                }
-
-                                            }
-                                        </ul>
-                                        <h4 class="product-title"><a href="single-product.html">@Model.Products[i+1].Name</a></h4>
-                                        <div class="product-price">
-                                            <span class="price-sale">€@(Model.Products[i+1].Price- Model.Products[i+1].Price* Model.Products[i+1].SalePercentage/100)</span>
-                                        </div>
-                                    </div>
-                                </div> <!-- single product -->
-                                <div class="single-product mt-30">
-                                    <div class="product-image">
-                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i].Id">
-                                            <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
-                                            <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
-                                        </a>
-                                        <ul class="product-meta">
-                                            <li><a href="#"><i class="icon ion-bag"></i></a></li>
-                                            <li><a href="#"><i class="icon ion-android-favorite-outline"></i></a></li>
-                                            <li><a href="#"><i class="icon ion-android-options"></i></a></li>
-                                            <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
-                                        </ul>
-                                        @if (Model.Products[i].SalePercentage > 0)
+                                        @if (product.SalePercentage > 0)
                                         {
-                                            <span class="discount-product">-@Model.Products[i].SalePercentage %</span>
+                                            <span class="discount-product">-@product.SalePercentage %</span>
                                         }
                                     </div>
                                     <div class="product-content">
                                         <ul class="product-rating">
                                             @for (int j = 0; j < 5; j++)
                                             {
-                                                if (j < Model.Products[i].StarsCount)
+                                                if (j < product.StarsCount)
                                                 {
                                                     <li><i style="color:orange;" class="fas fa-star"></i></li>
                                                 }
@@ -209,9 +170,9 @@
 
                                             }
                                         </ul>
-                                        <h4 class="product-title"><a href="single-product.html">@Model.Products[i].Name</a></h4>
+                                        <h4 class="product-title"><a href="single-product.html">@product.Name</a></h4>
                                         <div class="product-price">
-                                            <span class="price-sale">€@(Model.Products[i].Price- Model.Products[i].Price* Model.Products[i].SalePercentage/100)</span>
+                                            <span class="price-sale">€@(product.Price- product.Price* product.SalePercentage/100)</span>
                                         </div>
                                     </div>
                                 </div> <!-- single product -->
@@ -261,7 +222,7 @@
                         <div class="special-products-countdown mt-50">
                             <div class="products-countdown-wrapper">
                                 <h2 class="special-title">@Model.Products.FirstOrDefault().Name</h2>
-                                <h3 class="products-title"><a href="#">@Model.Products.FirstOrDefault().Content.Substring(0, Model.Products.FirstOrDefault().Content.Length/2)...</a></h3>
+                                <h3 class="products-title"><a href="#">@Model.Products.FirstOrDefault().Content.Substring(0, Model.Products.FirstOrDefault().Content.Length / 2)...</a></h3>
                                 <div class="products-rating">
                                     <ul>
                                         <li><i class="fas fa-star"></i></li>
@@ -359,13 +320,15 @@
             <div class="col-lg-12">
                 <div class="product-menu pb-30">
                     <ul class="nav justify-content-center" id="ProductMenu2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="active" id="new-tab" data-toggle="tab" data-id="1" role="tab" aria-controls="new" aria-selected="true">All Products</a>
+                        </li>
                         @foreach (var category in Model.Categories.OrderByDescending(c => c.Created).Take(4))
                         {
                             <li class="nav-item" role="presentation">
-                                <a class="@(categoryIndex==0?"active":"")" data-id=@category.Id id="computer-tab" data-toggle="tab" href="#computer" role="tab" aria-controls="computer" aria-selected="true">@category.CategoryName</a>
+                                <a data-id=@category.Id id="computer-tab" data-toggle="tab" href="#computer" role="tab" aria-controls="computer" aria-selected="true">@category.CategoryName</a>
                             </li>
-                                categoryIndex++;
-                            }
+                        }
                     </ul>
                 </div> <!-- product menu -->
             </div>
@@ -374,62 +337,25 @@
             <div class="tab-pane fade show active" id="computer" role="tabpanel" aria-labelledby="computer-tab">
                 <div class="product-items">
                     <div class="row product-active-2">
-                        @for (int i = Model.Products.Count-1; i > 0; i -= 2)
+                        @foreach (var product in Model.Products.OrderByDescending(p => p.Created).ToList())
                         {
                             <div class="col-lg-4">
                                 <div class="single-product product-list d-sm-flex flex-wrap align-items-center mt-30">
                                     <div class="product-image">
-                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i].Id">
-                                            <img class="first-image" src="~/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
-                                            <img class="second-image" src="/assets/images/@Model.Products[i].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
+                                        <a style="width:150px;height:200px;overflow:hidden;" asp-controller="SingleProduct" asp-action="Index" asp-route-id="@product.Id">
+                                            <img class="first-image" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
+                                            <img class="second-image" src="/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
-                                        @if (Model.Products[i].SalePercentage > 0)
-                                            {
-                                                <span class="discount-product">-@Model.Products[i].SalePercentage%</span>
-                                            }
-                                    </div>
-                                    <div class="product-content">
-                                        <ul class="product-rating">
-                                            @for (int j = 0; j < 5; j++)
-                                            {
-                                                if (j < Model.Products[i].StarsCount)
-                                                {
-                                                    <li><i style="color:orange;" class="fas fa-star"></i></li>
-                                                }
-                                                else
-                                                {
-                                                    <li><i class="fas fa-star"></i></li>
-                                                }
-
-                                            }
-                                        </ul>
-                                        <h4 class="product-title"><a href="single-product.html">@Model.Products[i].Name</a></h4>
-                                        <div class="product-price">
-                                            <span class="regular-price">€@Model.Products[i].Price</span>
-                                            @if (Model.Products[i].SalePercentage > 0)
-                                            {
-                                                <span class="price-sale">€@(Model.Products[i].Price - Model.Products[i].Price * Model.Products[i].SalePercentage / 100)</span>
-                                            }
-                                        </div>
-                                    </div>
-                                </div> <!-- single product -->
-
-                                <div class="single-product product-list d-sm-flex flex-wrap align-items-center mt-30">
-                                    <div class="product-image">
-                                        <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model.Products[i-1].Id">
-                                            <img class="first-image" src="~/assets/images/@Model.Products[i-1].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
-                                            <img class="second-image" src="/assets/images/@Model.Products[i-1].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
-                                        </a>
-                                        @if (Model.Products[i-1].SalePercentage > 0)
+                                        @if (product.SalePercentage > 0)
                                         {
-                                            <span class="discount-product">-@Model.Products[i-1].SalePercentage%</span>
+                                            <span class="discount-product">-@product.SalePercentage%</span>
                                         }
                                     </div>
                                     <div class="product-content">
                                         <ul class="product-rating">
                                             @for (int j = 0; j < 5; j++)
                                             {
-                                                if (j < Model.Products[i -1].StarsCount)
+                                                if (j < product.StarsCount)
                                                 {
                                                     <li><i style="color:orange;" class="fas fa-star"></i></li>
                                                 }
@@ -440,16 +366,17 @@
 
                                             }
                                         </ul>
-                                        <h4 class="product-title"><a href="single-product.html">@Model.Products[i-1].Name</a></h4>
+                                        <h4 class="product-title"><a href="single-product.html">@product.Name</a></h4>
                                         <div class="product-price">
-                                            <span class="regular-price">€@Model.Products[i-1].Price</span>
-                                            @if (Model.Products[i - 1].SalePercentage > 0)
-                                                {
-                                                    <span class="price-sale">€@(Model.Products[i - 1].Price - Model.Products[i - 1].Price * Model.Products[i - 1].SalePercentage / 100)</span>
-                                                }
+                                            <span class="regular-price">€@product.Price</span>
+                                            @if (product.SalePercentage > 0)
+                                            {
+                                                <span class="price-sale">€@(product.Price - product.Price * product.SalePercentage / 100)</span>
+                                            }
                                         </div>
                                     </div>
                                 </div> <!-- single product -->
+
                             </div>
                         }
                     </div> <!-- row -->
@@ -462,45 +389,12 @@
 <!--====== Product Part Ends ======-->
 <!--====== Brand Part Start ======-->
 
-<div class="brand-area pt-80">
-    <div class="container-fluid custom-container">
-        <div class="row brand-active">
-            @foreach (var brand in Model.Brands)
-            {
-                <div class="col-lg-2">
-                    <div class="single-brand">
-                        <a href="#">
-                            <img src="~/assets/images/@brand.ImageUrl" alt="brand">
-                        </a>
-                    </div> <!-- single brand -->
-                </div>
-            }
-        </div> <!-- row -->
-    </div> <!-- container -->
-</div>
+@await Component.InvokeAsync("Brand") ;
 
 <!--====== Brand Part Ends ======-->
 <!--====== Features Banner Part Start ======-->
 
-<section class="features-banner-area pt-80 pb-100">
-    <div class="container-fluid custom-container">
-        <div class="features-banner-wrapper d-flex flex-wrap">
-            @foreach (var feature in Model.Features)
-            {
-                <div class="single-features-banner d-flex">
-                    <div class="banner-icon">
-                        <img src="~/assets/images/@feature.ImageUrl" alt="Icon">
-                    </div>
-                    <div class="banner-content media-body">
-                        <h3 class="banner-title">@feature.Title</h3>
-                        <p>@(feature.Content.Length>20?feature.Content.Substring(0,20):feature.Content)</p>
-                    </div>
-                </div> <!-- single features banner -->
-            }
-
-        </div> <!-- features banner wrapper -->
-    </div> <!-- container -->
-</section>
+@await Component.InvokeAsync("Feature") ;
 
 <!--====== Features Banner Part Ends ======-->
 <!--====== Blog Part Start ======-->

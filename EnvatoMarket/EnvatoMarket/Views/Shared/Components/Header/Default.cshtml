@@ -85,7 +85,7 @@
                             <div class="header-search media-body">
                                 <form action="#">
                                     <div class="search-category">
-                                        <select>
+                                        <select name="categoryId" id="categorySelection">
                                             <option value="0">All categories</option>
                                             @foreach (var mainCategory in Model.Categories)
                                             {
@@ -102,7 +102,11 @@
 
                                         </select>
                                     </div>
-                                    <input type="text" placeholder="Enter your search key ... ">
+                                    <input id="productSearching" autocomplete="off" name="productName" list="Products" type="text" placeholder="Enter your search key ... ">
+                                    <datalist id="Products">
+                                        <option value="Edge"/>
+                                     
+                                    </datalist>
                                     <button><i class="icon ion-android-search"></i></button>
                                 </form>
                             </div>

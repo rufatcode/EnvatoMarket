@@ -1,4 +1,5 @@
 ﻿using System;
+using EnvatoMarket.Core.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace EnvatoMarket.Models
@@ -13,6 +14,7 @@ namespace EnvatoMarket.Models
         public DateTime? Updated { get; set; }
         public string AddedBy { get; set; }
         public bool IsDeleted { get; set; }
+		public List<Comment> Comments { get; set; }
         public AppUser()
 		{
 		}

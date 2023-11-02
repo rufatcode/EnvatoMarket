@@ -46,6 +46,7 @@
     <None Remove="ViewModels\ProductVM\" />
     <None Remove="ViewModels\AuthorVM\" />
     <None Remove="ViewModels\FeatureVM\" />
+    <None Remove="ViewModels\SingleProductVM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -66,5 +67,6 @@
     <Folder Include="ViewModels\AuthorVM\" />
     <Folder Include="ViewModels\BlogVM\" />
     <Folder Include="ViewModels\FeatureVM\" />
+    <Folder Include="ViewModels\SingleProductVM\" />
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@ namespace EnvatoMarket.DAL
         public DbSet<Author> Authors { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Feature> Features { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public AppDbContext(DbContextOptions options):base(options)
 		{
 		}

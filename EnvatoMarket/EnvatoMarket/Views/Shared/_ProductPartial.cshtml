@@ -1,13 +1,13 @@
 ﻿@model List<Product>
 
-@for (int i = 0; i < Model.Count - 1; i += 2)
+@foreach (var product in Model)
 {
     <div class="col-lg-2">
         <div class="single-product mt-30">
             <div class="product-image">
-                <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model[i+1].Id">
-                    <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@Model[i+1].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
-                    <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@Model[i+1].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
+                <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@product.Id">
+                    <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
+                    <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                 </a>
                 <ul class="product-meta">
                     <li><a href="#"><i class="icon ion-bag"></i></a></li>
@@ -15,16 +15,16 @@
                     <li><a href="#"><i class="icon ion-android-options"></i></a></li>
                     <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
                 </ul>
-                @if (Model[i].SalePercentage > 0)
+                @if (product.SalePercentage > 0)
                 {
-                    <span class="discount-product">-@Model[i + 1].SalePercentage %</span>
+                    <span class="discount-product">-@product.SalePercentage %</span>
                 }
             </div>
             <div class="product-content">
                 <ul class="product-rating">
                     @for (int j = 0; j < 5; j++)
                     {
-                        if (j < Model[i + 1].StarsCount)
+                        if (j < product.StarsCount)
                         {
                             <li><i style="color:orange;" class="fas fa-star"></i></li>
                         }
@@ -35,47 +35,9 @@
 
                     }
                 </ul>
-                <h4 class="product-title"><a href="single-product.html">@Model[i + 1].Name</a></h4>
+                <h4 class="product-title"><a href="single-product.html">@product.Name</a></h4>
                 <div class="product-price">
-                    <span class="price-sale">€@(Model[i+1].Price- Model[i+1].Price* Model[i+1].SalePercentage/100)</span>
-                </div>
-            </div>
-        </div> <!-- single product -->
-        <div class="single-product mt-30">
-            <div class="product-image">
-                <a asp-controller="SingleProduct" asp-action="Index" asp-route-id="@Model[i].Id">
-                    <img style="width:350px;overflow:hidden;" class="first-image" src="~/assets/images/@Model[i].ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
-                    <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@Model[i].ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
-                </a>
-                <ul class="product-meta">
-                    <li><a href="#"><i class="icon ion-bag"></i></a></li>
-                    <li><a href="#"><i class="icon ion-android-favorite-outline"></i></a></li>
-                    <li><a href="#"><i class="icon ion-android-options"></i></a></li>
-                    <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
-                </ul>
-                @if (Model[i].SalePercentage > 0)
-                {
-                    <span class="discount-product">-@Model[i].SalePercentage %</span>
-                }
-            </div>
-            <div class="product-content">
-                <ul class="product-rating">
-                    @for (int j = 0; j < 5; j++)
-                    {
-                        if (j < Model[i].StarsCount)
-                        {
-                            <li><i style="color:orange;" class="fas fa-star"></i></li>
-                        }
-                        else
-                        {
-                            <li><i class="fas fa-star"></i></li>
-                        }
-
-                    }
-                </ul>
-                <h4 class="product-title"><a href="single-product.html">@Model[i].Name</a></h4>
-                <div class="product-price">
-                    <span class="price-sale">€@(Model[i].Price- Model[i].Price* Model[i].SalePercentage/100)</span>
+                    <span class="price-sale">€@(product.Price- product.Price* product.SalePercentage/100)</span>
                 </div>
             </div>
         </div> <!-- single product -->

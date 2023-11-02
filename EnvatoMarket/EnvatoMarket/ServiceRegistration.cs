@@ -71,6 +71,8 @@ namespace EnvatoMarket
 			services.AddScoped<IBlogService, BlogService>();
 			services.AddScoped<IFeatureService, FeatureService>();
 			services.AddScoped<IFeatureRepository, FeatureRepository>();
+			services.AddScoped<ICommentRepository, CommentRepository>();
+			services.AddScoped<ICommentService, CommentService>();
             services.AddAutoMapper(typeof(HomeProfile).Assembly);
 			services.AddAutoMapper(typeof(UserProfile).Assembly);
 			services.AddAutoMapper(typeof(SliderProfile).Assembly);

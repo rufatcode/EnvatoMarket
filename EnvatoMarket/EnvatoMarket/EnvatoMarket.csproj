@@ -52,6 +52,8 @@
     <None Remove="Areas\AdminArea\Views\Author\" />
     <None Remove="Areas\AdminArea\Views\Blog\" />
     <None Remove="Areas\AdminArea\Views\Feature\" />
+    <None Remove="Views\Shared\Components\Feature\" />
+    <None Remove="Views\Shared\Components\Brand\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -80,6 +82,8 @@
     <Folder Include="Areas\AdminArea\Views\Author\" />
     <Folder Include="Areas\AdminArea\Views\Blog\" />
     <Folder Include="Areas\AdminArea\Views\Feature\" />
+    <Folder Include="Views\Shared\Components\Feature\" />
+    <Folder Include="Views\Shared\Components\Brand\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnvatoMarket.Business\EnvatoMarket.Business.csproj">

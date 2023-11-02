@@ -19,7 +19,7 @@
     <!-- CSS
     ============================================ -->
     <!--===== Vendor CSS (Bootstrap & Icon Font) =====-->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/assets/css/plugins/bootstrap.min.css">
     <link rel="stylesheet" href="~/assets/css/plugins/ionicons.min.css">
     <link rel="stylesheet" href="~/assets/css/plugins/fontawesome.min.css">
@@ -34,7 +34,7 @@
     <!--====== Main Style CSS ======-->
     <link rel="stylesheet" href="~/assets/css/style.css">
 
-    @RenderSection("CostumStyles",false)
+    @RenderSection("CostumStyles", false)
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
     <!-- <link rel="stylesheet" href="~/assets/css/vendor/plugins.min.css">
     <link rel="stylesheet" href="~/assets/css/style.min.css"> -->
@@ -55,7 +55,7 @@
     <!--====== PRELOADER PART ENDS ======-->
     <!--====== Header Part Start ======-->
 
-  @await Component.InvokeAsync("Header");
+    @await Component.InvokeAsync("Header");
 
     <!--====== Header Part Ends ======-->
 
@@ -107,6 +107,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/assets/js/header.js"></script>
     @RenderSection("CostumScripts", false)
 </body>
 

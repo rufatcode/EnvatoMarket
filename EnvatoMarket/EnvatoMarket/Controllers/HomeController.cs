@@ -22,17 +22,13 @@ namespace EnvatoMarket.Controllers
         private readonly IProductService _productService;
         private readonly IAuthorService _authorService;
         private readonly IBlogService _blogService;
-        private readonly IBrandService _brandService;
-        private readonly IFeatureService _featureService;
-        public HomeController(IFeatureService featureService,IBrandService brandService,IBlogService blogService,IAuthorService authorService,ISliderService sliderService,ICategoryService categoryService,IProductService productService)
+        public HomeController(IBlogService blogService,IAuthorService authorService,ISliderService sliderService,ICategoryService categoryService,IProductService productService)
         {
-            _brandService = brandService;
             _blogService = blogService;
             _sliderService = sliderService;
             _categoryService = categoryService;
             _productService = productService;
             _authorService = authorService;
-            _featureService = featureService;
         }
         // GET: /<controller>/
         public async Task<IActionResult> Index()
@@ -43,8 +39,6 @@ namespace EnvatoMarket.Controllers
             homeIndexVM.Products = await _productService.GetAll(p => !p.IsDeleted, "Category", "Brand", "ProductImages", "ProductTags.Tag");
             homeIndexVM.Authors = await _authorService.GetAll(a=>!a.IsDeleted);
             homeIndexVM.Blogs = await _blogService.GetAll(b => !b.IsDeleted);
-            homeIndexVM.Brands = await _brandService.GetAll(b => !b.IsDeleted);
-            homeIndexVM.Features = await _featureService.GetAll(f => !f.IsDeleted);
             return View(homeIndexVM);
         }
         public IActionResult Contact()
@@ -62,6 +56,10 @@ namespace EnvatoMarket.Controllers
             {
                 return PartialView("_ProductPartial", products);
             }
+            else if (id == "1")
+            {
+                return PartialView("_ProductPartial", products.OrderByDescending(p=>p.Created).ToList());
+            }
             if (!await _categoryService.IsExist(c=>c.Id==id&&!c.IsDeleted))
             {
                 return BadRequest();
@@ -74,6 +72,35 @@ namespace EnvatoMarket.Controllers
            
             return PartialView("_ProductPartial",data);
             
+        }
+       
+        public async Task<IActionResult>SearchByProduct(string categoryId)
+        {
+            List<string> productNames = new();
+            if (categoryId=="0")
+            {
+                
+                List<Product> products = await _productService.GetAll(c => !c.IsDeleted);
+                foreach (var product in products)
+                {
+                    productNames.Add(product.Name);
+                }
+                return Ok(productNames);
+            }
+            else if (categoryId==null)
+            {
+                return BadRequest();
+            }
+            else if (!await _categoryService.IsExist(c=>c.Id==categoryId))
+            {
+                return BadRequest();
+            }
+            Category category = await _categoryService.GetEntity(c => !c.IsDeleted&&c.Id==categoryId, "Products");
+            foreach (var product in category.Products)
+            {
+                productNames.Add(product.Name);
+            }
+            return Ok(productNames);
         }
     }
 }

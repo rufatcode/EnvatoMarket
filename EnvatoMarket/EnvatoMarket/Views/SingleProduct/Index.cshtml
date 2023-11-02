@@ -71,7 +71,7 @@
 
                         </ul>
                         <ul class="review-link">
-                            <li><a href="#">(@Model.Product.Comments.Count() Review)</a></li>
+                            <li><a href="#">(@Model.Product.Comments.Where(c=>!c.IsDeleted).ToList().Count() Review)</a></li>
                             <li><a href="#">Write A Review</a></li>
                         </ul>
                     </div>
@@ -190,7 +190,7 @@
                 <div class="product-rating-content">
                     <div class="average-rating">
                         <h4 class="rating-overall">4.5 <span>(Overall)</span></h4>
-                        <p>Based on 9 Comments</p>
+                        <p>Based on @Model.Product.Comments.Count Comments</p>
                     </div>
                     <div class="rating-list d-flex flex-wrap">
                         <div class="single-rating">
@@ -199,7 +199,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <span>(5)</span>
+                            <span>(@Model.Product.Comments.Where(c => c.Rating == 5).ToList().Count())</span>
                         </div>
                         <div class="single-rating">
                             <i class="fas fa-star"></i>
@@ -207,7 +207,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="far fa-star"></i>
-                            <span>(3)</span>
+                            <span>(@Model.Product.Comments.Where(c => c.Rating == 4).ToList().Count())</span>
                         </div>
                         <div class="single-rating">
                             <i class="fas fa-star"></i>
@@ -215,7 +215,7 @@
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i>
                             <i class="far fa-star"></i>
-                            <span>(1)</span>
+                            <span>(@Model.Product.Comments.Where(c => c.Rating == 3).ToList().Count())</span>
                         </div>
                         <div class="single-rating">
                             <i class="fas fa-star"></i>
@@ -223,7 +223,7 @@
                             <i class="far fa-star"></i>
                             <i class="far fa-star"></i>
                             <i class="far fa-star"></i>
-                            <span>(0)</span>
+                            <span>(@Model.Product.Comments.Where(c => c.Rating == 2).ToList().Count())</span>
                         </div>
                         <div class="single-rating">
                             <i class="fas fa-star"></i>
@@ -231,85 +231,115 @@
                             <i class="far fa-star"></i>
                             <i class="far fa-star"></i>
                             <i class="far fa-star"></i>
-                            <span>(0)</span>
+                            <span>(@Model.Product.Comments.Where(c => c.Rating == 1).ToList().Count())</span>
                         </div>
                     </div>
                     <div class="rating-items">
-                        <div class="single-rating-item">
-                            <div class="rating-author d-flex flex-wrap">
-                                <h4 class="author-name">Cristopher Lee</h4>
-                                <ul class="rating-star">
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><span>(5)</span></li>
-                                </ul>
+
+                        @foreach (var comment in Model.Product.Comments)
+                            {
+                                if (!comment.IsDeleted)
+                                {
+
+
+                                    <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h2 class="modal-title text-danger">@comment.AppUser.UserName</h2>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Update Comment</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+
+                                                @using (Html.BeginForm("UpdateComment", "SingleProduct", FormMethod.Post))
+                                                    {
+                                                    <div class="modal-body">
+                                                        <textarea class="w-100" required name="content" placeholder="Write a comment">@comment.Content</textarea>
+                                                        <input name="productId" value="@Model.Product.Id" hidden />
+                                                        <input name="commentId" value="@comment.Id" hidden />
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                    }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="single-rating-item">
+                                <div class="rating-author d-flex flex-wrap">
+                                    <h4 class="author-name @(User.Identity.IsAuthenticated && User.Identity.Name == comment.AppUser.UserName ? "text-danger" : "")">
+                                        <img style="border-radius:50%;width:50px;height:50px;" src="~/assets/images/@(comment.AppUser.ProfileImageUrl == null ? "DemoProfileImage.png" : comment.AppUser.ProfileImageUrl)" />
+                                        @comment.AppUser.UserName
+                                    </h4>
+                                    <ul class="rating-star">
+                                        @for (int i = 0; i < 5; i++)
+                                            {
+                                                if (i < comment.Rating)
+                                                {
+                                                <li><i class="fas fa-star"></i></li>
+                                                }
+                                                else
+                                                {
+                                                <li><i class="far fa-star"></i></li>
+                                                }
+                                            }
+                                    </ul>
+                                </div>
+                                <p>
+                                    @comment.Content
+                                    @if (User.Identity.IsAuthenticated && User.Identity.Name == comment.AppUser.UserName)
+                                    {
+                                        <a style="border:0;" asp-controller="SingleProduct" asp-action="RemoveComment" asp-route-id="@comment.Id" asp-route-productId="@Model.Product.Id"><i style="background-color:white; color:red;" class="fa-solid fa-trash"></i></a>
+                                        <a data-bs-toggle="modal" data-bs-target="#commentModal" style="border:0;"><i style="background-color: white; color: red;" class="fa-regular fa-pen-to-square"> </i></a>
+                                    }
+                                </p>
+                               
                             </div>
-                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli</p>
-                        </div>
-                        <div class="single-rating-item">
-                            <div class="rating-author d-flex flex-wrap">
-                                <h4 class="author-name">Hasan Mubarak</h4>
-                                <ul class="rating-star">
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><span>(5)</span></li>
-                                </ul>
-                            </div>
-                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli</p>
-                        </div>
-                        <div class="single-rating-item">
-                            <div class="rating-author d-flex flex-wrap">
-                                <h4 class="author-name">Rashed Mahmud</h4>
-                                <ul class="rating-star">
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li><span>(5)</span></li>
-                                </ul>
-                            </div>
-                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli</p>
-                        </div>
+                                }
+                            }
                     </div>
 
                     <div class="rating-form">
                         <h4 class="form-title">Add your Comments</h4>
 
-                        <form action="#">
+                        @using (Html.BeginForm("Comment", "SingleProduct", FormMethod.Post))
+                        {
                             <div class="rating-star d-flex">
                                 <span class="title">Rating:</span>
                                 <ul class="RatingIcons">
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
+                                    <li>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="single-form">
+                                        <input name="userId" value="@(Model.AppUser != null ? Model.AppUser.Id : "")" type="text" hidden>
+                                        <input name="productId" value="@Model.Product.Id" type="text" hidden>
+                                        <input id="ratingInput" value="5" name="rating" type="text" hidden>
                                         <label>Name:</label>
-                                        <input type="text" placeholder="Name">
+                                        <input value="@(Model.AppUser != null ? Model.AppUser.UserName : "")" type="text" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-form">
                                         <label>Email:</label>
-                                        <input type="email" placeholder="Email">
+                                        <input value="@(Model.AppUser != null ? Model.AppUser.Email : "")" type="email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="single-form">
                                         <label>Your Review:</label>
-                                        <textarea placeholder="Write a review"></textarea>
+                                        <textarea name="comment" placeholder="Write a review" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -318,7 +348,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div> <!-- Rating Content -->
             </div>
@@ -464,5 +494,7 @@
 <!--====== Newsletter Part Start ======-->
 
 @section CostumScripts{
+
     <script src="~/assets/js/singleProduct.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 }

@@ -3,7 +3,7 @@ $(document).ready(function () {
     var starIcons = $(".RatingIcons>li>i");
     starIcons.click(function () {
         let active = $(this);
-
+        $("#ratingInput").val($(this).index()+1);
         for (let i = 0; i <= $(this).index(); i++) {
             active.removeClass("fa-regular");
             active.addClass("fa-solid");

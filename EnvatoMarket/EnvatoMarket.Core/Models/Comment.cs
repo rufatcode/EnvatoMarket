@@ -13,6 +13,7 @@ namespace EnvatoMarket.Core.Models
 		public string UserId { get; set; }
 		public AppUser AppUser { get; set; }
 		public int Rating { get; set; }
+		public string Content { get; set; }
 		public Comment()
 		{
 		}

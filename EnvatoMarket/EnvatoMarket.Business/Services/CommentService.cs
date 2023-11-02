@@ -104,15 +104,7 @@ namespace EnvatoMarket.Business.Services
                 {
                     entity.Removed = null;
                 }
-                List<Comment> comments = await GetAll();
-                if (comments.Where(s => s.Id != entity.Id).All(s => s.IsDeleted))
-                {
-                    if (entity.IsDeleted)
-                    {
-                        return false;
-                    }
-
-                }
+                
                 await _commentRepository.Update(entity);
                 await _commentRepository.Commit();
                 return true;

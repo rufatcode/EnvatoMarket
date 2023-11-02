@@ -114,13 +114,26 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Roles", "Roles Must not be Null");
                 return View();
             }
-           
+            _mapper.Map(userUpdateVM, appUser);
+            if (userUpdateVM.IsDeleted)
+            {
+                IList<string> roles = await _userManager.GetRolesAsync(appUser);
+
+                foreach (var role in roles)
+                {
+                    if (role == "Admin" || role == "SupperAdmin")
+                    {
+                        return BadRequest();
+                    }
+                }
+            }
+            else
+            {
+                appUser.Removed = null;
+            }
+            
             await _userManager.RemoveFromRolesAsync(appUser, existUserUpdateVM.Roles);
-            appUser.UserName = userUpdateVM.UserName;
-            appUser.Email = userUpdateVM.Email;
-            appUser.PhoneNumber = userUpdateVM.PhoneNumber;
-            appUser.IsActive = userUpdateVM.IsActive;
-            appUser.FullName = userUpdateVM.FullName;
+           
             appUser.Updated = DateTime.Now;
             await _userManager.AddToRolesAsync(appUser, userUpdateVM.Roles);
             IdentityResult result= await _userManager.UpdateAsync(appUser);

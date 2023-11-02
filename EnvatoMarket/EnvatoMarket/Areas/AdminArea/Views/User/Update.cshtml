@@ -47,6 +47,13 @@
                     <span class="text-inverse">Active</span>
                 </label>
             </div>
+            <div class="checkbox-fade fade-in-primary d-">
+                <label>
+                    <input asp-for="IsDeleted" />
+                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                    <span class="text-inverse">Deleted</span>
+                </label>
+            </div>
             <br />
             <label class="text-danger">Roles</label>
             <br />
@@ -55,10 +62,10 @@
                 <label>
                     <span class="text-inverse">@role.Key</span>
                     <input @(role.Key == "SupperAdmin" ? "disabled" : "") name="roles" value="@role.Key" type="checkbox" @(role.Value == true ? "checked" : "") />
-                                        
+
                 </label>
                 <br />
-                                   
+
 
             }
             <span class="text-danger" asp-validation-for="Roles"></span>

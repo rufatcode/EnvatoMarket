@@ -17,6 +17,7 @@ namespace EnvatoMarket.Business.ViewModels.UsersVM
         public string? PhoneNumber { get; set; }
         [Required, MinLength(5)]
         public string UserName { get; set; }
+        public bool IsDeleted { get; set; }
         public UserUpdateVM()
 		{
 		}

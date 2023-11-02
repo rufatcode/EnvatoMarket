@@ -65,13 +65,18 @@
                                     <a class="mx-3" asp-action="Detail" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
                                     <a asp-action="Update" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
                                 }
+
                                 else
                                 {
                                     <a class="mx-3" asp-action="Detail" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
-                                    <a asp-action="Delete" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+                                    @if (!user.IsDeleted)
+                                    {
+                                        <a asp-action="Delete" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+                                    }
                                     <a asp-action="Update" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
 
                                 }
+
 
                             </td>
                         </tr>

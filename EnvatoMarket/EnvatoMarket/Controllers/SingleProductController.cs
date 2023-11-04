@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
+using Product = EnvatoMarket.Core.Models.Product;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -50,7 +51,19 @@ namespace EnvatoMarket.Controllers
         [HttpPost]
         public async Task<IActionResult> Comment(string userId,string productId,string comment,int rating)
         {
-            if (comment==null)
+            if (userId==null||productId==null)
+            {
+                return BadRequest();
+            }
+            else if (! await _productService.IsExist(p=>p.Id==productId&&!p.IsDeleted))
+            {
+                return BadRequest();
+            }
+            else if (await _userManager.FindByIdAsync(userId)==null)
+            {
+                return BadRequest();
+            }
+            else if (comment==null)
             {
                 return Redirect($"/SingleProduct/Index/{productId}");
             }
@@ -62,8 +75,17 @@ namespace EnvatoMarket.Controllers
             UserComment.Rating = rating;
             UserComment.UserId = userId;
             UserComment.Content = comment;
+           
             var isSuccess = await _commentService.Create(UserComment);
             if (!isSuccess)
+            {
+                return BadRequest();
+            }
+            Product product = await _productService.GetEntity(p => p.Id == productId);
+            List<Comment> comments = await _commentService.GetAll(c => !c.IsDeleted && c.ProductId == productId);
+            product.StarsCount = (int)(Math.Floor((decimal)comments.Sum(c => c.Rating) / comments.Count) + 1);
+            bool resoult= await _productService.Update(product);
+            if (!resoult)
             {
                 return BadRequest();
             }
@@ -80,7 +102,14 @@ namespace EnvatoMarket.Controllers
                 return BadRequest();
             }
             await _commentService.Delete(id);
-            
+            Product product = await _productService.GetEntity(p => p.Id == productId);
+            List<Comment> comments = await _commentService.GetAll(c => !c.IsDeleted && c.ProductId == productId);
+            product.StarsCount = (int)(Math.Floor((decimal)comments.Sum(c => c.Rating) / comments.Count)+1);
+            bool resoult = await _productService.Update(product);
+            if (!resoult)
+            {
+                return BadRequest();
+            }
             return Redirect($"/SingleProduct/Index/{productId}"); 
         }
         public async Task<IActionResult> UpdateComment(string commentId,string productId,string content)

@@ -21,6 +21,7 @@ $(document).ready(function () {
             }
         })
     })
+    
     $.ajax({
         methood: "get",
         url: `/Home/SearchByProduct?categoryId=0`,

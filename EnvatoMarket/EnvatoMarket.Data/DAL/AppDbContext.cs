@@ -21,6 +21,10 @@ namespace EnvatoMarket.DAL
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<Check> Checks { get; set; }
+        public DbSet<CheckProduct> CheckProducts { get; set; }
         public AppDbContext(DbContextOptions options):base(options)
 		{
 		}

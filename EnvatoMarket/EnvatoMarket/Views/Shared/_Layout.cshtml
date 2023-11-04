@@ -54,7 +54,7 @@
 
     <!--====== PRELOADER PART ENDS ======-->
     <!--====== Header Part Start ======-->
-
+    <span class="text-danger" id="alertForSession1">@TempData["Info"]  </span>
     @await Component.InvokeAsync("Header");
 
     <!--====== Header Part Ends ======-->
@@ -69,10 +69,11 @@
                         <p>allup is a powerful eCommerce HTML Template</p>
 
                         <div class="newsletter-forn">
-                            <form action="#">
-                                <input type="text" placeholder="Your Email address">
+                            @using (Html.BeginForm("Subscribe", "Home", FormMethod.Post))
+                            {
+                                <input name="email" type="email" placeholder="Your Email address">
                                 <button class="main-btn">Subscribe</button>
-                            </form>
+                            }
                         </div>
                     </div> <!-- newsletter content -->
                 </div>
@@ -107,8 +108,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+    @RenderSection("CostumScripts", false);
     <script src="~/assets/js/header.js"></script>
-    @RenderSection("CostumScripts", false)
+    <script>const myTimeout = setTimeout(() => {
+            document.getElementById("alertForSession1").innerHTML = "";
+        }, 5000);</script>
 </body>
 
 

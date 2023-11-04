@@ -1,14 +1,5 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/ViewComponents/ContactViewComponent.cs">
-    <Files>
-      <File FileName="EnvatoMarket/Views/Home/Contact.cshtml" Line="81" Column="1" />
-      <File FileName="EnvatoMarket/Views/Home/Index.cshtml" Line="390" Column="1" />
-      <File FileName="EnvatoMarket/Views/Home/About.cshtml" Line="3" Column="2" />
-      <File FileName="EnvatoMarket/Controllers/HomeController.cs" Line="50" Column="27" />
-      <File FileName="EnvatoMarket/ViewComponents/HeaderViewComponent.cs" Line="1" Column="1" />
-      <File FileName="EnvatoMarket/ViewComponents/ContactViewComponent.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -16,44 +7,42 @@
             <Node name="EnvatoMarket">
               <Node name="Controllers" expanded="True" />
               <Node name="Properties" expanded="True" />
-              <Node name="ViewComponents" expanded="True">
-                <Node name="ContactViewComponent.cs" selected="True" />
-              </Node>
-              <Node name="Views">
-                <Node name="Shared">
-                  <Node name="Components">
-                    <Node name="Brand" expanded="True" />
-                    <Node name="Feature" expanded="True" />
+              <Node name="ViewComponents" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="Components" expanded="True">
+                    <Node name="Header" expanded="True" />
                   </Node>
                 </Node>
-                <Node name="SingleProduct" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="assets" expanded="True">
-                  <Node name="js" expanded="True" />
-                </Node>
-              </Node>
+              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="EnvatoMarket.Business">
-              <Node name="Mappings" expanded="True">
-                <Node name="AutoMapper" expanded="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
               <Node name="ViewModels" expanded="True">
-                <Node name="SingleProductVM" expanded="True" />
+                <Node name="BasketsVM" expanded="True" />
+                <Node name="SettingsVM" expanded="True" />
               </Node>
             </Node>
             <Node name="EnvatoMarket.Core" expanded="True">
               <Node name="Models" expanded="True" />
+            </Node>
+            <Node name="EnvatoMarket.Data" expanded="True">
+              <Node name="Implimentations" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/Controllers/CheckOutController.cs" relfile="EnvatoMarket/Controllers/CheckOutController.cs" line="109" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
 </Properties>

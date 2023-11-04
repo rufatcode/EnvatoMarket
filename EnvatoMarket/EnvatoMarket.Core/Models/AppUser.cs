@@ -15,6 +15,7 @@ namespace EnvatoMarket.Models
         public string AddedBy { get; set; }
         public bool IsDeleted { get; set; }
 		public List<Comment> Comments { get; set; }
+        public List<Check> Checkes { get; set; }
         public AppUser()
 		{
 		}

@@ -47,6 +47,9 @@
     <None Remove="ViewModels\AuthorVM\" />
     <None Remove="ViewModels\FeatureVM\" />
     <None Remove="ViewModels\SingleProductVM\" />
+    <None Remove="ViewModels\ContactVM\" />
+    <None Remove="ViewModels\SubscribeVM\" />
+    <None Remove="ViewModels\BasketsVM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -68,5 +71,8 @@
     <Folder Include="ViewModels\BlogVM\" />
     <Folder Include="ViewModels\FeatureVM\" />
     <Folder Include="ViewModels\SingleProductVM\" />
+    <Folder Include="ViewModels\ContactVM\" />
+    <Folder Include="ViewModels\SubscribeVM\" />
+    <Folder Include="ViewModels\BasketsVM\" />
   </ItemGroup>
 </Project>

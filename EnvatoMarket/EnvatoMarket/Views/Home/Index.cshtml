@@ -145,7 +145,7 @@
                                             <img style="width:350px;overflow:hidden;" class="second-image" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
                                         <ul class="product-meta">
-                                            <li><a href="#"><i class="icon ion-bag"></i></a></li>
+                                            <li><a asp-controller="Basket" asp-action="Basket" asp-route-id="@product.Id"><i class="icon ion-bag"></i></a></li>
                                             <li><a href="#"><i class="icon ion-android-favorite-outline"></i></a></li>
                                             <li><a href="#"><i class="icon ion-android-options"></i></a></li>
                                             <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
@@ -346,6 +346,12 @@
                                             <img class="first-image" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" alt="product">
                                             <img class="second-image" src="/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsHover).ImageUrl" alt="product">
                                         </a>
+                                        <ul class="product-meta">
+                                            <li><a asp-controller="Basket" asp-action="Basket" asp-route-id="@product.Id"><i class="icon ion-bag"></i></a></li>
+                                            <li><a href="#"><i class="icon ion-android-favorite-outline"></i></a></li>
+                                            <li><a href="#"><i class="icon ion-android-options"></i></a></li>
+                                            <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
+                                        </ul>
                                         @if (product.SalePercentage > 0)
                                         {
                                             <span class="discount-product">-@product.SalePercentage%</span>

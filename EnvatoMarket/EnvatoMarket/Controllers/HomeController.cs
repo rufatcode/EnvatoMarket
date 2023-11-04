@@ -22,13 +22,19 @@ namespace EnvatoMarket.Controllers
         private readonly IProductService _productService;
         private readonly IAuthorService _authorService;
         private readonly IBlogService _blogService;
-        public HomeController(IBlogService blogService,IAuthorService authorService,ISliderService sliderService,ICategoryService categoryService,IProductService productService)
+        private readonly ISettingService _settingService;
+        private readonly IContactService _contactService;
+        private readonly ISubscribeService _subscribeService;
+        public HomeController(ISubscribeService subscribeService,IContactService contactService,ISettingService settingService,IBlogService blogService,IAuthorService authorService,ISliderService sliderService,ICategoryService categoryService,IProductService productService)
         {
+            _subscribeService = subscribeService;
+            _contactService = contactService;
             _blogService = blogService;
             _sliderService = sliderService;
             _categoryService = categoryService;
             _productService = productService;
             _authorService = authorService;
+            _settingService = settingService;
         }
         // GET: /<controller>/
         public async Task<IActionResult> Index()
@@ -44,6 +50,25 @@ namespace EnvatoMarket.Controllers
         public IActionResult Contact()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateConnection(string name,string email,string subject,string message)
+        {
+            if (name==null||email==null||subject==null||message==null||email.Length<5)
+            {
+                TempData["Info"] = "Something went wrong";
+                return RedirectToAction("Contact");
+            }
+            await _contactService.Create(new Contact
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName=name,
+                Email=email,
+                Subject=subject,
+                Message=message
+            }) ;
+            TempData["Info"] = "Messaje Successfully sended";
+            return RedirectToAction("Contact");
         }
         public async Task<IActionResult> SearchByCategory(string id)
         {
@@ -101,6 +126,47 @@ namespace EnvatoMarket.Controllers
                 productNames.Add(product.Name);
             }
             return Ok(productNames);
+        }
+        public async Task<IActionResult>GetProductByName(string productName)
+        {
+            if (productName == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else if (!await _productService.IsExist(p=>p.Name.ToLower()== productName.ToLower()&&!p.IsDeleted))
+            {
+                return RedirectToAction("Index");
+            }
+            Product product=await _productService.GetEntity(p => p.Name.ToLower() == productName.ToLower());
+            return Redirect($"/SingleProduct/Index/{product.Id}");
+        }
+        public async Task<IActionResult> About()
+        {
+            return View(await _settingService.GetSettingByKeyValue(s=>!s.IsDeleted));
+        }
+        public async Task<IActionResult> Subscribe(string email)
+        {
+            if (await _subscribeService.IsExist(s=>s.Email.ToLower()==email.ToLower()))
+            {
+                TempData["Info"] = "Something went wrong";
+                return RedirectToAction("Index");
+            }
+            else if (email.Length<6)
+            {
+                TempData["Info"] = "Something went wrong";
+                return RedirectToAction("Index");
+            }
+            bool isSuccess= await _subscribeService.Create(new Subscribe
+            {
+                Id = Guid.NewGuid().ToString(),
+                Email = email
+            });
+            if (!isSuccess)
+            {
+                return BadRequest();
+            }
+            TempData["Info"] = "Subscribe successfuly added";
+            return RedirectToAction("Index");
         }
     }
 }

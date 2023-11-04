@@ -73,6 +73,17 @@ namespace EnvatoMarket
 			services.AddScoped<IFeatureRepository, FeatureRepository>();
 			services.AddScoped<ICommentRepository, CommentRepository>();
 			services.AddScoped<ICommentService, CommentService>();
+			services.AddScoped<ISettingRepository, SettingRepository>();
+            services.AddScoped<ISettingService, SettingService>();
+            services.AddScoped<IContactRepository, ContactRepository>();
+			services.AddScoped<IContactService, ContactService>();
+			services.AddScoped<ISubscribeRepository, SubscribeRepository>();
+			services.AddScoped<ISubscribeService, SubscribeService>();
+			services.AddScoped<ICheckProductRepository, CheckProductRepository>();
+			services.AddScoped<ICheckProductService, CheckProductService>();
+			services.AddScoped<ICheckRepository, CheckRepository>();
+			services.AddScoped<ICheckService, CheckService>();
+			services.AddScoped<IBasketServices, BasketServices>();
             services.AddAutoMapper(typeof(HomeProfile).Assembly);
 			services.AddAutoMapper(typeof(UserProfile).Assembly);
 			services.AddAutoMapper(typeof(SliderProfile).Assembly);
@@ -83,6 +94,9 @@ namespace EnvatoMarket
 			services.AddAutoMapper(typeof(AuthorProfile).Assembly);
 			services.AddAutoMapper(typeof(BlogProfile).Assembly);
 			services.AddAutoMapper(typeof(FeatureProfile).Assembly);
+			services.AddAutoMapper(typeof(SettingProfile).Assembly);
+			services.AddAutoMapper(typeof(ContactProfile).Assembly);
+			services.AddAutoMapper(typeof(SubscribeProfile).Assembly);
         }
 	}
 }

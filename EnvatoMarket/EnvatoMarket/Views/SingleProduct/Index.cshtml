@@ -236,7 +236,7 @@
                     </div>
                     <div class="rating-items">
 
-                        @foreach (var comment in Model.Product.Comments)
+                        @foreach (var comment in Model.Product.Comments.OrderBy(c=>c.Created).ToList())
                             {
                                 if (!comment.IsDeleted)
                                 {
@@ -296,6 +296,7 @@
                                         <a data-bs-toggle="modal" data-bs-target="#commentModal" style="border:0;"><i style="background-color: white; color: red;" class="fa-regular fa-pen-to-square"> </i></a>
                                     }
                                 </p>
+                                        <span class="text-success">@comment.Created.ToString("d MMM yy h:mm tt")</span>
                                
                             </div>
                                 }

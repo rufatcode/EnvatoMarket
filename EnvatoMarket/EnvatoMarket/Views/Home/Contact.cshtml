@@ -7,7 +7,7 @@
     <div class="container-fluid custom-container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
                 <li class="breadcrumb-item active">Contact</li>
             </ol>
         </nav>
@@ -30,26 +30,28 @@
             <div class="col-lg-7 col-xl-8">
                 <div class="contact-form mt-30">
                     <h4 class="allup-title">Billing Address</h4>
-                    <form id="contact-form" action="https://demo.hasthemes.com/allup/allup/~/assets/contact.php" method="POST">
+                    @using (Html.BeginForm("CreateConnection", "Home", FormMethod.Post))
+                        {
+                            <span class="text-danger" id="alertForSession">@TempData["Info"] </span>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="single-form">
-                                    <input type="text" name="name" placeholder="Your Name">
+                                    <input type="text" name="name" placeholder="Your Name" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="single-form">
-                                    <input type="email" name="email" placeholder="Your Email">
+                                    <input type="email" name="email" placeholder="Your Email" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single-form">
-                                    <input type="text" name="subject" placeholder="Subject">
+                                    <input type="text" name="subject" placeholder="Subject" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single-form">
-                                    <textarea name="message" placeholder="Your Message"></textarea>
+                                    <textarea name="message" placeholder="Your Message" required></textarea>
                                 </div>
                             </div>
                             <p class="form-message"></p>
@@ -59,10 +61,10 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                        }
                 </div>
             </div>
-            @await Component.InvokeAsync("Contact");
+            @await Component.InvokeAsync("Contact")
         </div>
     </div>
 </section>
@@ -70,12 +72,12 @@
 <!--====== Contact Part Ends ======-->
 <!--====== Brand Part Start ======-->
 
-@await Component.InvokeAsync("Brand") ;
+@await Component.InvokeAsync("Brand") 
 
 <!--====== Brand Part Ends ======-->
 <!--====== Features Banner Part Start ======-->
 
-@await Component.InvokeAsync("Feature") ;
+@await Component.InvokeAsync("Feature") 
 
 <!--====== Features Banner Part Ends ======-->
 @section CostumScripts{
@@ -101,4 +103,9 @@
     <!--====== Google Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
     <script src="~/assets/js/map-script.js"></script>
+<script>
+    const myTimeout = setTimeout(() => {
+        document.getElementById("alertForSession").innerHTML = "";
+    }, 5000);
+</script>
 }

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.ViewModels.ProductVM;
 using EnvatoMarket.Core.Models;
+using EnvatoMarket.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,14 +28,18 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IBrandService _brandService;
         private readonly ITagService _tagService;
-        public ProductController(IProductService productService, IFileService fileService, IMapper mapper,ICategoryService categoryService,IBrandService brandService,ITagService tagService)
+        private readonly ISendEmail _sendEmail;
+        private readonly ISubscribeService _subscribeService;
+        public ProductController(ISubscribeService subscribeService,IProductService productService, IFileService fileService, IMapper mapper,ICategoryService categoryService,IBrandService brandService,ITagService tagService,ISendEmail sendEmail)
         {
+            _subscribeService = subscribeService;
             _productService = productService;
             _fileService = fileService;
             _mapper = mapper;
             _categoryService = categoryService;
             _tagService = tagService;
             _brandService = brandService;
+            _sendEmail = sendEmail;
         }
         public async Task<IActionResult> Index()
         {
@@ -91,7 +98,7 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             }
             Product product = _mapper.Map<Product>(createProductVM);
             product.Id = Guid.NewGuid().ToString();
-            product.StarsCount = 0;
+            product.StarsCount = 5;
             product.AddedBy = User.Identity.Name.ToString();
             product.ProductImages.Add(new ProductImage {
                 Id=Guid.NewGuid().ToString(),
@@ -132,6 +139,18 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                 ModelState.AddModelError("", "Something went wrong");
                 return View();
             }
+            string link = Url.Action(nameof(Index), "SingleProduct", new {Area="", id=product.Id }, Request.Scheme, Request.Host.ToString());
+            var imageFilePath = $"wwwroot/assets/images/{product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl}"; // Replace with the actual path to your image file
+            var imageAttachment = new Attachment(imageFilePath, MediaTypeNames.Image.Jpeg);
+            string emailMessageBody = $"<a href={link}>" +
+                $"<p class='text-success'>We Have New Product do you want to see it?<p>" +
+               $"</a>";
+            foreach (var email in await _subscribeService.GetAll(s=>!s.IsDeleted))
+            {
+                _sendEmail.SendWithAtachment("rufatri@code.edu.az", "Allup", email.Email, emailMessageBody, "Subscripe New Product", imageAttachment);
+            }
+           
+            
             return RedirectToAction("Index");
         }
         public async Task<IActionResult>Delete(string id)

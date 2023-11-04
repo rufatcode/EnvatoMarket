@@ -54,6 +54,10 @@
     <None Remove="Areas\AdminArea\Views\Feature\" />
     <None Remove="Views\Shared\Components\Feature\" />
     <None Remove="Views\Shared\Components\Brand\" />
+    <None Remove="Areas\AdminArea\Views\Setting\" />
+    <None Remove="Areas\AdminArea\Views\Contact\" />
+    <None Remove="Areas\AdminArea\Views\Subscribe\" />
+    <None Remove="Views\CheckOut\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -84,6 +88,10 @@
     <Folder Include="Areas\AdminArea\Views\Feature\" />
     <Folder Include="Views\Shared\Components\Feature\" />
     <Folder Include="Views\Shared\Components\Brand\" />
+    <Folder Include="Areas\AdminArea\Views\Setting\" />
+    <Folder Include="Areas\AdminArea\Views\Contact\" />
+    <Folder Include="Areas\AdminArea\Views\Subscribe\" />
+    <Folder Include="Views\CheckOut\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnvatoMarket.Business\EnvatoMarket.Business.csproj">

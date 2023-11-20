@@ -10,8 +10,7 @@
   "profiles": {
     "EnvatoMarket": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5777",
+      "applicationUrl": "http://localhost:5771",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

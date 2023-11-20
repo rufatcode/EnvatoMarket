@@ -1,0 +1,30 @@
+﻿@model List<Product>
+@foreach (var product in Model)
+{
+
+
+    <tr>
+        <td>
+            <img width="75" height="75" style="border-radius:50%;" src="~/assets/images/@product.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl" />
+        </td>
+        <td>@(product.Name.Length>7?product.Name.Substring(0,7) +"...":product.Name)</td>
+        <td>@product.Price$</td>
+        <td>@product.SalePercentage%</td>
+        <td>@product.Tax$</td>
+        <td>@(product.IsAvailability&&product.Count>0&&product.IsDeleted==false?"in stock":"is not avaliable")</td>
+        <td>@product.Count</td>
+        <td>@product.ProductCode</td>
+        <td>@(product.IsDeleted?"Deleted":"Active")</td>
+        <td>@(product.Removed.HasValue?product.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>@(product.Updated.HasValue?product.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>
+            @if (!product.IsDeleted)
+            {
+                <a asp-action="Delete" asp-route-Id="@product.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+            }
+            <a asp-action="Update" asp-route-Id="@product.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+            <a class="mx-3" asp-action="Detail" asp-route-Id="@product.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
+        </td>
+    </tr>
+
+}

@@ -1,0 +1,22 @@
+﻿@model List<Contact>
+@foreach (var contact in Model)
+{
+
+
+    <tr>
+        <td>@contact.UserName</td>
+        <td>@contact.Email</td>
+        <td>@(contact.IsDeleted?"Deleted":"Active")</td>
+        <td>@(contact.Removed.HasValue? contact.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>@(contact.Updated.HasValue? contact.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>
+            @if (!contact.IsDeleted)
+            {
+                <a asp-action="Delete" asp-route-Id="@contact.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+            }
+            <a asp-action="Update" asp-route-Id="@contact.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+            <a class="mx-3" asp-action="Detail" asp-route-Id="@contact.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
+        </td>
+    </tr>
+
+}

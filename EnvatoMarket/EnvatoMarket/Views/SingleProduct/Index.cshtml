@@ -173,7 +173,7 @@
 <section class="product-description-area pt-50">
     <div class="container-fluid custom-container">
         <ul class="nav justify-content-center" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
+            <li class="nav-item" role="presentation">ADD YOUR COMMENTS
                 <a class="active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
             </li>
             <li class="nav-item" role="presentation">
@@ -242,7 +242,7 @@
                                 {
 
 
-                                    <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="commentModal@(comment.Id)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -293,7 +293,7 @@
                                     @if (User.Identity.IsAuthenticated && User.Identity.Name == comment.AppUser.UserName)
                                     {
                                         <a style="border:0;" asp-controller="SingleProduct" asp-action="RemoveComment" asp-route-id="@comment.Id" asp-route-productId="@Model.Product.Id"><i style="background-color:white; color:red;" class="fa-solid fa-trash"></i></a>
-                                        <a data-bs-toggle="modal" data-bs-target="#commentModal" style="border:0;"><i style="background-color: white; color: red;" class="fa-regular fa-pen-to-square"> </i></a>
+                                        <a data-bs-toggle="modal" data-bs-target="#commentModal@(comment.Id)" style="border:0;"><i style="background-color: white; color: red;" class="fa-regular fa-pen-to-square"> </i></a>
                                     }
                                 </p>
                                         <span class="text-success">@comment.Created.ToString("d MMM yy h:mm tt")</span>

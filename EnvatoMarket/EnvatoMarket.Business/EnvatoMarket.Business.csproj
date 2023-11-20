@@ -50,6 +50,10 @@
     <None Remove="ViewModels\ContactVM\" />
     <None Remove="ViewModels\SubscribeVM\" />
     <None Remove="ViewModels\BasketsVM\" />
+    <None Remove="Hubs\" />
+    <None Remove="ViewModels\AdressVM\" />
+    <None Remove="ViewModels\MyAccountVM\" />
+    <None Remove="ViewModels\ChatVM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -74,5 +78,9 @@
     <Folder Include="ViewModels\ContactVM\" />
     <Folder Include="ViewModels\SubscribeVM\" />
     <Folder Include="ViewModels\BasketsVM\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="ViewModels\AdressVM\" />
+    <Folder Include="ViewModels\MyAccountVM\" />
+    <Folder Include="ViewModels\ChatVM\" />
   </ItemGroup>
 </Project>

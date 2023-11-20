@@ -27,9 +27,16 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             _mapper = mapper;
             _settingService = settingService;
         }
+        public async Task<IActionResult> Pagination(int skip, int take = 4)
+        {
+            var data = await _settingService.GetAll();
+            return PartialView("_SettingPartial", data.Skip(skip).Take(take).ToList());
+        }
         public async Task<IActionResult> Index()
         {
-            return View(await _settingService.GetAll());
+            var data = await _settingService.GetAll();
+            ViewBag.ProductCount = data.Count;
+            return View(data.Take(4).ToList());
         }
         public IActionResult Create()
         {

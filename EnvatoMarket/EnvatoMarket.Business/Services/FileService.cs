@@ -27,7 +27,11 @@ namespace EnvatoMarket.Business.Services
 
         public void DeleteImage(string path)
         {
-            System.IO.File.Delete(Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", path));
+            if (System.IO.File.Exists(Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", path)))
+            {
+                System.IO.File.Delete(Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", path));
+            }
+            
         }
 
         public bool IsImage(IFormFile file)

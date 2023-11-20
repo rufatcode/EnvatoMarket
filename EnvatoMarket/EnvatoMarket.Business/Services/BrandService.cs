@@ -19,7 +19,7 @@ namespace EnvatoMarket.Business.Services
         {
             try
             {
-                if (await IsExist(c => c.Name == entity.Name))
+                if (await IsExist(b => b.Name == entity.Name))
                 {
                     return false;
                 }
@@ -37,17 +37,17 @@ namespace EnvatoMarket.Business.Services
         {
             try
             {
-                if (!await IsExist(c => c.Id == id))
+                if (!await IsExist(b => b.Id == id))
                 {
                     return false;
                 }
-                Brand brand = await GetEntity(c => c.Id == id);
+                Brand brand = await GetEntity(b => b.Id == id);
                 if (brand.IsDeleted)
                 {
                     return false;
                 }
-                List<Brand> categories = await GetAll();
-                if (categories.Where(s => s.Id != id).All(s => s.IsDeleted))
+                List<Brand> brands = await GetAll();
+                if (brands.Where(b => b.Id != id).All(b => b.IsDeleted))
                 {
                     return false;
                 }
@@ -109,7 +109,7 @@ namespace EnvatoMarket.Business.Services
                     entity.Removed = null;
                 }
                 List<Brand> brands = await GetAll();
-                if (brands.Where(s => s.Id != entity.Id).All(s => s.IsDeleted))
+                if (brands.Where(b => b.Id != entity.Id).All(b => b.IsDeleted))
                 {
                     if (entity.IsDeleted)
                     {

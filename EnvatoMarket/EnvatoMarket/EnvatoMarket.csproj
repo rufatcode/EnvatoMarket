@@ -58,6 +58,9 @@
     <None Remove="Areas\AdminArea\Views\Contact\" />
     <None Remove="Areas\AdminArea\Views\Subscribe\" />
     <None Remove="Views\CheckOut\" />
+    <None Remove="Views\Blog\" />
+    <None Remove="Views\Chat\" />
+    <None Remove="Views\MyAccount\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -92,6 +95,9 @@
     <Folder Include="Areas\AdminArea\Views\Contact\" />
     <Folder Include="Areas\AdminArea\Views\Subscribe\" />
     <Folder Include="Views\CheckOut\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\Chat\" />
+    <Folder Include="Views\MyAccount\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnvatoMarket.Business\EnvatoMarket.Business.csproj">

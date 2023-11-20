@@ -30,9 +30,16 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             _blogService = blogService;
             _fileService = fileService;
         }
+        public async Task<IActionResult> Pagination(int skip, int take = 4)
+        {
+            var data = await _blogService.GetAll();
+            return PartialView("_BlogPartial", data.Skip(skip).Take(take).ToList());
+        }
         public async Task<IActionResult> Index()
         {
-            return View(await _blogService.GetAll());
+            var data = await _blogService.GetAll();
+            ViewBag.ProductCount = data.Count;
+            return View(data.Take(4).ToList());
         }
         public IActionResult Create()
         {
@@ -133,8 +140,12 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                     ModelState.AddModelError("Image", "File length must be smaller than 1 kb");
                     return View();
                 }
+                if (blog.BlogImage!=null)
+                {
+                    _fileService.DeleteImage(blog.BlogImage);
+                }
                 blog.BlogImage = _fileService.CreateImage(updateBlogVM.Image);
-                _fileService.DeleteImage(blog.BlogImage);
+               
             }
             _mapper.Map(updateBlogVM, blog);
             bool resoult = await _blogService.Update(blog);

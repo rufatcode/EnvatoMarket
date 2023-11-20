@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnvatoMarket.Business.Interfaces;
+using EnvatoMarket.Business.Services;
 using EnvatoMarket.Business.ViewModels.SliderVM;
 using EnvatoMarket.Core.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -27,9 +28,16 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             _mapper = mapper;
             _fileService = fileService;
         }
+        public async Task<IActionResult> Pagination(int skip, int take = 4)
+        {
+            var data = await _sliderService.GetAll();
+            return PartialView("_SliderPartial", data.Skip(skip).Take(take).ToList());
+        }
         public async Task<IActionResult> Index()
         {
-            return View(await _sliderService.GetAll());
+            var data = await _sliderService.GetAll();
+            ViewBag.ProductCount = data.Count;
+            return View(data.Take(4).ToList());
         }
         public async Task<IActionResult> Create()
         {
@@ -118,7 +126,11 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                     ModelState.AddModelError("Image", "Length is greater than 1kb");
                     return View();
                 }
-                _fileService.DeleteImage(oldSlider.ImageUrl);
+                if (oldSlider.ImageUrl!=null)
+                {
+                    _fileService.DeleteImage(oldSlider.ImageUrl);
+                }
+               
                oldSlider.ImageUrl= _fileService.CreateImage(updateSliderVM.Image);
                 
             }

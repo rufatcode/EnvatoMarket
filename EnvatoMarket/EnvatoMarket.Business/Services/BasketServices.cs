@@ -70,20 +70,20 @@ namespace EnvatoMarket.Business.Services
         }
         public async Task<List<BasketVM>> Show()
         {
-            List<BasketVM> basketVM = new();
+            List<BasketVM> basketVMs = new();
             List<ProductToBasket> productToBaskets = new();
             string data = _httpContextAccessor.HttpContext.Request.Cookies["Basket"];
             if (data == null)
             {
-                return basketVM;
+                return basketVMs;
             }
             productToBaskets = JsonConvert.DeserializeObject<List<ProductToBasket>>(data);
             foreach (var item in productToBaskets)
             {
                 Product exisctProduct = await _productService.GetEntity(p => p.Id == item.Id, "ProductImages");
-                basketVM.Add(new() { Id = exisctProduct.Id, Name = exisctProduct.Name, ImgSrc = exisctProduct.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl, Price = exisctProduct.Price, ProductCount = item.ProductCount,Tax=exisctProduct.Tax });
+                basketVMs.Add(new() { Id = exisctProduct.Id, Name = exisctProduct.Name, ImgSrc = exisctProduct.ProductImages.FirstOrDefault(pi=>pi.IsMain).ImageUrl, Price = exisctProduct.Price, ProductCount = item.ProductCount,Tax=exisctProduct.Tax });
             }
-            return basketVM;
+            return basketVMs;
         }
     }
 }

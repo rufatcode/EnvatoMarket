@@ -1,0 +1,50 @@
+﻿@model List<GetUserVM>
+@foreach (var user in Model)
+{
+
+
+    <tr>
+        <td>
+            @if (user.ProfileImageUrl == null)
+            {
+                <img width="75" height="75" style="border-radius:50%;" src="~/assets/images/DemoProfileImage.png" />
+            }
+            else
+            {
+                <img style="border-radius:50%;" width="75" height="75" src="~/assets/images/@user.ProfileImageUrl" />
+            }
+        </td>
+        <td>@user.UserName</td>
+        <td>@user.Email</td>
+        <td>@(user.PhoneNumber==null?"+994xx xxx xx xx":user.PhoneNumber)</td>
+        <td>@(user.IsDeleted?"Deleted":"Active")</td>
+        <td>@(user.IsActive?"Active":"Blocked")</td>
+        <td>@(string.Join(" ",user.Roles))</td>
+        <td>
+            @if (user.Roles.Contains("SupperAdmin"))
+            {
+                <a class="mx-3" asp-action="Detail" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
+
+
+            }
+            else if (user.Roles.Contains("Admin"))
+            {
+                <a class="mx-3" asp-action="Detail" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
+                <a asp-action="Update" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+            }
+
+            else
+            {
+                <a class="mx-3" asp-action="Detail" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
+                @if (!user.IsDeleted)
+                {
+                    <a asp-action="Delete" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+                }
+                <a asp-action="Update" asp-route-Id="@user.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+
+            }
+
+
+        </td>
+    </tr>
+}

@@ -1,0 +1,20 @@
+﻿@model List<Subscribe>
+@foreach (var subscribe in Model)
+{
+
+
+    <tr>
+        <td>@subscribe.Email</td>
+        <td>@(subscribe.IsDeleted?"Deleted":"Active")</td>
+        <td>@(subscribe.Removed.HasValue? subscribe.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>@(subscribe.Updated.HasValue? subscribe.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>
+            @if (!subscribe.IsDeleted)
+            {
+                <a asp-action="Delete" asp-route-Id="@subscribe.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+            }
+            <a asp-action="Update" asp-route-Id="@subscribe.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+        </td>
+    </tr>
+
+}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Emit;
 using EnvatoMarket.Core.Models;
 using EnvatoMarket.Models;
 using Microsoft.AspNetCore.Identity;
@@ -25,12 +26,37 @@ namespace EnvatoMarket.DAL
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Check> Checks { get; set; }
         public DbSet<CheckProduct> CheckProducts { get; set; }
+        public DbSet<Adress> Adresses { get; set; }
+        public DbSet<ChatMessage> ChatMessages { get; set; }
+        public DbSet<ChatImage> ChatImages { get; set; }
         public AppDbContext(DbContextOptions options):base(options)
 		{
 		}
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+            builder.Entity<ChatMessage>()
+               .HasOne(m => m.FromUser)
+               .WithMany(u => u.SentMessages)
+               .HasForeignKey(m => m.FromUserId)
+               .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ChatMessage>()
+                .HasOne(m => m.ToUser)
+                .WithMany(u => u.ReceivedMessages)
+                .HasForeignKey(m => m.ToUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<ChatImage>()
+              .HasOne(m => m.FromUser)
+              .WithMany(u => u.SentImages)
+              .HasForeignKey(m => m.FromUserId)
+              .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ChatImage>()
+                .HasOne(m => m.ToUser)
+                .WithMany(u => u.ReceivedImages)
+                .HasForeignKey(m => m.ToUserId)
+                .OnDelete(DeleteBehavior.Restrict);
             string AdminRoleId = Guid.NewGuid().ToString();
             string SupperAdminRoleId = Guid.NewGuid().ToString();
             string UserRoleId = Guid.NewGuid().ToString();

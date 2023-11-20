@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EnvatoMarket.DAL.Migrations
 {
-    public partial class CheckCheckProductModel : Migration
+    public partial class CheckAddressModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -115,12 +115,43 @@ namespace EnvatoMarket.DAL.Migrations
                 keyValue: "d0719b20-84b1-4162-8bb2-d4a4abc12906");
 
             migrationBuilder.CreateTable(
+                name: "Adresses",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Addres1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Addres2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Removed = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Updated = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AddedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Adresses_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Checks",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TotalAmmount = table.Column<double>(type: "float", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AdressId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Removed = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Updated = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -131,11 +162,16 @@ namespace EnvatoMarket.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Checks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Checks_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        name: "FK_Checks_Adresses_AdressId",
+                        column: x => x.AdressId,
+                        principalTable: "Adresses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Checks_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -175,9 +211,9 @@ namespace EnvatoMarket.DAL.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "6431dd25-c940-4351-a41c-196fb2d5a384", "5c714324-9e68-448c-932b-b28f9bee98ad", "User", "USER" },
-                    { "6cf28b69-d5a4-42b9-8671-0b7db0805745", "81c6cb99-3ba9-4c62-8622-41e7e11df750", "SupperAdmin", "SUPPERADMIN" },
-                    { "f342de39-5a60-4be6-ad02-ebbd6c24d5a8", "8c4a2d1d-24ac-4993-92b9-6decbf410a3a", "Admin", "ADMIN" }
+                    { "2b9b68c1-9b17-4e5a-9c18-0e3b2dcdc9b0", "b7186b44-af00-44d6-8c74-32edcced0444", "Admin", "ADMIN" },
+                    { "633c4bb7-186b-4d8a-9500-dc8388b14db1", "921eba5f-a2f8-408f-a417-9449b1391779", "User", "USER" },
+                    { "b996a394-8ea0-477e-84f1-581e5e4fea25", "ca73b25a-a058-475a-8577-991167bda5c3", "SupperAdmin", "SUPPERADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -185,8 +221,8 @@ namespace EnvatoMarket.DAL.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "AddedBy", "ConcurrencyStamp", "Created", "Email", "EmailConfirmed", "FullName", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImageUrl", "Removed", "SecurityStamp", "TwoFactorEnabled", "Updated", "UserName" },
                 values: new object[,]
                 {
-                    { "46a19dab-f8cd-45fb-be00-7e25fb2ec7f5", 0, "System", "a546c754-d879-424f-8fa4-e8545369ca62", new DateTime(2023, 11, 4, 14, 7, 38, 546, DateTimeKind.Local).AddTicks(3600), "rft.smayilov@bk.ru", true, "Rufat Code", true, false, false, null, "RFT.SMAYILOV@BK.RU", "RUFAT_2003", "AQAAAAEAACcQAAAAEGuBt03zyLe0Mr94GmzZ1wigU5C6f7eslNzPgreleptAmV4lVvaERqzwbRV3l+dYhg==", "+994513004484", true, null, null, "6921118b-c7b8-4f81-8bc2-83815f290678", false, null, "Rufat_2003" },
-                    { "8ebb95fa-7d47-474b-9d6e-f804bcf188fe", 0, "System", "b3fb2d3a-cb5e-4d2d-88ca-2e7855b3d780", new DateTime(2023, 11, 4, 14, 7, 38, 546, DateTimeKind.Local).AddTicks(3570), "rufatri@code.edu.az", true, "Rufat Azerbaijan", true, false, false, null, "RUFATRI@CODE.EDU.AZ", "RUFATCODE", "AQAAAAEAACcQAAAAECbKUJIOJPy0+NpbTK32VKpD3lGD5SPOdfloTn2+DGJT6Z3okjG3hW+ud2iPKT1IZA==", "+994513004484", true, null, null, "1117ab8d-b43f-42df-bc10-a4baea695b38", false, null, "RufatCode" }
+                    { "0fc77e06-ffdf-445b-bd1d-3099a0419f99", 0, "System", "55fcfa37-fc22-4eee-8022-12f85472cac8", new DateTime(2023, 11, 13, 15, 55, 57, 815, DateTimeKind.Local).AddTicks(6810), "rft.smayilov@bk.ru", true, "Rufat Code", true, false, false, null, "RFT.SMAYILOV@BK.RU", "RUFAT_2003", "AQAAAAEAACcQAAAAEC4F7PwlMBbhPtNHH1kQj3nknjJepu1cmZdWOqsHrTHmAGydtD1vshvcWLp8V5E5xQ==", "+994513004484", true, null, null, "5653e2f5-a5e8-4ddc-95f1-8689d82f4364", false, null, "Rufat_2003" },
+                    { "6c90522e-9c2f-46a2-a163-a2d03f3bf3e2", 0, "System", "8053f6b7-6e07-4252-8c92-5ba68c238f5f", new DateTime(2023, 11, 13, 15, 55, 57, 815, DateTimeKind.Local).AddTicks(6780), "rufatri@code.edu.az", true, "Rufat Azerbaijan", true, false, false, null, "RUFATRI@CODE.EDU.AZ", "RUFATCODE", "AQAAAAEAACcQAAAAEOdejOmqN3twjMxSa1JpREsULnsj+F+VMdcvDUve0cXRw7mI5MdzWOif67RCdGFTfg==", "+994513004484", true, null, null, "185d2c6b-d056-4e33-ac5f-946afff6b624", false, null, "RufatCode" }
                 });
 
             migrationBuilder.InsertData(
@@ -194,31 +230,36 @@ namespace EnvatoMarket.DAL.Migrations
                 columns: new[] { "Id", "AddedBy", "Created", "IsDeleted", "Key", "Removed", "Updated", "Value" },
                 values: new object[,]
                 {
-                    { "0d23fd6d-7f4e-4a94-bd50-45d36ce4e7c0", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3680), false, "Hotline", null, null, "+48 500 500 500" },
-                    { "1b680feb-ec7b-47bf-8d7e-4e314ed46243", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3730), false, "Email", null, null, "rufatri@code.edu.az" },
-                    { "36c167ac-5369-47fb-9216-443f692c311e", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3770), false, "Language2", null, null, "Franch" },
-                    { "489a09c1-e6d4-4869-8b30-7f17265e429f", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3740), false, "Work Time", null, null, "Mon-Sat 9:00pm - 5:00pm Sun:Closed" },
-                    { "4a21d50e-8df3-4f2d-8e54-a4d031ba7b25", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3760), false, "currency2", null, null, "EUR$" },
-                    { "65ff73c3-0167-4eb7-9311-e901a9fd7bb7", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3690), false, "Logo", null, null, "logo.png" },
-                    { "70dc48e3-9984-40e5-a1b9-405cb234e733", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3700), false, "PhoneNumber", null, null, "+994513004484" },
-                    { "9365155b-7198-401a-a1d5-dbe2ac645ff7", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3700), false, "Location", null, null, "45 Grand Central Terminal New York,NY 1017 United State USA" },
-                    { "a325e5fa-6e50-4b27-9dc1-916187d913ba", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3790), false, "Flag2", null, null, "2.jpg" },
-                    { "bfc15d80-4a17-466f-a345-400f0e654f54", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3770), false, "Language1", null, null, "English" },
-                    { "e1ddd764-79c7-4070-9660-8490f8274b06", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3750), false, "currency1", null, null, "USD$" },
-                    { "e2ca4689-c810-48e9-9dac-0531a9573100", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3740), false, "Payment", null, null, "payment.png" },
-                    { "f1d40398-8eb0-4b7e-8283-d06f2900f38e", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3750), false, "CompanyEmail", null, null, "rft.smayilov@bk.ru" },
-                    { "ff1d9fd9-0094-4a9a-a5a9-a22ea79abeb2", "System", new DateTime(2023, 11, 4, 14, 7, 38, 549, DateTimeKind.Local).AddTicks(3780), false, "Flag1", null, null, "1.jpg" }
+                    { "07fe2ee8-8606-4d55-b5a0-72f98073880a", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7990), false, "currency1", null, null, "USD$" },
+                    { "14816f54-4c62-4214-b5c1-f2b5be165bb2", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(8020), false, "Flag2", null, null, "2.jpg" },
+                    { "16c9eef8-9e79-4776-87f7-df0b08d06d45", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7990), false, "currency2", null, null, "EUR$" },
+                    { "2c361242-f52c-4e4b-9e4e-f9370d4894f8", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7970), false, "Payment", null, null, "payment.png" },
+                    { "39954f82-3b2b-4a7e-9b74-0d1b21906206", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7950), false, "PhoneNumber", null, null, "+994513004484" },
+                    { "4ee292c9-42a0-4195-a5c6-21499592e74e", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7960), false, "Email", null, null, "rufatri@code.edu.az" },
+                    { "63c9ac6a-14b3-45f6-a8bf-9f43956e4725", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(8010), false, "Flag1", null, null, "1.jpg" },
+                    { "8aa52071-2d71-41ce-afb9-b0aa3ef272b8", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7930), false, "Hotline", null, null, "+48 500 500 500" },
+                    { "9d665388-eba1-487d-9d5c-7bdb5007ddbc", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(8000), false, "Language1", null, null, "English" },
+                    { "a865bed1-3e39-4d74-b906-33e8f34f00e9", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7970), false, "Work Time", null, null, "Mon-Sat 9:00pm - 5:00pm Sun:Closed" },
+                    { "beb0ede8-fc32-456a-aead-2024b0fdb7cb", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7940), false, "Logo", null, null, "logo.png" },
+                    { "c037bdc1-33dd-4a66-8d3b-7b6ecc31c8c1", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7950), false, "Location", null, null, "45 Grand Central Terminal New York,NY 1017 United State USA" },
+                    { "d8039701-b92b-4c4f-a6df-fe8ccdac7cac", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(8010), false, "Language2", null, null, "Franch" },
+                    { "e14566d6-5c7c-47f8-9c69-ab327a2ddb71", "System", new DateTime(2023, 11, 13, 15, 55, 57, 818, DateTimeKind.Local).AddTicks(7980), false, "CompanyEmail", null, null, "rft.smayilov@bk.ru" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "6cf28b69-d5a4-42b9-8671-0b7db0805745", "46a19dab-f8cd-45fb-be00-7e25fb2ec7f5" });
+                values: new object[] { "b996a394-8ea0-477e-84f1-581e5e4fea25", "0fc77e06-ffdf-445b-bd1d-3099a0419f99" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "f342de39-5a60-4be6-ad02-ebbd6c24d5a8", "8ebb95fa-7d47-474b-9d6e-f804bcf188fe" });
+                values: new object[] { "2b9b68c1-9b17-4e5a-9c18-0e3b2dcdc9b0", "6c90522e-9c2f-46a2-a163-a2d03f3bf3e2" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adresses_UserId",
+                table: "Adresses",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CheckProducts_CheckId",
@@ -231,9 +272,14 @@ namespace EnvatoMarket.DAL.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Checks_UserId",
+                name: "IX_Checks_AdressId",
                 table: "Checks",
-                column: "UserId");
+                column: "AdressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Checks_AppUserId",
+                table: "Checks",
+                column: "AppUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -244,110 +290,113 @@ namespace EnvatoMarket.DAL.Migrations
             migrationBuilder.DropTable(
                 name: "Checks");
 
+            migrationBuilder.DropTable(
+                name: "Adresses");
+
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "6431dd25-c940-4351-a41c-196fb2d5a384");
+                keyValue: "633c4bb7-186b-4d8a-9500-dc8388b14db1");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "6cf28b69-d5a4-42b9-8671-0b7db0805745", "46a19dab-f8cd-45fb-be00-7e25fb2ec7f5" });
+                keyValues: new object[] { "b996a394-8ea0-477e-84f1-581e5e4fea25", "0fc77e06-ffdf-445b-bd1d-3099a0419f99" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "f342de39-5a60-4be6-ad02-ebbd6c24d5a8", "8ebb95fa-7d47-474b-9d6e-f804bcf188fe" });
+                keyValues: new object[] { "2b9b68c1-9b17-4e5a-9c18-0e3b2dcdc9b0", "6c90522e-9c2f-46a2-a163-a2d03f3bf3e2" });
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "0d23fd6d-7f4e-4a94-bd50-45d36ce4e7c0");
+                keyValue: "07fe2ee8-8606-4d55-b5a0-72f98073880a");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "1b680feb-ec7b-47bf-8d7e-4e314ed46243");
+                keyValue: "14816f54-4c62-4214-b5c1-f2b5be165bb2");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "36c167ac-5369-47fb-9216-443f692c311e");
+                keyValue: "16c9eef8-9e79-4776-87f7-df0b08d06d45");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "489a09c1-e6d4-4869-8b30-7f17265e429f");
+                keyValue: "2c361242-f52c-4e4b-9e4e-f9370d4894f8");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "4a21d50e-8df3-4f2d-8e54-a4d031ba7b25");
+                keyValue: "39954f82-3b2b-4a7e-9b74-0d1b21906206");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "65ff73c3-0167-4eb7-9311-e901a9fd7bb7");
+                keyValue: "4ee292c9-42a0-4195-a5c6-21499592e74e");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "70dc48e3-9984-40e5-a1b9-405cb234e733");
+                keyValue: "63c9ac6a-14b3-45f6-a8bf-9f43956e4725");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "9365155b-7198-401a-a1d5-dbe2ac645ff7");
+                keyValue: "8aa52071-2d71-41ce-afb9-b0aa3ef272b8");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "a325e5fa-6e50-4b27-9dc1-916187d913ba");
+                keyValue: "9d665388-eba1-487d-9d5c-7bdb5007ddbc");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "bfc15d80-4a17-466f-a345-400f0e654f54");
+                keyValue: "a865bed1-3e39-4d74-b906-33e8f34f00e9");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "e1ddd764-79c7-4070-9660-8490f8274b06");
+                keyValue: "beb0ede8-fc32-456a-aead-2024b0fdb7cb");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "e2ca4689-c810-48e9-9dac-0531a9573100");
+                keyValue: "c037bdc1-33dd-4a66-8d3b-7b6ecc31c8c1");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "f1d40398-8eb0-4b7e-8283-d06f2900f38e");
+                keyValue: "d8039701-b92b-4c4f-a6df-fe8ccdac7cac");
 
             migrationBuilder.DeleteData(
                 table: "Settings",
                 keyColumn: "Id",
-                keyValue: "ff1d9fd9-0094-4a9a-a5a9-a22ea79abeb2");
+                keyValue: "e14566d6-5c7c-47f8-9c69-ab327a2ddb71");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "6cf28b69-d5a4-42b9-8671-0b7db0805745");
+                keyValue: "2b9b68c1-9b17-4e5a-9c18-0e3b2dcdc9b0");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "f342de39-5a60-4be6-ad02-ebbd6c24d5a8");
+                keyValue: "b996a394-8ea0-477e-84f1-581e5e4fea25");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "46a19dab-f8cd-45fb-be00-7e25fb2ec7f5");
+                keyValue: "0fc77e06-ffdf-445b-bd1d-3099a0419f99");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "8ebb95fa-7d47-474b-9d6e-f804bcf188fe");
+                keyValue: "6c90522e-9c2f-46a2-a163-a2d03f3bf3e2");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",

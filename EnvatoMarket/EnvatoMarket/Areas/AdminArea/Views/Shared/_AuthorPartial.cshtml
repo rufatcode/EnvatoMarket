@@ -1,0 +1,23 @@
+﻿@model List<Author>
+@foreach (var author in Model)
+{
+
+
+    <tr>
+        <td>
+            <img style="border-radius:50%;" width="75" height="75" src="~/assets/images/@author.ProfileImage" />
+        </td>
+        <td>@author.Name</td>
+        <td>@author.Email</td>
+        <td>@(author.About.Length>20?author.About.Substring(0,20)+"...":author.About)</td>
+        <td>
+            @if (!author.IsDeleted)
+            {
+                <a asp-action="Delete" asp-route-Id="@author.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+            }
+            <a asp-action="Update" asp-route-Id="@author.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+            <a class="mx-3" asp-action="Detail" asp-route-Id="@author.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
+        </td>
+    </tr>
+
+}

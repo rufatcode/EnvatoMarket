@@ -2,11 +2,12 @@
 @{
     ViewBag.Title = "Index";
 }
+@model CheckOutVM
 <div class="breadcrumb-area">
     <div class="container-fluid custom-container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
                 <li class="breadcrumb-item active">Checkout</li>
             </ol>
         </nav>
@@ -14,6 +15,54 @@
 </div>
 
 <!--====== Breadcrumb Part Ends ======-->
+<div class="card @(Model.basketVMs.Count==0?"d-none":"")">
+    <div class="card-header">
+        <h5>Basket Table</h5>
+        <div class="card-header-right">
+
+        </div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <p id="SuccessMessage" class="text-danger w-50 text-center mx-auto">@TempData["SuccessMessage"]</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>ProductCount</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Tax</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <p id="AllertMessage" class="text-danger w-50 text-center mx-auto">@TempData["AlertMessage"]</p>
+                    @foreach (var product in Model.basketVMs)
+                    {
+                        <tr>
+                            <th scope="row">
+                                <img style="width:50px;height:50px;border-radius:50%;" src="~/assets/images/@product.ImgSrc" />
+                            </th>
+                            <td>@product.ProductCount</td>
+                            <td>@product.Name</td>
+                            <td>@(product.Price)$</td>
+                            <td>@product.Tax$</td>
+                            <td>
+                                <ul class="list-unstyled card-option">
+                                    <li style="cursor:pointer;" class="text-primary"><a asp-controller="Basket" asp-action="IncreaseProduct" asp-route-id="@product.Id"><i class="fa fa-plus maximize-card"></i></a></li>
+                                    <li style="cursor:pointer;" class="text-danger"><a asp-controller="Basket" asp-action="RemoveProduct" asp-route-id="@product.Id"><i class="fa fa-trash close-card"></i></a></li>
+                                    <li style="cursor:pointer;" class="text-warning"><a asp-controller="Basket" asp-action="DecreaseProduct" asp-route-id="@product.Id"><i class="fa fa-minus minimize-card"></i></a></li>
+
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <!--====== Checkout Part Start ======-->
 
 <section class="checkout-area pt-10">
@@ -21,172 +70,65 @@
         <div class="row">
             <div class="col-xl-8 col-lg-7">
                 <div class="checkout-form">
-                    <form action="#">
+                    @using (Html.BeginForm("CheckOut", "CheckOut", FormMethod.Post))
+                        {
                         <div class="billing-address mt-30">
                             <h4 class="allup-title">Billing Address</h4>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="single-form">
-                                        <label>First Name*</label>
-                                        <input type="text" placeholder="First Name">
+                                        <label>Full Name</label>
+                                        <input readonly type="text" placeholder="FullName" required value="@(Model.appUser!=null?Model.appUser.FullName:"")">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Last  Name*</label>
-                                        <input type="text" placeholder="Last Name">
-                                    </div>
-                                </div>
+
                                 <div class="col-md-6">
                                     <div class="single-form">
                                         <label>Email Address*</label>
-                                        <input type="text" placeholder="Email Address">
+                                        <input readonly type="text" placeholder="Email Address" required value="@(Model.appUser!=null?Model.appUser.Email:"")">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-form">
                                         <label>Phone no*</label>
-                                        <input type="text" placeholder="Phone no">
+                                        <input readonly type="text" placeholder="Phone no" required value="@(Model.appUser!=null?(Model.appUser.PhoneNumber != null ? Model.appUser.PhoneNumber : ""):"")">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="single-form">
-                                        <label>Company Name</label>
-                                        <input type="text" placeholder="Company Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="single-form">
                                         <label>Address</label>
-                                        <input type="text" placeholder="Address Line 1">
-                                        <input type="text" placeholder="Address Line 2">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Country</label>
-                                        <select>
-                                            <option value="">Bangedesh</option>
-                                            <option value="">India</option>
-                                            <option value="">Pakistan</option>
-                                            <option value="">Nepal</option>
-                                            <option value="">China</option>
-                                            <option value="">Japan</option>
+                                        <select name="adressId">
+                                            @foreach (var adress in Model.Adresses)
+                                            {
+                                                <option value="@adress.Id">@adress.CompanyName</option>
+                                            }
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="single-form">
-                                        <label>Town/City*</label>
-                                        <input type="text" placeholder="Town/City">
+                                        <label>Sale Code</label>
+                                        <input  type="text" placeholder="Sale Code" name="saleCode">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>State*</label>
-                                        <input type="text" placeholder="State">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Zip Code*</label>
-                                        <input type="text" placeholder="Zip Code">
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
-                        <div class="checkout-checkbox">
-                            <ul>
-                                <li>
-                                    <div class="custom-checkbox">
-                                        <input type="checkbox" id="account">
-                                        <label for="account"></label>
-                                        <p>Create an Account? </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="custom-checkbox">
-                                        <input type="checkbox" id="address" data-shipping>
-                                        <label for="address"></label>
-                                        <p>Ship to Different Address </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="shipping-address" class="shipping-address mt-30">
-                            <h4 class="allup-title">Shipping Address</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>First Name*</label>
-                                        <input type="text" placeholder="First Name">
-                                    </div>
+                    <div class="checkout-btn">
+                        <button class="main-btn main-btn-2" type="submit">Place Order</button>
+                    </div>
+                        }
+                    <div class="checkout-checkbox">
+                        <ul>
+                            <li>
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="account">
+                                    <label for="account"></label>
+                                    <p>Create an Account? </p>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Last  Name*</label>
-                                        <input type="text" placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Email Address*</label>
-                                        <input type="text" placeholder="Email Address">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Phone no*</label>
-                                        <input type="text" placeholder="Phone no">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-form">
-                                        <label>Company Name</label>
-                                        <input type="text" placeholder="Company Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-form">
-                                        <label>Address</label>
-                                        <input type="text" placeholder="Address Line 1">
-                                        <input type="text" placeholder="Address Line 2">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Country</label>
-                                        <select>
-                                            <option value="">Bangedesh</option>
-                                            <option value="">India</option>
-                                            <option value="">Pakistan</option>
-                                            <option value="">Nepal</option>
-                                            <option value="">China</option>
-                                            <option value="">Japan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Town/City*</label>
-                                        <input type="text" placeholder="Town/City">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>State*</label>
-                                        <input type="text" placeholder="State">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <label>Zip Code*</label>
-                                        <input type="text" placeholder="Zip Code">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                            </li>
+
+                        </ul>
+                    </div>
+                    
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5">
@@ -195,32 +137,24 @@
                     <div class="checkout-total mt-30">
                         <h4 class="title">Product  <span>Total</span></h4>
                         <ul>
-                            <li>
-                                <p class="total-value">Cillum dolore tortor nisl X 01</p>
-                                <p class="total-amount">€25.00</p>
-                            </li>
-                            <li>
-                                <p class="total-value">Auctor gravida pellentesque X 02</p>
-                                <p class="total-amount">€50.00</p>
-                            </li>
-                            <li>
-                                <p class="total-value">Condimentum posuere consectetur X 01</p>
-                                <p class="total-amount">€29.00</p>
-                            </li>
-                            <li>
-                                <p class="total-value">Habitasse dictumst elementum X 01</p>
-                                <p class="total-amount">€10.00</p>
-                            </li>
+                            @foreach (var product in Model.basketVMs)
+                            {
+                                <li>
+                                    <p class="total-value">@product.Name</p>
+                                    <p class="total-amount">€@(product.Price*product.ProductCount)</p>
+                                </li>
+                            }
+
                         </ul>
                         <div class="checkout-total-sub">
                             <p class="total-value">Sub Total</p>
-                            <p class="total-amount">€104.00</p>
+                            <p class="total-amount">€@Model.basketVMs.Sum(p => p.Price * p.ProductCount)</p>
                         </div>
                         <div class="checkout-total-sub">
                             <p class="total-value">Shipping Fee </p>
-                            <p class="total-amount">€00.00</p>
+                            <p class="total-amount">€@Model.basketVMs.Sum(p => p.Tax)</p>
                         </div>
-                        <h4 class="title mt-15">Product  <span>€104.00</span></h4>
+                        <h4 class="title mt-15">Product  <span>€@(Model.basketVMs.Sum(p => p.Price * p.ProductCount)+ Model.basketVMs.Sum(p => p.Tax))</span></h4>
                     </div>
                 </div>
 
@@ -299,9 +233,7 @@
                     </div>
                 </div>
 
-                <div class="checkout-btn">
-                    <a class="main-btn main-btn-2" href="#">Place Order</a>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -316,19 +248,9 @@
 
 <!--====== Features Banner Part Ends ======-->
 @section CostumScripts{
-    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/assets/js/vendor/modernizr-3.7.1.min.js"></script>
 
-    <!--====== Plugins js ======-->
-    <script src="~/assets/js/plugins/popper.min.js"></script>
-    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="~/assets/js/plugins/slick.min.js"></script>
-    <script src="~/assets/js/plugins/jquery.countdown.min.js"></script>
-    <script src="~/assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="~/assets/js/basket.js"></script>
 
 
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <script src="~/assets/js/plugins.min.js"></script> -->
-    <!--====== Main Activation js ======-->
-    <script src="~/assets/js/main.js"></script>
+   
 }

@@ -76,6 +76,7 @@ namespace EnvatoMarket.Controllers
             verificationMessageBody=verificationMessageBody.Replace("{{link}}", link);
             verificationMessageBody=verificationMessageBody.Replace("{{userName}}", appUser.UserName);
             _sendEmail.Send("rufatri@code.edu.az", "Allup", appUser.Email, verificationMessageBody, "Confirm Account");
+            TempData["Verify"] = "Please verify your account";
             return RedirectToAction("Login", "Account");
         }
         public async Task<IActionResult> VerifyEmail(string VerifyEmail,string token)
@@ -105,6 +106,7 @@ namespace EnvatoMarket.Controllers
             }
             await _userManager.ConfirmEmailAsync(appUser, token);
             await _userManager.UpdateSecurityStampAsync(appUser);
+
             return RedirectToAction("Login");
         }
         public IActionResult TokenIsNotValid()

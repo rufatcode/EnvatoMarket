@@ -16,6 +16,13 @@ namespace EnvatoMarket.Models
         public bool IsDeleted { get; set; }
 		public List<Comment> Comments { get; set; }
         public List<Check> Checkes { get; set; }
+        public List<Adress> Adresses { get; set; }
+        public ICollection<ChatMessage> SentMessages { get; set; }
+        public ICollection<ChatMessage> ReceivedMessages { get; set; }
+        public ICollection<ChatImage> ReceivedImages { get; set; }
+        public ICollection<ChatImage> SentImages { get; set; }
+        public bool isOnline { get; set; }
+        public string? ConnectionId { get; set; }
         public AppUser()
 		{
 		}

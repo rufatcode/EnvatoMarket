@@ -1,0 +1,28 @@
+﻿@model MessagePartialVM
+@if (Model.UserId == Model.AppUser.Id)
+{
+    <div class="d-flex justify-content-end mb-4">
+        <div style="min-width:150px;text-align:center;" class="msg_cotainer_send">
+            @Model.Message.Message
+            <span class="msg_time_send">@Model.Message.Created.ToString("d MMM yy h:mm tt")</span>
+        </div>
+        <div class="img_cont_msg">
+            <img src="~/assets/images/@(Model.Message.FromUser.ProfileImageUrl != null ? Model.Message.FromUser.ProfileImageUrl:"DemoProfileImage.png")" class="rounded-circle user_img_msg">
+        </div>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-start mb-4">
+        <div class="img_cont_msg">
+            <img src="~/assets/images/@(Model.Message.FromUser.ProfileImageUrl != null ? Model.Message.FromUser.ProfileImageUrl:"DemoProfileImage.png")" class="rounded-circle user_img_msg">
+        </div>
+        <div class="msg_cotainer">
+            <div style="min-width:150px;text-align:center; padding:0px;" class="msg_cotainer">
+                @Model.Message.Message
+                <span class="msg_time">@Model.Message.Created.ToString("d MMM yy h:mm tt")</span>
+            </div>
+        </div>
+    </div>
+}
+

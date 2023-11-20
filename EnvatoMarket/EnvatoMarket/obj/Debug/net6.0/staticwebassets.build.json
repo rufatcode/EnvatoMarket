@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "f9yEQJtuWg70CDcY6fzcpuxRWTAg9Y1na6yjqiKI0a0=",
+  "Hash": "axy7bd9Gw7hEN3qPs98i097/uiUHK4d5yiIVVNP4ueo=",
   "Source": "EnvatoMarket",
   "BasePath": "_content/EnvatoMarket",
   "Mode": "Default",
@@ -3043,6 +3043,23 @@
       "OriginalItemSpec": "wwwroot/assets/.DS_Store"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/css/chat.css",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/css/chat.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/css/chat.css"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/css/plugins/animate.css",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -4199,6 +4216,23 @@
       "OriginalItemSpec": "wwwroot/assets/images/175c278e-2494-4135-ac31-e23446f34425.jpeg"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/1762fafa-bcdd-4788-ae54-0e69887740db.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/1762fafa-bcdd-4788-ae54-0e69887740db.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/1762fafa-bcdd-4788-ae54-0e69887740db.jpeg"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/18430413-7aec-47d3-a80f-365acd1aae29.jpeg",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -4539,6 +4573,23 @@
       "OriginalItemSpec": "wwwroot/assets/images/3784c1e2-49f9-477a-b73c-3778d617c475.jpeg"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/37c2728b-9a6a-4329-afb9-56b7a563fb3b.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/37c2728b-9a6a-4329-afb9-56b7a563fb3b.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/37c2728b-9a6a-4329-afb9-56b7a563fb3b.jpeg"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/37eca7c3-c843-47a1-b8dc-0cc65833a1fa.jpeg",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -4571,6 +4622,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/3a07924c-cd61-4a24-af91-1e34322263b6.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/3a15d05f-c657-40f5-bdca-d68453904913.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/3a15d05f-c657-40f5-bdca-d68453904913.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/3a15d05f-c657-40f5-bdca-d68453904913.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/3a362f3f-088d-441d-aefb-5bcc2b9ed417.jpeg",
@@ -4707,6 +4775,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/42b5b646-3e45-4577-8110-5cba33a1a5b8.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/42e3f94c-cc04-4fc4-afe3-2bbb8780b6aa.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/42e3f94c-cc04-4fc4-afe3-2bbb8780b6aa.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/42e3f94c-cc04-4fc4-afe3-2bbb8780b6aa.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/431fe8f6-f9fe-4ecc-b8f6-2ecca54ec3e7.jpeg",
@@ -4979,6 +5064,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/52cb9883-a8a5-453f-930e-2eaa4275ee77.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/54d7b895-ab14-4170-925f-fcfe424a50a9.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/54d7b895-ab14-4170-925f-fcfe424a50a9.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/54d7b895-ab14-4170-925f-fcfe424a50a9.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/5598030d-60a7-42b5-b37a-fc4157954395.jpeg",
@@ -5285,6 +5387,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/68ca0900-01e8-41b1-952e-7865b972eae0.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/6ad64732-b8e5-4a45-a43d-19e4e2eafccc.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/6ad64732-b8e5-4a45-a43d-19e4e2eafccc.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/6ad64732-b8e5-4a45-a43d-19e4e2eafccc.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/6d702218-2d80-418b-824e-5be2f8459f3c.jpeg",
@@ -6154,6 +6273,23 @@
       "OriginalItemSpec": "wwwroot/assets/images/a75c8612-f315-4f47-b4a6-6ef0b6c02724.jpeg"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/a7d31184-504c-4192-9b3d-052350fad0b8.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/a7d31184-504c-4192-9b3d-052350fad0b8.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/a7d31184-504c-4192-9b3d-052350fad0b8.jpeg"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/a895cfbd-852f-4fc2-b55b-a18de7b35078.jpeg",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -6186,6 +6322,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/a92747f8-5043-4e66-a368-bdbdfc4fe852.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/a9674cfa-275e-404b-82e9-caac4594c939.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/a9674cfa-275e-404b-82e9-caac4594c939.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/a9674cfa-275e-404b-82e9-caac4594c939.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/aaf60824-0139-454b-aa28-452de62a04ae.jpeg",
@@ -6273,6 +6426,23 @@
       "OriginalItemSpec": "wwwroot/assets/images/author-1.png"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/b0d0c104-2173-4311-b78d-2fc2ceda5662.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/b0d0c104-2173-4311-b78d-2fc2ceda5662.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/b0d0c104-2173-4311-b78d-2fc2ceda5662.jpeg"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/b4385170-9428-4817-a807-3200af209bfe.jpeg",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -6322,6 +6492,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/b8f7efa9-1a86-4ab0-80ad-b3fae9189d1f.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/b9292dd7-d830-499b-ab1f-9f282bd7fa2e.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/b9292dd7-d830-499b-ab1f-9f282bd7fa2e.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/b9292dd7-d830-499b-ab1f-9f282bd7fa2e.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/b9f9a5e6-6f3d-45ef-a95b-101a10c45714.jpeg",
@@ -7633,6 +7820,23 @@
       "OriginalItemSpec": "wwwroot/assets/images/da6b24f7-5632-40f1-85ff-802d453029a6.jpeg"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/dbc9f9b1-c316-4808-9207-b442b6ccc503.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/dbc9f9b1-c316-4808-9207-b442b6ccc503.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/dbc9f9b1-c316-4808-9207-b442b6ccc503.jpeg"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/dd085444-ed5f-4a05-a44c-a223e8adc819.jpeg",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -7869,6 +8073,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/ed40b2b0-32e8-4be9-8da2-30234291c4ab.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/f0dced72-f000-4910-9223-4f4087a6f774.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/f0dced72-f000-4910-9223-4f4087a6f774.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/f0dced72-f000-4910-9223-4f4087a6f774.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/f2399de3-9bcc-4b39-bfdb-e0893603f7ed.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/f2399de3-9bcc-4b39-bfdb-e0893603f7ed.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/f2399de3-9bcc-4b39-bfdb-e0893603f7ed.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/f2e6b686-ca06-4927-9e72-7f31fb95918a.jpeg",
@@ -8889,6 +9127,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/special-products/special-products-8.jpg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/basket.js",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/js/basket.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/js/basket.js"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/chatHub.js",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/js/chatHub.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/js/chatHub.js"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/js/header.js",

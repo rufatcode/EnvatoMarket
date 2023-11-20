@@ -23,10 +23,10 @@ namespace EnvatoMarket.Controllers
             _basketServices = basketServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
-            return View(_basketServices.Show());
+            return View(await _basketServices.Show());
         }
         public async Task<IActionResult> Basket(string id)
         {
@@ -55,7 +55,7 @@ namespace EnvatoMarket.Controllers
                 return Redirect("/Home/Index");
             }
             _basketServices.Remove(id, data);
-            return Redirect("/Basket/Index");
+            return Redirect("/Home/Index");
         }
         public async Task<IActionResult> IncreaseProduct(string id)
         {
@@ -71,7 +71,7 @@ namespace EnvatoMarket.Controllers
             }
 
             _basketServices.Increase(id, data);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","CheckOut");
         }
         public async Task<IActionResult> DecreaseProduct(string id)
         {
@@ -87,7 +87,7 @@ namespace EnvatoMarket.Controllers
             }
 
             _basketServices.Decrease(id, data);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "CheckOut");
         }
 
     }

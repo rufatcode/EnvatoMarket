@@ -31,15 +31,26 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             _roleManager = roleManager;
             _userService = userService;
         }
+        public async Task<IActionResult> Pagination(int skip, int take = 4)
+        {
+            List<AppUser> users = await _userManager.Users.ToListAsync();
+            List<GetUserVM> userVMs = _mapper.Map<List<AppUser>, List<GetUserVM>>(users);
+            for (int i = 0; i < users.Count; i++)
+            {
+                userVMs[i].Roles = await _userManager.GetRolesAsync(users[i]);
+            }
+            return PartialView("_UserPartial", userVMs.Skip(skip).Take(4).ToList());
+        }
         public async Task<IActionResult>Index()
         {
             List<AppUser> users = await _userManager.Users.ToListAsync();
+            ViewBag.ProductCount = users.Count;
             List<GetUserVM> userVMs = _mapper.Map<List<AppUser>,List<GetUserVM>>(users);
             for (int i = 0; i < users.Count; i++)
             {
                 userVMs[i].Roles=await _userManager.GetRolesAsync(users[i]);
             }
-            return View(userVMs);
+            return View(userVMs.Take(4).ToList());
         }
         [Authorize(Roles = "SupperAdmin")]
         public async Task<IActionResult> Delete(string id)

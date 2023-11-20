@@ -1,0 +1,29 @@
+﻿@model List<Slider>
+@foreach (var slider in Model)
+{
+
+
+    <tr>
+        <td>
+            @if (slider.ImageUrl == null)
+            {
+                <img width="75" height="75" style="border-radius:50%;" src="~/assets/images/DemoProfileImage.png" />
+            }
+            else
+            {
+                <img style="border-radius:50%;" width="75" height="75" src="~/assets/images/@slider.ImageUrl" />
+            }
+        </td>
+        <td>@slider.MainTitle</td>
+        <td>@(slider.Description.Length>30?slider.Description.Substring(0,60)+"....":slider.Description)</td>
+        <td>@(slider.IsDeleted?"Deleted":"Active")</td>
+        <td>
+            @if (!slider.IsDeleted)
+            {
+                <a asp-action="Delete" asp-route-Id="@slider.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+            }
+            <a asp-action="Update" asp-route-Id="@slider.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+            <a class="mx-3" asp-action="Detail" asp-route-Id="@slider.Id"><i style="font-size:25px;" class="ti-plus text-danger"></i></a>
+        </td>
+    </tr>
+}

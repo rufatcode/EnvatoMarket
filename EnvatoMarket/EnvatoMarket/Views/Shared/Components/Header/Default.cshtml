@@ -116,8 +116,8 @@
                                     <a href="#">
                                         <i class="icon ion-bag"></i>
                                         <span class="text">Cart :</span>
-                                        <span class="total">$@(ViewBag.TotalPrice + 7 + ViewBag.TotalTax )</span>
-                                        <span class="count">@(((List<BasketVM>)ViewBag.Products).Count))</span>
+                                        <span class="value">€@(ViewBag.TotalPrice!=0?(ViewBag.TotalPrice + 7 + ViewBag.TotalTax):0 )</span>
+                                        <span class="count">@(((List<BasketVM>)ViewBag.Products)!=null? ((List<BasketVM>)ViewBag.Products).Count:0))</span>
                                     </a>
                                 </div>
                                 <div class="mini-cart">
@@ -135,7 +135,7 @@
                                                            </div>
                                                            <div class="cart-item-content media-body">
                                                                <h5 class="product-name"><a href="single-product.html">@product.Name</a></h5>
-                                                               <span class="product-price">€@product.Price</span>
+                                                               <span class="product-price">€@(product.Price*product.ProductCount)</span>
                                                                <span class="product-color"><strong>Color:</strong> White</span>
                                                                <a  asp-controller="Basket" asp-action="RemoveProduct" asp-route-id="@product.Id" class="product-close"><i class="fal fa-times"></i></a>
                                                            </div>
@@ -153,7 +153,7 @@
                                             </div>
                                             <div class="shipping price_inline">
                                                 <span class="label">Shipping</span>
-                                                <span class="value">€7.0</span>
+                                                <span class="value">€@(ViewBag.TotalPrice!=0?7.0:0)</span>
                                             </div>
                                             <div class="tax price_inline">
                                                 <span class="label">Taxes</span>
@@ -162,11 +162,11 @@
                                         </div>
                                         <div class="cart-total price_inline">
                                             <span class="label">Total</span>
-                                            <span class="value">$@(ViewBag.TotalPrice + 7 + ViewBag.TotalTax )</span>
+                                            <span class="value">€@(ViewBag.TotalPrice!=0?(ViewBag.TotalPrice + 7 + ViewBag.TotalTax):0 )</span>
                                         </div>
                                     </div> <!-- price content -->
                                     <div class="checkout text-center">
-                                        <a asp-controller="CheckOut" asp-action="CheckOut" class="main-btn">Checkout</a>
+                                        <a asp-controller="CheckOut" asp-action="Index" class="main-btn">Checkout</a>
                                     </div>
                                 </div> <!-- mini cart -->
                             </div>
@@ -307,7 +307,7 @@
                                             }
 
                                             <li ><a class="text-danger">@Model.UserVM.FullName</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
+                                            <li><a asp-controller="MyAccount" asp-action="Index">My Account</a></li>
                                             <li><a asp-action="LogOut" asp-controller="Account">LogOut</a></li>
                                             @if (User.IsInRole("Admin") || User.IsInRole("SupperAdmin"))
                                             {

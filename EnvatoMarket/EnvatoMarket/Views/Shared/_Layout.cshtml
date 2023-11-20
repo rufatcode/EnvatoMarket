@@ -109,11 +109,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 
-    @RenderSection("CostumScripts", false);
+
     <script src="~/assets/js/header.js"></script>
     <script>const myTimeout = setTimeout(() => {
             document.getElementById("alertForSession1").innerHTML = "";
         }, 5000);</script>
+   
+    @RenderSection("CostumScripts", false);
 </body>
 
 

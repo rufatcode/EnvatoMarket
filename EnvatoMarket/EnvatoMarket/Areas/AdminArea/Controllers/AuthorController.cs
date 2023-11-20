@@ -8,10 +8,12 @@ using EnvatoMarket.Business.Interfaces;
 using EnvatoMarket.Business.Services;
 using EnvatoMarket.Business.ViewModels.AuthorVM;
 using EnvatoMarket.Business.ViewModels.CategoryVM;
+using EnvatoMarket.Business.ViewModels.SingleProductVM;
 using EnvatoMarket.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Stripe;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,9 +32,16 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             _authorService = authorService;
             _fileService = fileService;
         }
+        public async Task<IActionResult> Pagination(int skip, int take = 4)
+        {
+            var data = await _authorService.GetAll();
+            return PartialView("_AuthorPartial", data.Skip(skip).Take(take).ToList());
+        }
         public async Task<IActionResult> Index()
         {
-            return View(await _authorService.GetAll());
+            var data = await _authorService.GetAll();
+            ViewBag.ProductCount = data.Count;
+            return View(data.Take(4).ToList());
         }
         public IActionResult Create()
         {
@@ -138,9 +147,12 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
                     ModelState.AddModelError("Image", "File length must be smaller than 1 kb");
                     return View();
                 }
-               
+                if (author.ProfileImage!=null)
+                {
+                    _fileService.DeleteImage(author.ProfileImage);
+                }
                 author.ProfileImage = _fileService.CreateImage(updateAuthorVM.Image);
-                _fileService.DeleteImage(author.ProfileImage);
+                
             }
             _mapper.Map(updateAuthorVM, author);
             bool resoult = await _authorService.Update(author);

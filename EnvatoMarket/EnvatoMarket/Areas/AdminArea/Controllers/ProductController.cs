@@ -41,14 +41,19 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             _brandService = brandService;
             _sendEmail = sendEmail;
         }
+        public async Task<IActionResult>Pagination(int skip,int take = 4)
+        {
+            return PartialView("_ProductPartial", (await _productService.GetAll(null, "Category", "Brand", "ProductImages", "ProductTags.Tag")).Skip(skip).Take(take).ToList());
+        }
         public async Task<IActionResult> Index()
         {
             List<Product> products = await _productService.GetAll();
+            ViewBag.ProductCount = products.Count;
             if (products.Count > 0)
             {
-                return View(await _productService.GetAll(null, "Category", "Brand", "ProductImages", "ProductTags.Tag"));
+                return View((await _productService.GetAll(null, "Category", "Brand", "ProductImages", "ProductTags.Tag")).Take(4).ToList());
             }
-            return View(await _productService.GetAll());
+            return View(products.Take(4).ToList());
         }
         public async Task<IActionResult> Create()
         {
@@ -259,8 +264,11 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             //------
             if (updateProductVM.MainImage != null)
             {
+                if (product.ProductImages.FirstOrDefault(pi => pi.IsMain).ImageUrl!=null)
+                {
+                    _fileService.DeleteImage(product.ProductImages.FirstOrDefault(pi => pi.IsMain).ImageUrl);
+                }
                 
-                _fileService.DeleteImage(product.ProductImages.FirstOrDefault(pi => pi.IsMain).ImageUrl);
                 ProductImage productImage = product.ProductImages.FirstOrDefault(p => p.IsMain);
                 product.ProductImages.Remove(productImage);
                 product.ProductImages.Add(new ProductImage
@@ -273,8 +281,11 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             }
             if (updateProductVM.HoverImage != null)
             {
+                if (product.ProductImages.FirstOrDefault(pi => pi.IsHover).ImageUrl!=null)
+                {
+                    _fileService.DeleteImage(product.ProductImages.FirstOrDefault(pi => pi.IsHover).ImageUrl);
+                }
                 
-                _fileService.DeleteImage(product.ProductImages.FirstOrDefault(pi => pi.IsHover).ImageUrl);
                 ProductImage productImage = product.ProductImages.FirstOrDefault(p => p.IsHover);
                 product.ProductImages.Remove(productImage);
                 product.ProductImages.Add(new ProductImage
@@ -289,7 +300,11 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             {
                 foreach (var image in product.ProductImages.Where(pi => !pi.IsHover && !pi.IsMain).ToList())
                 {
-                    _fileService.DeleteImage(image.ImageUrl);
+                    if (image.ImageUrl!=null)
+                    {
+                        _fileService.DeleteImage(image.ImageUrl);
+                    }
+                    
                     ProductImage productImage = product.ProductImages.FirstOrDefault(p => p.Id==image.Id);
                     product.ProductImages.Remove(productImage);
                 }

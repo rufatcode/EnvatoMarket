@@ -1,4 +1,5 @@
 ﻿using EnvatoMarket;
+using EnvatoMarket.Business.Hubs;
 using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,10 +14,13 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
 }
-StripeConfiguration.ApiKey = config.GetSection("Stripe:Secret_key").Get<string>();
+
 app.UseStaticFiles();
 app.UseSession();
+app.UseCors();
 app.UseRouting();
+StripeConfiguration.ApiKey = config.GetSection("Stripe:Secret_key").Get<string>();
+//StripeConfiguration.ApiKey = "sk_test_51O8kpHJAoZSeXSjACOuWpXzXKNmWfriVblRGeLrnNqEv2iisnipsbftXv79mYT6sPIpbIOv6Pdd1tromLBg4KM4m00DKFija8g";
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -31,6 +35,6 @@ app.MapControllerRoute(
 
 
 app.MapRazorPages();
-
+app.MapHub<ChatHub>("/chatHub");
 app.Run();
 

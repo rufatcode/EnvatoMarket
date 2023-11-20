@@ -26,23 +26,18 @@ namespace EnvatoMarket.Business.Services
                     return false;
                 }
                 await _checkRepository.Create(entity);
+                await _checkRepository.Commit();
                 foreach (var checkProduct in entity.CheckProducts)
                 {
-                    await _checkProductService.Create(new CheckProduct
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        CheckId=entity.Id,
-                        ProductId=checkProduct.ProductId,
-                        Price=checkProduct.Product.Price,
-                        ProductCount=checkProduct.ProductCount
-                    });
+                    checkProduct.Id = Guid.NewGuid().ToString();
+                    await _checkProductService.Create(checkProduct);
                 }
-                await _checkRepository.Commit();
+               
                 return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("something went wrong");
+                throw new Exception(ex.Message);
             }
         }
 

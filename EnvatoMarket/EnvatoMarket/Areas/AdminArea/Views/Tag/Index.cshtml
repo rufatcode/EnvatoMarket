@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
+    int paginationItem = 2;
 }
 @model List<Tag>
 <div class="card" style="width:85%;float:right;">
@@ -29,7 +30,7 @@
                         <th>Settings</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="productBody">
                     @foreach (var tag in Model)
                     {
 
@@ -53,6 +54,27 @@
 
                 </tbody>
             </table>
+            <nav class=" my-2" aria-label="...">
+                <ul id="itemParent" class="pagination  mx-auto d-block text-center">
+                    <li class="page-item">
+                        <a class="page-link">Previous</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link">1 <span class="sr-only">(current)</span></a>
+                    </li>
+                    @if ((int)ViewBag.ProductCount > 4)
+                    {
+                        for (int i = 4; i < (int)ViewBag.ProductCount; i += 4)
+                        {
+                            <li class="page-item"><a class="page-link">@paginationItem</a></li>
+                            paginationItem++;
+                        }
+                    }
+                    <li class="page-item">
+                        <a class="page-link">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -75,5 +97,86 @@
     <script src="~/admin/js/vertical-layout.min.js "></script>
     <script src="~/admin/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="~/admin/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js" integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>var items = document.querySelectorAll(".page-item");
+        items.forEach(item => {
+            item.addEventListener("click", function () {
+                if (item.getAttribute("class").includes("active") == false && item.firstElementChild.innerHTML != "Next" && item.firstElementChild.innerHTML != "Previous") {
+
+                    var span = document.createElement("span");
+                    span.classList.add("sr-only");
+                    span.innerHTML = "(current)";
+                    var activeElement = document.querySelector("#itemParent .active");
+                    activeElement.classList.remove("active");
+                    activeElement.firstElementChild.firstElementChild.remove;
+                    item.classList.add("active");
+                    item.firstElementChild.appendChild(span);
+                    var skip = item.firstElementChild.innerText.split("\n")[0] - 1
+                    axios({
+                        method: 'get',
+                        url: `/AdminArea/Tag/Pagination?skip=${skip * 4}&take=4`
+                    })
+                        .then(function (response) {
+                            var productTableBody = document.getElementById("productBody");
+                            productTableBody.innerHTML = "";
+                            productTableBody.innerHTML = response.data;
+                        });
+
+                }
+            })
+            if (item.firstElementChild.innerHTML == "Next") {
+                item.addEventListener("click", function () {
+                    var previousElement = item.previousElementSibling;
+                    if (previousElement.getAttribute("class").includes("active") == false) {
+                        var activeElement = document.querySelector("#itemParent .active");
+                        var span = document.createElement("span");
+                        span.classList.add("sr-only");
+                        span.innerHTML = "(current)";
+                        activeElement.classList.remove("active");
+                        activeElement.firstElementChild.firstElementChild.remove;
+                        var nextElement = activeElement.nextElementSibling;
+                        nextElement.classList.add("active");
+                        nextElement.firstElementChild.appendChild(span);
+                        var skip = nextElement.firstElementChild.innerText.split("\n")[0] - 1
+                        axios({
+                            method: 'get',
+                            url: `/AdminArea/Tag/Pagination?skip=${skip * 4}&take=4`
+                        })
+                            .then(function (response) {
+                                var productTableBody = document.getElementById("productBody");
+                                productTableBody.innerHTML = "";
+                                productTableBody.innerHTML = response.data;
+                            });
+                    }
+                })
+            }
+            if (item.firstElementChild.innerHTML == "Previous") {
+                item.addEventListener("click", function () {
+                    var nextElement = item.nextElementSibling;
+                    if (nextElement.getAttribute("class").includes("active") == false) {
+                        var activeElement = document.querySelector("#itemParent .active");
+                        var span = document.createElement("span");
+                        span.classList.add("sr-only");
+                        span.innerHTML = "(current)";
+                        activeElement.classList.remove("active");
+                        activeElement.firstElementChild.firstElementChild.remove;
+                        var previousElement = activeElement.previousElementSibling;
+                        previousElement.classList.add("active");
+                        previousElement.firstElementChild.appendChild(span);
+                        var skip = previousElement.firstElementChild.innerText.split("\n")[0] - 1
+                        axios({
+                            method: 'get',
+                            url: `/AdminArea/Tag/Pagination?skip=${skip * 4}&take=4`
+                        })
+                            .then(function (response) {
+                                var productTableBody = document.getElementById("productBody");
+                                productTableBody.innerHTML = "";
+                                productTableBody.innerHTML = response.data;
+                            });
+                    }
+                })
+            }
+
+        })</script>
 }
 

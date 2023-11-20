@@ -26,9 +26,16 @@ namespace EnvatoMarket.Areas.AdminArea.Controllers
             _contactService = contactService;
             _mapper = mapper;
         }
+        public async Task<IActionResult> Pagination(int skip, int take = 4)
+        {
+            var data = await _contactService.GetAll();
+            return PartialView("_ContactPartial", data.Skip(skip).Take(take).ToList());
+        }
         public async Task<IActionResult> Index()
         {
-            return View(await _contactService.GetAll());
+            var data = await _contactService.GetAll();
+            ViewBag.ProductCount = data.Count;
+            return View(data.Take(4).ToList());
         }
         [Authorize(Roles = "SupperAdmin")]
         public async Task<IActionResult> Delete(string id)

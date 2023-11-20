@@ -1,0 +1,23 @@
+﻿@model List<Brand>
+@foreach (var brand in Model)
+{
+
+
+    <tr>
+        <td>
+            <img style="border-radius:50%;" width="75" height="75" src="~/assets/images/@brand.ImageUrl" />
+        </td>
+        <td>@brand.Name</td>
+        <td>@(brand.IsDeleted?"Deleted":"Active")</td>
+        <td>@(brand.Removed.HasValue?brand.Removed.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+        <td>@(brand.Updated.HasValue?brand.Updated.Value.ToString("d/Myy h:mm tt"):"[N/A]")</td>
+        <td>
+            @if (!brand.IsDeleted)
+            {
+                <a asp-action="Delete" asp-route-Id="@brand.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+            }
+            <a asp-action="Update" asp-route-Id="@brand.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+        </td>
+    </tr>
+
+}

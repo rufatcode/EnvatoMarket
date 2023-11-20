@@ -14,6 +14,17 @@ namespace EnvatoMarket
 	{
 		public static void  Registration(this IServiceCollection services,ConfigurationManager configuration)
 		{
+			services.AddCors(option =>
+			{
+				option.AddDefaultPolicy(policy =>
+				{
+					policy.AllowAnyMethod()
+					.AllowAnyHeader()
+					.AllowCredentials()
+					.SetIsOriginAllowed(orign => true);
+				});
+			});
+			services.AddSignalR();
             services.AddRazorPages();
             services.AddControllersWithViews();
 			services.AddSession(option =>
@@ -84,19 +95,12 @@ namespace EnvatoMarket
 			services.AddScoped<ICheckRepository, CheckRepository>();
 			services.AddScoped<ICheckService, CheckService>();
 			services.AddScoped<IBasketServices, BasketServices>();
+			services.AddScoped<IAdressRepository, AdressRepository>();
+			services.AddScoped<IAdressSrevice, AdressService>();
+			services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
+			services.AddScoped<IChatMessageService, ChatMessageService>();
             services.AddAutoMapper(typeof(HomeProfile).Assembly);
-			services.AddAutoMapper(typeof(UserProfile).Assembly);
-			services.AddAutoMapper(typeof(SliderProfile).Assembly);
-			services.AddAutoMapper(typeof(CategoryProfile).Assembly);
-			services.AddAutoMapper(typeof(BrandProfile).Assembly);
-			services.AddAutoMapper(typeof(TagProfile).Assembly);
-			services.AddAutoMapper(typeof(ProductProfile).Assembly);
-			services.AddAutoMapper(typeof(AuthorProfile).Assembly);
-			services.AddAutoMapper(typeof(BlogProfile).Assembly);
-			services.AddAutoMapper(typeof(FeatureProfile).Assembly);
-			services.AddAutoMapper(typeof(SettingProfile).Assembly);
-			services.AddAutoMapper(typeof(ContactProfile).Assembly);
-			services.AddAutoMapper(typeof(SubscribeProfile).Assembly);
+			
         }
 	}
 }

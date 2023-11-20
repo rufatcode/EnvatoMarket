@@ -1,0 +1,21 @@
+﻿@model List<Setting>
+@foreach (var tag in Model)
+{
+
+
+    <tr>
+        <td>@tag.Key</td>
+        <td>@(tag.Value.Length>30?tag.Value.Substring(0,30)+"...":tag.Value)</td>
+        <td>@(tag.IsDeleted?"Deleted":"Active")</td>
+        <td>@(tag.Removed.HasValue?tag.Removed.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>@(tag.Updated.HasValue?tag.Updated.Value.ToString("d/M/yy h:mm tt") :"[N/A]")</td>
+        <td>
+            @if (!tag.IsDeleted)
+            {
+                <a asp-action="Delete" asp-route-Id="@tag.Id"><i style="font-size:25px;" class="ti-trash text-danger"></i></a>
+            }
+            <a asp-action="Update" asp-route-Id="@tag.Id"><i style="font-size:25px;" class="ti-archive text-danger"></i></a>
+        </td>
+    </tr>
+
+}

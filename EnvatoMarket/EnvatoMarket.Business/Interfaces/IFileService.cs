@@ -8,7 +8,7 @@ namespace EnvatoMarket.Business.Interfaces
 		public bool IsImage(IFormFile file);
 		public bool IsLengthSuit(IFormFile file,int value);
 		public string CreateImage(IFormFile file);
-		public void DeleteImage(string path);
+		public void DeleteImage(string fileName);
     }
 }
 

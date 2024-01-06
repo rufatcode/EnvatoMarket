@@ -1,38 +1,58 @@
 ﻿<Properties StartupConfiguration="{868EDBF2-0965-4580-BDC6-684A2CD2DACA}|Default">
   <MonoDevelop.Ide.ItemProperties.EnvatoMarket PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket.Business/ViewModels/CategoryVM/CreateCategoryVM.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EnvatoMarket/Controllers/ChatController.cs">
     <Files>
-      <File FileName="EnvatoMarket.Data/Implimentations/CategoryRepository.cs" Line="1" Column="1" />
-      <File FileName="EnvatoMarket.Business/Interfaces/IService.cs" Line="1" Column="1" />
-      <File FileName="EnvatoMarket.Core/Models/BaseEntity.cs" Line="1" Column="1" />
-      <File FileName="EnvatoMarket.Core/Models/Category.cs" Line="1" Column="1" />
-      <File FileName="EnvatoMarket/ServiceRegistration.cs" Line="103" Column="4" />
-      <File FileName="EnvatoMarket.Business/ViewModels/CategoryVM/CreateCategoryVM.cs" Line="1" Column="1" />
+      <File FileName="EnvatoMarket.Business/Hubs/ChatHub.cs" Line="23" Column="50" />
+      <File FileName="EnvatoMarket/Views/Chat/Index.cshtml" Line="1" Column="1" />
+      <File FileName="EnvatoMarket/wwwroot/assets/js/chatHub.js" Line="44" Column="46" />
+      <File FileName="EnvatoMarket/Program.cs" Line="38" Column="1" />
+      <File FileName="EnvatoMarket/Controllers/ChatController.cs" Line="1" Column="1" />
+      <File FileName="EnvatoMarket.Core/Models/AppUser.cs" Line="20" Column="9" />
+      <File FileName="EnvatoMarket.Core/Models/ChatMessage.cs" Line="9" Column="3" />
+      <File FileName="EnvatoMarket.Data/DAL/AppDbContext.cs" Line="49" Column="40" />
+      <File FileName="EnvatoMarket.Business/ViewModels/ChatVM/ChatIndexVM.cs" Line="1" Column="1" />
+      <File FileName="EnvatoMarket.Business/ViewModels/ChatVM/ChatPartialVM.cs" Line="1" Column="1" />
+      <File FileName="EnvatoMarket.Business/ViewModels/ChatVM/RecieveMessageVM.cs" Line="8" Column="9" />
+      <File FileName="EnvatoMarket.Business/ViewModels/ChatVM/SendMessageVM.cs" Line="8" Column="9" />
+      <File FileName="EnvatoMarket.Business/ViewModels/ChatVM/UpdateMessageVM.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EnvatoMarket" expanded="True">
-            <Node name="EnvatoMarket">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="CheckOut" expanded="True" />
-                <Node name="Home" expanded="True" />
+            <Node name="EnvatoMarket" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="ChatController.cs" selected="True" />
               </Node>
-              <Node name="wwwroot" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Chat" expanded="True" />
+                <Node name="CheckOut" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="assets" expanded="True">
+                  <Node name="js" expanded="True" />
+                </Node>
+                <Node name="Verification" expanded="True" />
+              </Node>
             </Node>
             <Node name="EnvatoMarket.Business" expanded="True">
               <Node name="Hubs" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="ViewModels" expanded="True">
-                <Node name="CategoryVM" expanded="True">
-                  <Node name="CreateCategoryVM.cs" selected="True" />
-                </Node>
+                <Node name="AccountVM" expanded="True" />
+                <Node name="BasketsVM" expanded="True" />
+                <Node name="ChatVM" expanded="True" />
+                <Node name="UsersVM" expanded="True" />
               </Node>
             </Node>
             <Node name="EnvatoMarket.Core" expanded="True">
-              <Node name="Interfaces" expanded="True" />
               <Node name="Models" expanded="True" />
             </Node>
             <Node name="EnvatoMarket.Data" expanded="True">
@@ -44,10 +64,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

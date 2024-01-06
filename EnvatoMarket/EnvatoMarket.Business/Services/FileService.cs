@@ -25,11 +25,11 @@ namespace EnvatoMarket.Business.Services
             return fileName;
         }
 
-        public void DeleteImage(string path)
+        public void DeleteImage(string fileName)
         {
-            if (System.IO.File.Exists(Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", path)))
+            if (System.IO.File.Exists(Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", fileName)))
             {
-                System.IO.File.Delete(Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", path));
+                System.IO.File.Delete(Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", fileName));
             }
             
         }

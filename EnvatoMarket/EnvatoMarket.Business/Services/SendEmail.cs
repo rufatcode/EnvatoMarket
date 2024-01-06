@@ -9,7 +9,6 @@ namespace EnvatoMarket.Business.Services
 {
 	public class SendEmail:ISendEmail
 	{
-        private readonly UserManager<AppUser> userManager;
 		public SendEmail()
 		{
 		}

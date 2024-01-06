@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "axy7bd9Gw7hEN3qPs98i097/uiUHK4d5yiIVVNP4ueo=",
+  "Hash": "yhVOrzbWyCnSenXwtxW+EzjjY/PCbC4uODRqlbZVstU=",
   "Source": "EnvatoMarket",
   "BasePath": "_content/EnvatoMarket",
   "Mode": "Default",
@@ -5168,6 +5168,23 @@
       "OriginalItemSpec": "wwwroot/assets/images/5d0f79bb-61e6-447a-8214-e09a266da7a2.jpeg"
     },
     {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/5d877934-00eb-4116-b059-19f7aecc262f.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/5d877934-00eb-4116-b059-19f7aecc262f.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/5d877934-00eb-4116-b059-19f7aecc262f.jpeg"
+    },
+    {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/5d958d1a-dab3-4aa0-bb34-5f468dc51d03.jpeg",
       "SourceId": "EnvatoMarket",
       "SourceType": "Discovered",
@@ -5455,6 +5472,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/716d70fa-9356-493b-ae3c-242bcb6cb5d3.jpeg"
+    },
+    {
+      "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/72b84e72-8a09-47e2-89d1-710db8512e28.jpeg",
+      "SourceId": "EnvatoMarket",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/",
+      "BasePath": "_content/EnvatoMarket",
+      "RelativePath": "assets/images/72b84e72-8a09-47e2-89d1-710db8512e28.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/72b84e72-8a09-47e2-89d1-710db8512e28.jpeg"
     },
     {
       "Identity": "/Volumes/Mac/AspNet/BackendProject_Allup/EnvatoMarket/EnvatoMarket/wwwroot/assets/images/72bece94-4268-4317-9ac7-cca581c32bd2.jpeg",
